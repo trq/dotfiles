@@ -15,4 +15,10 @@ if [[ $- != *i* ]] ; then
 fi
 
 # Put your fun stuff here.
+
+# source my other files.
+source ~/.dotfiles/bash/functions
+source ~/.dotfiles/bash/prompt
+source ~/.dotfiles/bash/aliases
+
 umask 022
