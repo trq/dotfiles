@@ -1,3 +1,4 @@
+alias httpdump='sudo tcpdump -i eth0 -n -s 0 -w - | grep -a -o -E "Host\: .*|GET \/.*"'
 alias c='clear'
 alias cdc='cd;clear'
 alias s='sudo'
