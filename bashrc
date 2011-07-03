@@ -17,8 +17,8 @@ fi
 # Put your fun stuff here.
 
 # source my other files.
-source ~/.dotfiles/bash/functions
-source ~/.dotfiles/bash/prompt
-source ~/.dotfiles/bash/aliases
+source ~/etc/dotfiles/bash/functions
+source ~/etc/dotfiles/bash/prompt
+source ~/etc/dotfiles/bash/aliases
 
 umask 022
