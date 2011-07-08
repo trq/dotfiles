@@ -16,6 +16,8 @@ fi
 
 # Put your fun stuff here.
 
+PATH="${HOME}/bin:${PATH}"; export PATH
+
 # source my other files.
 source ~/etc/dotfiles/bash/functions
 source ~/etc/dotfiles/bash/prompt
