@@ -16,6 +16,23 @@ fi
 
 # Put your fun stuff here.
 
+export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
+export HISTCONTROL=ignoreboth
+export HISTIGNORE="&:ls:[bf]g:exit:q:ll:all:g:d:v:s:c:r:scr:sc"
+export HISTSIZE=5000
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# vi mode
+set -o vi
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
 PATH="${HOME}/bin:${PATH}"; export PATH
 
 # source my other files.
