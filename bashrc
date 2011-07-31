@@ -21,8 +21,6 @@ export HISTCONTROL=ignoreboth
 export HISTIGNORE="&:ls:[bf]g:exit:q:ll:all:g:d:v:s:c:r:scr:sc"
 export HISTSIZE=5000
 
-CDPATH=/home/thorpe/mnt/www ; export CDPATH
-
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -46,3 +44,6 @@ source ~/etc/dotfiles/bash/aliases
 [[ -f /etc/profile.d/bash-completion.sh ]] && source /etc/profile.d/bash-completion.sh
 
 umask 022
+
+# Ruby Version Mamager
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
