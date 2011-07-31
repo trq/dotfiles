@@ -1,1 +1,14 @@
-Just a place to keep my personal dotfiles as used on my Funtoo system
+Just a place to keep my personal dotfiles.
+
+vim:
+
+Create a symbolic link from the vimrc file within the root of the repo to
+~/.vimrc and another from the vim directory within the repo root to ~/.vim.
+
+All plugins are maintained as git submodules. These can be updated using:
+
+git submodule foreach git pull origin master
+
+And new ones can be installed by cd'ing into the root of the repo and issuing:
+
+git submodule add https://someurl.com/somerepo vim/bundle/somerepo
