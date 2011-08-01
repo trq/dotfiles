@@ -39,6 +39,7 @@ PATH="${HOME}/bin:${PATH}"; export PATH
 source ~/etc/dotfiles/bash/functions
 source ~/etc/dotfiles/bash/prompt
 source ~/etc/dotfiles/bash/aliases
+source ~/etc/dotfiles/bash/aliases-funtoo
 
 # Completion hack see http://forums.funtoo.org/viewtopic.php?id=614
 [[ -f /etc/profile.d/bash-completion.sh ]] && source /etc/profile.d/bash-completion.sh
