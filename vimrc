@@ -141,7 +141,11 @@ nmap <Leader>af :AckFile
 nmap <Leader>a :Ack
 
 " utils
-nmap <Leader>b :Bs
+" =====
+"
+"
+" Execute current sql file against a mysql database of the same name.
+nmap <silent> <Leader>m :!mysql %:r < %<CR>
 nmap <silent> <Leader>bl :buffers<CR>
 nmap <silent> <Leader>ls :!ls -l<CR>
 nmap <silent> <Leader>tr :!tree<CR>
@@ -155,7 +159,6 @@ nmap <Leader>nln :set nonumber<CR>
 " nmap <silent> \svnb :!svn blame %<CR>
 " nmap <silent> \svnd :!svn diff %<CR>
 nmap <silent> <Leader>n :NERDTree<CR>
-nmap <Leader>b :b
 
 " Highlight whitespace.
 highlight ExtraWhitespace ctermbg=red guibg=red
