@@ -158,7 +158,7 @@ nmap <Leader>nln :set nonumber<CR>
 " nmap \svnb :let bn = % | :tabnew | :r!svn blame % <c-r>=bn<cr>
 " nmap <silent> \svnb :!svn blame %<CR>
 " nmap <silent> \svnd :!svn diff %<CR>
-nmap <silent> <Leader>n :NERDTree<CR>
+nmap <silent> <Leader>n :NERDTreeToggle<CR>
 
 " Highlight whitespace.
 highlight ExtraWhitespace ctermbg=red guibg=red
