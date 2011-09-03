@@ -1,0 +1,30 @@
+#HOME=/Users/thorpe/My ; export HOME
+#cd $HOME
+
+# vi mode
+# set -o vi
+
+PATH=$PATH:$HOME/bin; export PATH
+
+TERM="xterm-color" ; export TERM
+
+PS1="\[\e]0;\u@\h: \w\a\]\[\033[1;36m\]\u\[\033[01;37m\]@\[\033[01;34m\]\h\[\033[01;30m\][\[\033[01;37m\]\w\[\033[01;30m\]]\[\033[01;32m\]\[\033[00m\]+ "
+
+alias ll="ls -lG"
+alias ls="ls -G"
+alias all="ls -la"
+alias v="vim"
+alias sv="sudo vim"
+alias q='exit'
+alias c='clear'
+alias gl='git log --color --pretty=format:"%h %s" --graph'
+alias tree='tree -C'
+alias s='sudo'
+alias sv='sudo vim'
+alias fetch-site='wget --wait=20 --limit-rate=20K -r -p -U Mozilla '
+alias vw='vim ~/.vimwiki/index.wiki'
+alias sc='screen'
+alias scr='screen -r'
+alias g='grep -Hin --colour=always'
+
+# [[ -s "/Users/thorpe/.rvm/scripts/rvm" ]] && source "/Users/thorpe/.rvm/scripts/rvm"  # This loads RVM into a shell session.
