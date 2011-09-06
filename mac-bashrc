@@ -4,7 +4,11 @@
 # vi mode
 # set -o vi
 
+# My local bin directory.
 PATH=$PATH:$HOME/bin; export PATH
+
+# Put git on my path.
+PATH=/usr/local/git/bin:$PATH; export PATH
 
 TERM="xterm-color" ; export TERM
 
@@ -26,5 +30,7 @@ alias vw='vim ~/.vimwiki/index.wiki'
 alias sc='screen'
 alias scr='screen -r'
 alias g='grep -Hin --colour=always'
+
+[[ -f ~/etc/dotfiles/bash_completion/git-completion.sh ]] && source ~/etc/dotfiles/bash_completion/git-completion.sh
 
 # [[ -s "/Users/thorpe/.rvm/scripts/rvm" ]] && source "/Users/thorpe/.rvm/scripts/rvm"  # This loads RVM into a shell session.
