@@ -9,8 +9,7 @@ hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{=kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)
 
 screen -t local 1
 screen -t local 2
-screen -t local 3
-screen -t local 4
-screen -t local 5
+screen -t mydev 3 ssh mydev
+screen -t home 4 ssh flim
 
 select 1
