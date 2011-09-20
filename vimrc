@@ -23,6 +23,8 @@ set foldmethod=marker
 set number
 set nocompatible
 set nottybuiltin term=$TERM
+set wildmode=longest:full
+set wildmenu
 set formatprg=par-format\ -w80
 " use 'gqip' to format.
 set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
@@ -103,7 +105,7 @@ if hostname() == 'oblion.lcl' || hostname() == 'proem.lcl'
 endif
 
 " Work
-if hostname() == 'gpt'
+if hostname() == 'xtal.local'
     set tags=./tags
 
     " handle gpx files as php.
@@ -114,14 +116,6 @@ if hostname() == 'gpt'
     au BufRead,BufNewFile *.tpl let is_smarty=1|setfiletype smarty
     au BufRead,BufNewFile *.tpl setlocal ts=2 sts=2 sw=2 expandtab
 
-    nmap <silent> <Leader>cb :r! cat ~/.vim/templates/cb.txt<CR>
-    nmap <silent> <Leader>cbh :r! cat ~/.vim/templates/cbh.txt<CR>
-    nmap <silent> <Leader>cbc :r! cat ~/.vim/templates/cbc.txt<CR>
-    nmap <silent> <Leader>dbg :r! cat ~/.vim/templates/dbg.txt<CR>
-    nmap <silent> <Leader>md :r! cat ~/.vim/templates/moo-dom.txt<CR>
-    nmap <silent> <Leader>sfxdr :r! cat ~/.vim/templates/sfx-dialog-request.txt<CR>
-    nmap <silent> <Leader>mrj :r! cat ~/.vim/templates/moo-request-json.txt<CR>
-    nmap <silent> <Leader>mc :r! cat ~/.vim/templates/moo-click.txt<CR>
 endif
 
 " Common mappings
