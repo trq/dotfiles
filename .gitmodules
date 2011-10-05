@@ -30,3 +30,6 @@
 	path = vim/bundle/googlereader
 	url = https://github.com/mattn/googlereader-vim.git
     ignore = dirty
+[submodule "vim/bundle/nerdtreetabs"]
+	path = vim/bundle/nerdtreetabs
+	url = https://github.com/jistr/vim-nerdtree-tabs.git

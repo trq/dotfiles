@@ -17,6 +17,8 @@ set showmatch
 set nohlsearch
 set nowrap
 set whichwrap=b,s,<,>,[,],~
+" set hlsearch
+set incsearch
 set shortmess=I
 set laststatus=2
 set foldmethod=marker
@@ -106,7 +108,7 @@ endif
 
 " Work
 if hostname() == 'xtal.local'
-    set tags=./tags
+    set tags=.tags
 
     " handle gpx files as php.
     au BufRead,BufNewFile *.gpx let is_php=1|setfiletype php
@@ -139,7 +141,8 @@ nmap <Leader>a :Ack
 "
 "
 " Execute current sql file against a mysql database of the same name.
-nmap <silent> <Leader>m :!mysql %:r < %<CR>
+nmap <silent> <Leader>m :!ssh mydev mysql %:r < %<CR>
+nmap <silent> <Leader>g :!ugrep -e <cword><CR>
 nmap <silent> <Leader>bl :buffers<CR>
 nmap <silent> <Leader>ls :!ls -l<CR>
 nmap <silent> <Leader>tr :!tree<CR>
