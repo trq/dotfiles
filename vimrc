@@ -121,9 +121,9 @@ if hostname() == 'xtal.local'
 endif
 
 " Common mappings
-" buffers
-nmap <silent> <Leader>[ :bprevious<CR>
-nmap <silent> <Leader>] :bnext<CR>
+" tabs
+nmap <silent> <Leader>[ :tabp<CR>
+nmap <silent> <Leader>] :tabn<CR>
 
 " windows - hold down CTL and use normal vim movement keys. hjkl
 nmap <silent> <Leader>k :wincmd k<CR>
@@ -142,12 +142,11 @@ nmap <Leader>a :Ack
 "
 " Execute current sql file against a mysql database of the same name.
 nmap <silent> <Leader>m :!ssh mydev mysql %:r < %<CR>
-nmap <silent> <Leader>g :!ugrep -e <cword><CR>
 nmap <silent> <Leader>bl :buffers<CR>
 nmap <silent> <Leader>ls :!ls -l<CR>
 nmap <silent> <Leader>tr :!tree<CR>
 nmap <silent> <Leader>sv :source ~/.vimrc<CR>
-nmap <silent> <Leader>ev :e ~/.vimrc<CR>
+nmap <silent> <Leader>ev :tabe ~/.vimrc<CR>
 nmap <silent> <Leader>svns :!svn status<CR>
 nmap <Leader>p :set paste<CR>
 nmap <Leader>ln :set number<CR>

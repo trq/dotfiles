@@ -1,5 +1,5 @@
 [user]
-        name = Tony R Quilkey
+        name = trq
         email = thorpe@thorpesystems.com
 [alias]
         co = checkout
@@ -7,11 +7,43 @@
         ci = commit
         st = status
         lg = log --color --pretty=format:\"%h %s %an %cr\" --graph
+[alias]
+    ai = add -i
+    rb = rebase -i
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative
+    ll = !git lg -n 30
+    me = !git lg --author=tquilkey
+    wk = !git me --since='+7 days'
+    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ => \\2/' | sort
+    uf = !git checkout $(git status | grep modified | awk '{print $3}')
+    usa = !git reset HEAD $(git status | grep modified | awk '{print $3}')
+    us = !git reset HEAD $1
+    bn = !git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'
+    export-patch = !git format-patch --stdout $1 > ~/`git bn`.diff
+    wf = !/usr/local/bin/git-workflow.sh
+    rba = !/usr/local/bin/git-rebase-all.sh
+    todo = !ugrep -e TODO
 [core]
-        excludesfile = /home/thorpe/.gitignore
+    excludesfile = ~/.gitignore
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 [color]
-        branch = auto
-        diff = auto
-        interactive = auto
-        status = auto
-        ui = true
+    ui = true
+[color "branch"]
+    current = green
+    local = blue
+    remote = red
+[color "diff"]
+    meta = yellow
+    frag = magenta
+    old = red bold
+    new = green
+[color "status"]
+    added = green
+    changed = green
+    untracked = red
+[color "diff"]
+    whitespace = red reverse
