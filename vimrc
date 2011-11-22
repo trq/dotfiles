@@ -1,5 +1,9 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
+
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
+
 set cindent
 set smartindent
 set autoindent
