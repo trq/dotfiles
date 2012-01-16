@@ -33,3 +33,6 @@
 [submodule "vim/bundle/ack"]
 	path = vim/bundle/ack
 	url = https://github.com/mileszs/ack.vim.git
+[submodule "vim/bundle/file_line"]
+	path = vim/bundle/file_line
+	url = https://github.com/bogado/file-line.git

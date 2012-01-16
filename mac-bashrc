@@ -33,3 +33,4 @@ alias all="ls -la"
 alias ctags="/usr/local/bin/ctags"
 
 source ~/etc/dotfiles/bash_completion/*.sh
+source ~/hopto-completion
