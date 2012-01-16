@@ -40,6 +40,7 @@ highlight StatusLine cterm=none ctermfg=6
 set backspace=indent,eol,start
 set whichwrap+=<,>,[,]
 set noswapfile
+set nobk
 
 " Disable arrow keys.
 map <up> <nop>
