@@ -100,7 +100,7 @@ endif
 " Conditional based on location.
 "
 " My computers / servers.
-if hostname() == 'oblion.lcl' || hostname() == 'proem.lcl'
+if hostname() == 'oblion.lcl' || hostname() == 'dev.lcl'
 
     " templates.
     autocmd BufEnter $HOME/src/proem.git/lib/Proem/*.php 0r $HOME/src/proem.git/vim.template
@@ -112,7 +112,7 @@ if hostname() == 'oblion.lcl' || hostname() == 'proem.lcl'
 endif
 
 " Work
-if hostname() == 'xtal.local'
+if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
     set tags=.tags
 
     " handle gpx files as php.
@@ -135,6 +135,8 @@ nmap <silent> <Leader>k :wincmd k<CR>
 nmap <silent> <Leader>j :wincmd j<CR>
 nmap <silent> <Leader>h :wincmd h<CR>
 nmap <silent> <Leader>l :wincmd l<CR>
+nmap <silent> <Leader>[ :wincmd h<CR>
+nmap <silent> <Leader>] :wincmd l<CR>
 nmap <silent> <Leader>o :only<CR>
 
 " searching (ack)
@@ -168,6 +170,19 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" Set the minimal split width
+set winwidth=24
+set winminwidth=24
+function! SplitToggle()
+  if(&winwidth == &winminwidth)
+    set winwidth=999
+  else
+    set winwidth=24
+    wincmd =
+  endif
+endfunc
+nnoremap <leader>= :call SplitToggle()<cr>
 
 " templates.
 " autocmd BufEnter $HOME/bin/*.php 0r $HOME/.vim/templates/a.txt
