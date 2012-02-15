@@ -5,7 +5,11 @@ vim:
 Create a symbolic link from the vimrc file within the root of the repo to
 ~/.vimrc and another from the vim directory within the repo root to ~/.vim.
 
-All plugins are maintained as git submodules. These can be updated using:
+All plugins are maintained as git submodules. For a new install run:
+
+git submodule init && git submodule update
+
+These can be updated using:
 
 git submodule foreach git pull origin master
 
