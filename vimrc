@@ -8,7 +8,10 @@ let NERDTreeDirArrows = 1
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Compact_Format = 1
 
-
+" Fuzzyfinder
+nmap ,f :FufFileWithCurrentBufferDir<CR>
+nmap ,b :FufBuffer<CR>
+nmap ,t :FufTaggedFile<CR>
 
 set cindent
 set smartindent
