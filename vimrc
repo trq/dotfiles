@@ -106,15 +106,12 @@ endif
 " Conditional based on location.
 "
 " My computers / servers.
-if hostname() == 'oblion.lcl' || hostname() == 'dev.lcl'
+if hostname() == 'dev'
 
-    " templates.
-    autocmd BufEnter $HOME/src/proem.git/lib/Proem/*.php 0r $HOME/src/proem.git/vim.template
+    " proem
+    autocmd BufEnter $HOME/src/proem/lib/Proem/*.php 0r $HOME/.vim-templates/proem.class.php
+    autocmd BufEnter $HOME/src/proem/tests/Proem/*.php 0r $HOME/.vim-templates/proem.test.php
 
-    set tags+=~/.vim/tags/proem.ctags
-
-    nmap <silent> \pt :cd $HOME/src/proem.git | ./bin/runtests<CR>
-    nmap <silent> \gs :!git status<CR>
 endif
 
 " Work
@@ -130,6 +127,9 @@ if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
     au BufRead,BufNewFile *.tpl setlocal ts=2 sts=2 sw=2 expandtab
 
 endif
+
+au BufRead,BufNewFile Phakefile let is_php=1|setfiletype php
+au BufRead,BufNewFile Phakefile setlocal ts=4 sts=4 sw=4 expandtab
 
 " Common mappings
 " tabs
