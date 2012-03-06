@@ -125,6 +125,9 @@ if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
 
 endif
 
+au BufRead,BufNewFile Phakefile let is_php=1|setfiletype php
+au BufRead,BufNewFile Phakefile setlocal ts=4 sts=4 sw=4 expandtab
+
 " Common mappings
 " tabs
 nmap <silent> <Leader>[ :tabp<CR>
