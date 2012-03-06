@@ -4,6 +4,12 @@ call pathogen#helptags()
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
+" Tlist
+let Tlist_File_Fold_Auto_Close = 1
+let Tlist_Compact_Format = 1
+
+
+
 set cindent
 set smartindent
 set autoindent
@@ -158,6 +164,9 @@ nmap <silent> <Leader>svns :!svn status<CR>
 nmap <Leader>p :set paste<CR>
 nmap <Leader>ln :set number<CR>
 nmap <Leader>nln :set nonumber<CR>
+" open BufExplorer
+nmap <silent> <Leader>b :BufExplorer<CR>
+nmap <silent> <Leader>t :TlistOpen<CR>
 " nmap \svnb :let bn = % | :tabnew | :r!svn blame % <c-r>=bn<cr>
 " nmap <silent> \svnb :!svn blame %<CR>
 " nmap <silent> \svnd :!svn diff %<CR>
