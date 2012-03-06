@@ -4,6 +4,15 @@ call pathogen#helptags()
 let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
+" Tlist
+let Tlist_File_Fold_Auto_Close = 1
+let Tlist_Compact_Format = 1
+
+" Fuzzyfinder
+nmap ,f :FufFileWithCurrentBufferDir<CR>
+nmap ,b :FufBuffer<CR>
+nmap ,t :FufTaggedFile<CR>
+
 set cindent
 set smartindent
 set autoindent
@@ -100,21 +109,16 @@ endif
 " Conditional based on location.
 "
 " My computers / servers.
-if hostname() == 'oblion.lcl' || hostname() == 'dev.lcl'
+if hostname() == 'dev'
 
-    " templates.
-    autocmd BufEnter $HOME/src/proem.git/lib/Proem/*.php 0r $HOME/src/proem.git/vim.template
+    " proem
+    autocmd BufEnter $HOME/src/proem/lib/Proem/*.php 0r $HOME/.vim-templates/proem.class.php
+    autocmd BufEnter $HOME/src/proem/tests/Proem/*.php 0r $HOME/.vim-templates/proem.test.php
 
-    set tags+=~/.vim/tags/proem.ctags
-
-    nmap <silent> \pt :cd $HOME/src/proem.git | ./bin/runtests<CR>
-    nmap <silent> \gs :!git status<CR>
 endif
 
 " Work
 if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
-    set tags=.tags
-
     " handle gpx files as php.
     au BufRead,BufNewFile *.gpx let is_php=1|setfiletype php
     au BufRead,BufNewFile *.gpx setlocal ts=4 sts=4 sw=4 expandtab
@@ -122,7 +126,6 @@ if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
     au BufRead,BufNewFile *.inc setlocal ts=4 sts=4 sw=4 expandtab
     au BufRead,BufNewFile *.tpl let is_smarty=1|setfiletype smarty
     au BufRead,BufNewFile *.tpl setlocal ts=2 sts=2 sw=2 expandtab
-
 endif
 
 au BufRead,BufNewFile Phakefile let is_php=1|setfiletype php
@@ -161,6 +164,9 @@ nmap <silent> <Leader>svns :!svn status<CR>
 nmap <Leader>p :set paste<CR>
 nmap <Leader>ln :set number<CR>
 nmap <Leader>nln :set nonumber<CR>
+" open BufExplorer
+nmap <silent> <Leader>b :BufExplorer<CR>
+nmap <silent> <Leader>t :TlistOpen<CR>
 " nmap \svnb :let bn = % | :tabnew | :r!svn blame % <c-r>=bn<cr>
 " nmap <silent> \svnb :!svn blame %<CR>
 " nmap <silent> \svnd :!svn diff %<CR>
