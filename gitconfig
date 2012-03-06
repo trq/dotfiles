@@ -1,12 +1,12 @@
 [user]
-        name = trq
-        email = thorpe@thorpesystems.com
+    name = trq
+    email = thorpe@thorpesystems.com
 [alias]
-        co = checkout
-        br = branch
-        ci = commit
-        st = status
-        lg = log --color --pretty=format:\"%h %s %an %cr\" --graph
+    co = checkout
+    br = branch
+    ci = commit
+    st = status
+    lg = log --color --pretty=format:\"%h %s %an %cr\" --graph
 [alias]
     ai = add -i
     rb = rebase -i

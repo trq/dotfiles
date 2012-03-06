@@ -16,6 +16,8 @@ fi
 
 # Put your fun stuff here.
 
+EDITOR=/usr/bin/vim; export EDITOR
+
 export HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 export HISTCONTROL=ignoreboth
 export HISTIGNORE="&:ls:[bf]g:exit:q:ll:all:g:d:v:s:c:r:scr:sc"
@@ -43,8 +45,6 @@ source ~/etc/dotfiles/bash/aliases-funtoo
 
 # Completion hack see http://forums.funtoo.org/viewtopic.php?id=614
 [[ -f /etc/profile.d/bash-completion.sh ]] && source /etc/profile.d/bash-completion.sh
+[[ -d ~/etc/dotfiles/bash_completion ]] && source ~/etc/dotfiles/bash_completion/*.sh
 
 umask 022
-
-# Ruby Version Mamager
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
