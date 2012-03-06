@@ -119,8 +119,6 @@ endif
 
 " Work
 if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
-    set tags=.tags
-
     " handle gpx files as php.
     au BufRead,BufNewFile *.gpx let is_php=1|setfiletype php
     au BufRead,BufNewFile *.gpx setlocal ts=4 sts=4 sw=4 expandtab
@@ -128,7 +126,6 @@ if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
     au BufRead,BufNewFile *.inc setlocal ts=4 sts=4 sw=4 expandtab
     au BufRead,BufNewFile *.tpl let is_smarty=1|setfiletype smarty
     au BufRead,BufNewFile *.tpl setlocal ts=2 sts=2 sw=2 expandtab
-
 endif
 
 au BufRead,BufNewFile Phakefile let is_php=1|setfiletype php
