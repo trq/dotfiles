@@ -126,17 +126,16 @@ if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
     au BufRead,BufNewFile *.inc setlocal ts=4 sts=4 sw=4 expandtab
     au BufRead,BufNewFile *.tpl let is_smarty=1|setfiletype smarty
     au BufRead,BufNewFile *.tpl setlocal ts=2 sts=2 sw=2 expandtab
+
+    autocmd BufEnter /www/*/tpl/*.tpl 0r $HOME/.gptech-templates/gptech.tpl
+    autocmd BufEnter /www/*/www/*.gpx 0r $HOME/.gptech-templates/gptech.gpx
+    autocmd BufEnter /www/*/inc/*.php 0r $HOME/.gptech-templates/gptech.php
+
 endif
 
 au BufRead,BufNewFile Phakefile let is_php=1|setfiletype php
 au BufRead,BufNewFile Phakefile setlocal ts=4 sts=4 sw=4 expandtab
 
-" Common mappings
-" tabs
-nmap <silent> <Leader>[ :tabp<CR>
-nmap <silent> <Leader>] :tabn<CR>
-
-" windows - hold down CTL and use normal vim movement keys. hjkl
 nmap <silent> <Leader>k :wincmd k<CR>
 nmap <silent> <Leader>j :wincmd j<CR>
 nmap <silent> <Leader>h :wincmd h<CR>
@@ -149,11 +148,54 @@ nmap <silent> <Leader>o :only<CR>
 nmap <Leader>af :AckFile
 nmap <Leader>a :Ack
 
+let g:fuf_modesDisable = []
+let g:fuf_mrufile_maxItem = 400
+let g:fuf_mrucmd_maxItem = 400
+let g:fuf_file_exclude = '_cache|.git'
+
+nnoremap <silent> <Leader> b :FufBuffer<CR>
+"nmap <silent> <leader> f     :FufFileWithCurrentBufferDir<CR>
+"nnoremap <silent> sK     :FufFileWithFullCwd<CR>
+"nnoremap <silent> <Leader> d :FufFile<CR>
+"nnoremap <silent> sl     :FufCoverageFileChange<CR>
+"nnoremap <silent> sL     :FufCoverageFileChange<CR>
+"nnoremap <silent> s<C-l> :FufCoverageFileRegister<CR>
+"nnoremap <silent> sd     :FufDirWithCurrentBufferDir<CR>
+"nnoremap <silent> sD     :FufDirWithFullCwd<CR>
+nnoremap <silent> <Leader> d :FufDir<CR>
+"nnoremap <silent> sn     :FufMruFile<CR>
+"nnoremap <silent> sN     :FufMruFileInCwd<CR>
+"nnoremap <silent> sm     :FufMruCmd<CR>
+"nnoremap <silent> su     :FufBookmarkFile<CR>
+"nnoremap <silent> s<C-u> :FufBookmarkFileAdd<CR>
+"vnoremap <silent> s<C-u> :FufBookmarkFileAddAsSelectedText<CR>
+"nnoremap <silent> si     :FufBookmarkDir<CR>
+"nnoremap <silent> s<C-i> :FufBookmarkDirAdd<CR>
+"nnoremap <silent> t     :FufTag<CR>
+"nnoremap <silent> sT     :FufTag!<CR>
+"nnoremap <silent> s<C-]> :FufTagWithCursorWord!<CR>
+"nnoremap <silent> s,     :FufBufferTag<CR>
+"nnoremap <silent> s<     :FufBufferTag!<CR>
+"vnoremap <silent> s,     :FufBufferTagWithSelectedText!<CR>
+"vnoremap <silent> s<     :FufBufferTagWithSelectedText<CR>
+"nnoremap <silent> s}     :FufBufferTagWithCursorWord!<CR>
+"nnoremap <silent> s.     :FufBufferTagAll<CR>
+"nnoremap <silent> s>     :FufBufferTagAll!<CR>
+"vnoremap <silent> s.     :FufBufferTagAllWithSelectedText!<CR>
+"vnoremap <silent> s>     :FufBufferTagAllWithSelectedText<CR>
+"nnoremap <silent> s]     :FufBufferTagAllWithCursorWord!<CR>
+nnoremap <silent> <Leader> t :FufTaggedFile<CR>
+"nnoremap <silent> sG     :FufTaggedFile!<CR>
+"nnoremap <silent> <Leader> j :FufJumpList<CR>
+"nnoremap <silent> sp     :FufChangeList<CR>
+"nnoremap <silent> sq     :FufQuickfix<CR>
+"nnoremap <silent> sy     :FufLine<CR>
+"nnoremap <silent> sh     :FufHelp<CR>
+"nnoremap <silent> se     :FufEditDataFile<CR>
+"nnoremap <silent> sr     :FufRenewCache<CR>
+
+
 " utils
-" =====
-"
-"
-" Execute current sql file against a mysql database of the same name.
 nmap <silent> <Leader>m :!ssh mydev mysql %:r < %<CR>
 nmap <silent> <Leader>bl :buffers<CR>
 nmap <silent> <Leader>ls :!ls -l<CR>
@@ -164,12 +206,6 @@ nmap <silent> <Leader>svns :!svn status<CR>
 nmap <Leader>p :set paste<CR>
 nmap <Leader>ln :set number<CR>
 nmap <Leader>nln :set nonumber<CR>
-" open BufExplorer
-nmap <silent> <Leader>b :BufExplorer<CR>
-nmap <silent> <Leader>t :TlistOpen<CR>
-" nmap \svnb :let bn = % | :tabnew | :r!svn blame % <c-r>=bn<cr>
-" nmap <silent> \svnb :!svn blame %<CR>
-" nmap <silent> \svnd :!svn diff %<CR>
 nmap <silent> <Leader>n :NERDTreeToggle<CR>
 
 " Highlight whitespace.
