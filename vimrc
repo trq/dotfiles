@@ -144,6 +144,17 @@ nmap <silent> <Leader>[ :wincmd h<CR>
 nmap <silent> <Leader>] :wincmd l<CR>
 nmap <silent> <Leader>o :only<CR>
 
+inoremap jk <esc>
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+
+"inoremap <esc> <nop>
+nnoremap ;; :w<cr>
+
+nnoremap <silent> <leader>; :BufExplorer<cr>
+
+iabbrev ff function
+iabbrev vd var_dump
+
 " searching (ack)
 nmap <Leader>af :AckFile
 nmap <Leader>a :Ack
@@ -154,46 +165,8 @@ let g:fuf_mrucmd_maxItem = 400
 let g:fuf_file_exclude = '_cache|.git'
 
 nnoremap <silent> <Leader> b :FufBuffer<CR>
-"nmap <silent> <leader> f     :FufFileWithCurrentBufferDir<CR>
-"nnoremap <silent> sK     :FufFileWithFullCwd<CR>
-"nnoremap <silent> <Leader> d :FufFile<CR>
-"nnoremap <silent> sl     :FufCoverageFileChange<CR>
-"nnoremap <silent> sL     :FufCoverageFileChange<CR>
-"nnoremap <silent> s<C-l> :FufCoverageFileRegister<CR>
-"nnoremap <silent> sd     :FufDirWithCurrentBufferDir<CR>
-"nnoremap <silent> sD     :FufDirWithFullCwd<CR>
 nnoremap <silent> <Leader> d :FufDir<CR>
-"nnoremap <silent> sn     :FufMruFile<CR>
-"nnoremap <silent> sN     :FufMruFileInCwd<CR>
-"nnoremap <silent> sm     :FufMruCmd<CR>
-"nnoremap <silent> su     :FufBookmarkFile<CR>
-"nnoremap <silent> s<C-u> :FufBookmarkFileAdd<CR>
-"vnoremap <silent> s<C-u> :FufBookmarkFileAddAsSelectedText<CR>
-"nnoremap <silent> si     :FufBookmarkDir<CR>
-"nnoremap <silent> s<C-i> :FufBookmarkDirAdd<CR>
-"nnoremap <silent> t     :FufTag<CR>
-"nnoremap <silent> sT     :FufTag!<CR>
-"nnoremap <silent> s<C-]> :FufTagWithCursorWord!<CR>
-"nnoremap <silent> s,     :FufBufferTag<CR>
-"nnoremap <silent> s<     :FufBufferTag!<CR>
-"vnoremap <silent> s,     :FufBufferTagWithSelectedText!<CR>
-"vnoremap <silent> s<     :FufBufferTagWithSelectedText<CR>
-"nnoremap <silent> s}     :FufBufferTagWithCursorWord!<CR>
-"nnoremap <silent> s.     :FufBufferTagAll<CR>
-"nnoremap <silent> s>     :FufBufferTagAll!<CR>
-"vnoremap <silent> s.     :FufBufferTagAllWithSelectedText!<CR>
-"vnoremap <silent> s>     :FufBufferTagAllWithSelectedText<CR>
-"nnoremap <silent> s]     :FufBufferTagAllWithCursorWord!<CR>
 nnoremap <silent> <Leader> t :FufTaggedFile<CR>
-"nnoremap <silent> sG     :FufTaggedFile!<CR>
-"nnoremap <silent> <Leader> j :FufJumpList<CR>
-"nnoremap <silent> sp     :FufChangeList<CR>
-"nnoremap <silent> sq     :FufQuickfix<CR>
-"nnoremap <silent> sy     :FufLine<CR>
-"nnoremap <silent> sh     :FufHelp<CR>
-"nnoremap <silent> se     :FufEditDataFile<CR>
-"nnoremap <silent> sr     :FufRenewCache<CR>
-
 
 " utils
 nmap <silent> <Leader>m :!ssh mydev mysql %:r < %<CR>
@@ -207,6 +180,23 @@ nmap <Leader>p :set paste<CR>
 nmap <Leader>ln :set number<CR>
 nmap <Leader>nln :set nonumber<CR>
 nmap <silent> <Leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>t :TlistToggle<CR>
+
+" Toggle between .gpx and there corresponding .tpl files
+function! ToggleGpxTpl ()
+    let l:ext = expand('%:e')
+    let l:filepath = substitute(expand('%:p'), '\/usr\/sentral\/www', '', '')
+    echo filepath
+    if l:ext == 'gpx'
+        let l:filepath = substitute(expand(l:filepath), 'www', 'tpl', '')
+        let l:filepath = substitute(expand(l:filepath), '.gpx', '.tpl', '')
+    else
+        let l:filepath = substitute(expand(l:filepath), 'tpl', 'www', '')
+        let l:filepath = substitute(expand(l:filepath), '.tpl', '.gpx', '')
+    endif
+    execute ":edit /usr/sentral/www" . l:filepath
+endfunction
+nnoremap <silent> <leader>' :call ToggleGpxTpl()<CR>
 
 " Highlight whitespace.
 highlight ExtraWhitespace ctermbg=red guibg=red

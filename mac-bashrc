@@ -18,8 +18,6 @@ alias tree='tree -C'
 alias s='sudo'
 alias sv='sudo vim'
 alias vw='vim ~/.vimwiki/index.wiki'
-alias sc='screen'
-alias scr='screen -r'
 alias g='grep -Hin --colour=always'
 alias ug='ugrep -e'
 
@@ -33,4 +31,3 @@ alias all="ls -la"
 alias ctags="/usr/local/bin/ctags"
 
 source ~/etc/dotfiles/bash_completion/*.sh
-source ~/hopto-completion
