@@ -35,7 +35,7 @@ set -o vi
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-PATH="${HOME}/bin:${PATH}"; export PATH
+PATH="${HOME}/bin:${HOME}/.gem/ruby/1.8/bin:${PATH}"; export PATH
 
 # source my other files.
 source ~/etc/dotfiles/bash/functions
