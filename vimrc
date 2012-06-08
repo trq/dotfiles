@@ -8,11 +8,6 @@ let NERDTreeDirArrows = 1
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Compact_Format = 1
 
-" Fuzzyfinder
-nmap ,f :FufFileWithCurrentBufferDir<CR>
-nmap ,b :FufBuffer<CR>
-nmap ,t :FufTaggedFile<CR>
-
 set cindent
 set smartindent
 set autoindent
@@ -52,10 +47,10 @@ set noswapfile
 set nobk
 
 " Disable arrow keys.
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
 
 " ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -127,22 +122,22 @@ if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
     au BufRead,BufNewFile *.tpl let is_smarty=1|setfiletype smarty
     au BufRead,BufNewFile *.tpl setlocal ts=2 sts=2 sw=2 expandtab
 
-    autocmd BufEnter /www/*/tpl/*.tpl 0r $HOME/.gptech-templates/gptech.tpl
-    autocmd BufEnter /www/*/www/*.gpx 0r $HOME/.gptech-templates/gptech.gpx
-    autocmd BufEnter /www/*/inc/*.php 0r $HOME/.gptech-templates/gptech.php
+    autocmd BufNewFile */tpl/*.tpl 0r $HOME/.gptech-templates/gptech.tpl
+    autocmd BufNewFile */www/*.gpx 0r $HOME/.gptech-templates/gptech.gpx
+    autocmd BufNewFile */inc/*.php 0r $HOME/.gptech-templates/gptech.php
 
 endif
 
 au BufRead,BufNewFile Phakefile let is_php=1|setfiletype php
 au BufRead,BufNewFile Phakefile setlocal ts=4 sts=4 sw=4 expandtab
 
-nmap <silent> <Leader>k :wincmd k<CR>
-nmap <silent> <Leader>j :wincmd j<CR>
-nmap <silent> <Leader>h :wincmd h<CR>
-nmap <silent> <Leader>l :wincmd l<CR>
-nmap <silent> <Leader>[ :wincmd h<CR>
-nmap <silent> <Leader>] :wincmd l<CR>
-nmap <silent> <Leader>o :only<CR>
+nnoremap <silent> <Leader>k :wincmd k<CR>
+nnoremap <silent> <Leader>j :wincmd j<CR>
+nnoremap <silent> <Leader>h :wincmd h<CR>
+nnoremap <silent> <Leader>l :wincmd l<CR>
+nnoremap <silent> <Leader>[ :wincmd h<CR>
+nnoremap <silent> <Leader>] :wincmd l<CR>
+nnoremap <silent> <Leader>o :only<CR>
 
 inoremap jk <esc>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
@@ -152,34 +147,23 @@ nnoremap ;; :w<cr>
 
 nnoremap <silent> <leader>; :BufExplorer<cr>
 
-iabbrev ff function
-iabbrev vd var_dump
-
-" searching (ack)
-nmap <Leader>af :AckFile
-nmap <Leader>a :Ack
-
 let g:fuf_modesDisable = []
 let g:fuf_mrufile_maxItem = 400
 let g:fuf_mrucmd_maxItem = 400
 let g:fuf_file_exclude = '_cache|.git'
 
-nnoremap <silent> <Leader> b :FufBuffer<CR>
-nnoremap <silent> <Leader> d :FufDir<CR>
-nnoremap <silent> <Leader> t :FufTaggedFile<CR>
-
 " utils
-nmap <silent> <Leader>m :!ssh mydev mysql %:r < %<CR>
-nmap <silent> <Leader>bl :buffers<CR>
-nmap <silent> <Leader>ls :!ls -l<CR>
-nmap <silent> <Leader>tr :!tree<CR>
-nmap <silent> <Leader>sv :source ~/.vimrc<CR>
-nmap <silent> <Leader>ev :tabe ~/.vimrc<CR>
-nmap <silent> <Leader>svns :!svn status<CR>
-nmap <Leader>p :set paste<CR>
-nmap <Leader>ln :set number<CR>
-nmap <Leader>nln :set nonumber<CR>
-nmap <silent> <Leader>n :NERDTreeToggle<CR>
+nnoremap <silent> <Leader>m :!mysql %:r < %<CR>
+nnoremap <silent> <Leader>bl :buffers<CR>
+nnoremap <silent> <Leader>ls :!ls -l<CR>
+nnoremap <silent> <Leader>tr :!tree<CR>
+nnoremap <silent> <Leader>sv :source ~/.vimrc<CR>
+nnoremap <silent> <Leader>ev :tabe ~/.vimrc<CR>
+nnoremap <silent> <Leader>svns :!svn status<CR>
+nnoremap <Leader>p :set paste<CR>
+nnoremap <Leader>ln :set number<CR>
+nnoremap <Leader>nln :set nonumber<CR>
+nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
 nnoremap <silent> <Leader>t :TlistToggle<CR>
 
 " Toggle between .gpx and there corresponding .tpl files
