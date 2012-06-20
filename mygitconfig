@@ -13,6 +13,7 @@
     slog = svn log --show-commit
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative
     ll = !git log --stat
+    lgp = !git lg -p
     lll = !git log --stat -n 1
     me = !git lg --author=tquilkey
     wk = !git me --since='+7 days'

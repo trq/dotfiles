@@ -46,12 +46,6 @@ set whichwrap+=<,>,[,]
 set noswapfile
 set nobk
 
-" Disable arrow keys.
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-
 " ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
 
@@ -131,40 +125,32 @@ endif
 au BufRead,BufNewFile Phakefile let is_php=1|setfiletype php
 au BufRead,BufNewFile Phakefile setlocal ts=4 sts=4 sw=4 expandtab
 
-nnoremap <silent> <Leader>k :wincmd k<CR>
-nnoremap <silent> <Leader>j :wincmd j<CR>
-nnoremap <silent> <Leader>h :wincmd h<CR>
-nnoremap <silent> <Leader>l :wincmd l<CR>
-nnoremap <silent> <Leader>[ :wincmd h<CR>
-nnoremap <silent> <Leader>] :wincmd l<CR>
-nnoremap <silent> <Leader>o :only<CR>
-
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+nnoremap <silent> <leader>k :wincmd k<CR>
+nnoremap <silent> <leader>j :wincmd j<CR>
+nnoremap <silent> <leader>h :wincmd h<CR>
+nnoremap <silent> <leader>l :wincmd l<CR>
+nnoremap <silent> <leader>[ :wincmd h<CR>
+nnoremap <silent> <leader>] :wincmd l<CR>
+nnoremap <silent> <leader>o :only<CR>
+nnoremap <silent> <leader>- :vsplit <cr>:exec("tag ".expand("<cword>"))<cr>
+nnoremap <silent> <leader>m :!mysql -t %:r:r < %<CR>
+nnoremap <silent> <leader>bl :buffers<CR>
+nnoremap <silent> <leader>ls :!ls -l<CR>
+nnoremap <silent> <leader>tr :!tree<CR>
+nnoremap <silent> <leader>sv :source ~/.vimrc<CR>
+nnoremap <silent> <leader>ev :tabe ~/.vimrc<CR>
+nnoremap <silent> <leader>svns :!svn status<CR>
+nnoremap <leader>p :set paste!<CR>
+nnoremap <leader>n :set number!<CR>
+nnoremap <leader>s :set spell!<CR>
 inoremap jk <esc>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-
-"inoremap <esc> <nop>
 nnoremap ;; :w<cr>
-
 nnoremap <silent> <leader>; :BufExplorer<cr>
-
-let g:fuf_modesDisable = []
-let g:fuf_mrufile_maxItem = 400
-let g:fuf_mrucmd_maxItem = 400
-let g:fuf_file_exclude = '_cache|.git'
-
-" utils
-nnoremap <silent> <Leader>m :!mysql %:r < %<CR>
-nnoremap <silent> <Leader>bl :buffers<CR>
-nnoremap <silent> <Leader>ls :!ls -l<CR>
-nnoremap <silent> <Leader>tr :!tree<CR>
-nnoremap <silent> <Leader>sv :source ~/.vimrc<CR>
-nnoremap <silent> <Leader>ev :tabe ~/.vimrc<CR>
-nnoremap <silent> <Leader>svns :!svn status<CR>
-nnoremap <Leader>p :set paste<CR>
-nnoremap <Leader>ln :set number<CR>
-nnoremap <Leader>nln :set nonumber<CR>
-nnoremap <silent> <Leader>n :NERDTreeToggle<CR>
-nnoremap <silent> <Leader>t :TlistToggle<CR>
 
 " Toggle between .gpx and there corresponding .tpl files
 function! ToggleGpxTpl ()
