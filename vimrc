@@ -8,6 +8,7 @@ let NERDTreeDirArrows = 1
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Compact_Format = 1
 
+set path=.,/usr/sentral/_inc,/usr/sentral/www/*/inc/classes
 set cindent
 set smartindent
 set autoindent
@@ -69,14 +70,14 @@ if has("autocmd")
   filetype plugin indent on
 endif
 
-" automatically make certain files executable.
-au BufWritePost *.sh,*.pl,*.rb,*.py :exe "silent !chmod 700 <afile>" | silent :w!
-
-" automatically set shebangs.
-au BufEnter *.sh if getline(1) == "" | :call setline(1, "#!/bin/bash") | endif
-au BufEnter *.pl if getline(1) == "" | :call setline(1, "#!/usr/bin/env perl") | endif
-au BufEnter *.pb if getline(1) == "" | :call setline(1, "#!/usr/bin/env ruby") | endif
-au BufEnter *.py if getline(1) == "" | :call setline(1, "#!/usr/bin/env python") | endif
+augroup chmodandshebang
+    autocmd!
+    autocmd BufWritePost *.sh,*.pl,*.rb,*.py :exe "silent !chmod 700 <afile>" | silent :w!
+    autocmd BufEnter *.sh if getline(1) == "" | :call setline(1, "#!/bin/bash") | endif
+    autocmd BufEnter *.pl if getline(1) == "" | :call setline(1, "#!/usr/bin/env perl") | endif
+    autocmd BufEnter *.pb if getline(1) == "" | :call setline(1, "#!/usr/bin/env ruby") | endif
+    autocmd BufEnter *.py if getline(1) == "" | :call setline(1, "#!/usr/bin/env python") | endif
+augroup END
 
 " Turn on spell checking when writting a GIT commit.
 autocmd FileType gitcommit set spell
@@ -119,6 +120,7 @@ if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
     autocmd BufNewFile */tpl/*.tpl 0r $HOME/.gptech-templates/gptech.tpl
     autocmd BufNewFile */www/*.gpx 0r $HOME/.gptech-templates/gptech.gpx
     autocmd BufNewFile */inc/*.php 0r $HOME/.gptech-templates/gptech.php
+
 
 endif
 
