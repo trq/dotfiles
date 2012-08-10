@@ -18,6 +18,7 @@
     lll = !git log --stat -n 1
     me = !git lg --author=tquilkey
     wk = !git me --since='+7 days'
+    month = !git me --since='+1 Month'
     alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ => \\2/' | sort
     uf = !git checkout $(git status | grep modified | awk '{print $3}')
     usa = !git reset HEAD $(git status | grep modified | awk '{print $3}')
