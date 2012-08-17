@@ -31,6 +31,8 @@
     ar = !sh 'git branch -M $1 archived/$1' -
     wc = !git whatchanged
     wcp = !git whatchanged -p
+    d = diff
+    dc = diff --cached
     last = cat-file commit HEAD
 [core]
     excludesfile = ~/.gitignore
