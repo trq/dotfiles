@@ -1,25 +1,19 @@
 # My local bin directory.
 PATH=$PATH:$HOME/bin; export PATH
 
-# Put git on my path.
-PATH=/usr/local/git/bin:$PATH; export PATH
-
 TERM="xterm-color" ; export TERM
 
-PS1="\[\e]0;\u@\h: \w\a\]\[\033[1;36m\]\u\[\033[01;37m\]@\[\033[01;34m\]\h\[\033[01;30m\][\[\033[01;37m\]\w\[\033[01;30m\]]\[\033[01;32m\]\[\033[00m\]+ "
+source ~/etc/dotfiles/bash/prompt
 
 alias v="vim"
 alias vr="vim -R"
 alias sv="sudo vim"
 alias q='exit'
 alias c='clear'
-alias gl='git log --color --pretty=format:"%h %s" --graph'
 alias tree='tree -C'
 alias s='sudo'
 alias sv='sudo vim'
-alias vw='vim ~/.vimwiki/index.wiki'
 alias g='grep -Hin --colour=always'
-alias ug='ugrep -e'
 
 source ~/etc/dotfiles/bash/aliases
 
@@ -28,6 +22,6 @@ source ~/etc/dotfiles/bash/aliases
 alias ll="ls -lG"
 alias ls="ls -G"
 alias all="ls -la"
-alias ctags="/usr/local/bin/ctags"
 
 source ~/etc/dotfiles/bash_completion/*.sh
+source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
