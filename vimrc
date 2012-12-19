@@ -96,33 +96,35 @@ if has("autocmd")
   autocmd FileType bash setlocal ts=4 sts=4 sw=4 expandtab
 endif
 
-" Conditional based on location.
-"
-" My computers / servers.
-if hostname() == 'dev'
+augroup templates
+    " Conditional based on location.
+    "
+    " My computers / servers.
+    if hostname() == 'dev'
 
-    " proem
-    autocmd BufEnter $HOME/src/proem/lib/Proem/*.php 0r $HOME/.vim-templates/proem.class.php
-    autocmd BufEnter $HOME/src/proem/tests/Proem/*.php 0r $HOME/.vim-templates/proem.test.php
+        " proem
+        autocmd BufEnter $HOME/src/proem/lib/Proem/*.php 0r $HOME/.vim-templates/proem.class.php
+        autocmd BufEnter $HOME/src/proem/tests/Proem/*.php 0r $HOME/.vim-templates/proem.test.php
 
-endif
+    endif
 
-" Work
-if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
-    " handle gpx files as php.
-    au BufRead,BufNewFile *.gpx let is_php=1|setfiletype php
-    au BufRead,BufNewFile *.gpx setlocal ts=4 sts=4 sw=4 expandtab
-    au BufRead,BufNewFile *.inc let is_php=1|setfiletype php
-    au BufRead,BufNewFile *.inc setlocal ts=4 sts=4 sw=4 expandtab
-    au BufRead,BufNewFile *.tpl let is_smarty=1|setfiletype smarty
-    au BufRead,BufNewFile *.tpl setlocal ts=2 sts=2 sw=2 expandtab
+    " Work
+    if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
+        " handle gpx files as php.
+        au BufRead,BufNewFile *.gpx let is_php=1|setfiletype php
+        au BufRead,BufNewFile *.gpx setlocal ts=4 sts=4 sw=4 expandtab
+        au BufRead,BufNewFile *.inc let is_php=1|setfiletype php
+        au BufRead,BufNewFile *.inc setlocal ts=4 sts=4 sw=4 expandtab
+        au BufRead,BufNewFile *.tpl let is_smarty=1|setfiletype smarty
+        au BufRead,BufNewFile *.tpl setlocal ts=2 sts=2 sw=2 expandtab
 
-    autocmd BufNewFile */tpl/*.tpl 0r $HOME/.gptech-templates/gptech.tpl
-    autocmd BufNewFile */www/*.gpx 0r $HOME/.gptech-templates/gptech.gpx
-    autocmd BufNewFile */inc/*.php 0r $HOME/.gptech-templates/gptech.php
+        autocmd BufNewFile */tpl/*.tpl 0r $HOME/.gptech-templates/gptech.tpl
+        autocmd BufNewFile */www/*.gpx 0r $HOME/.gptech-templates/gptech.gpx
+        autocmd BufNewFile */inc/*.php 0r $HOME/.gptech-templates/gptech.php
 
 
-endif
+    endif
+augroup END
 
 au BufRead,BufNewFile Phakefile let is_php=1|setfiletype php
 au BufRead,BufNewFile Phakefile setlocal ts=4 sts=4 sw=4 expandtab
@@ -135,8 +137,10 @@ nnoremap <silent> <leader>k :wincmd k<CR>
 nnoremap <silent> <leader>j :wincmd j<CR>
 nnoremap <silent> <leader>h :wincmd h<CR>
 nnoremap <silent> <leader>l :wincmd l<CR>
-nnoremap <silent> <leader>[ :wincmd h<CR>
-nnoremap <silent> <leader>] :wincmd l<CR>
+nnoremap <silent> <leader>[ :bp<CR>
+nnoremap <silent> <leader>] :bn<CR>
+nnoremap <silent> <leader>{ :previous<CR>
+nnoremap <silent> <leader>} :next<CR>
 nnoremap <silent> <leader>o :only<CR>
 nnoremap <silent> <leader>- :vsplit <cr>:exec("tag ".expand("<cword>"))<cr>
 nnoremap <silent> <leader>m :!mysql -t %:r:r < %<CR>
@@ -153,6 +157,8 @@ inoremap jk <esc>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap ;; :w<cr>
 nnoremap <silent> <leader>; :BufExplorer<cr>
+" Allow saving of files as sudo when I forgot to start vim using sudo.
+cmap w!! %!sudo tee > /dev/null %
 
 " Toggle between .gpx and there corresponding .tpl files
 function! ToggleGpxTpl ()
@@ -169,6 +175,22 @@ function! ToggleGpxTpl ()
     execute ":edit /usr/sentral/www" . l:filepath
 endfunction
 nnoremap <silent> <leader>' :call ToggleGpxTpl()<CR>
+
+" Open (vsplit) .gpx or .tpl from corresponding file
+function! SplitGpxTpl ()
+    let l:ext = expand('%:e')
+    let l:filepath = substitute(expand('%:p'), '\/usr\/sentral\/www', '', '')
+    echo filepath
+    if l:ext == 'gpx'
+        let l:filepath = substitute(expand(l:filepath), 'www', 'tpl', '')
+        let l:filepath = substitute(expand(l:filepath), '.gpx', '.tpl', '')
+    else
+        let l:filepath = substitute(expand(l:filepath), 'tpl', 'www', '')
+        let l:filepath = substitute(expand(l:filepath), '.tpl', '.gpx', '')
+    endif
+    execute ":vsplit /usr/sentral/www" . l:filepath
+endfunction
+nnoremap <silent> <leader>/ :call SplitGpxTpl()<CR>
 
 " Highlight whitespace.
 highlight ExtraWhitespace ctermbg=red guibg=red

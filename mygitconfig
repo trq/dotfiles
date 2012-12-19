@@ -1,7 +1,7 @@
 [alias]
-    owc = !vim -O `git whatchanged -n1 | grep ^: | awk '{print $NF}'`
-    om = !vim -O `git st | grep 'modified:' | awk '{print $NF}'`
-    omn = !vim -O `git st | egrep -w 'modified:|new file:' | awk '{print $NF}'`
+    owc = !vim `git whatchanged -n1 | grep ^: | awk '{print $NF}'`
+    om = !vim `git st | grep 'modified:' | awk '{print $NF}'`
+    omn = !vim `git st | egrep -w 'modified:|new file:' | awk '{print $NF}'`
     com = !git checkout `git st | grep modified | awk '{print $3}'`
     ai = add -i
     ap = add -p
