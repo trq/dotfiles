@@ -1,0 +1,18 @@
+EDITOR=/usr/local/bin/vim ; export EDITOR
+LESS="-F -X -R"; export LESS
+
+alias ll='ls -l'
+alias svd='ugrep -e var_dump'
+alias scl="ugrep -e console\.log"
+alias ctags="/usr/local/bin/exctags"
+alias v="vim"
+alias c="clear"
+alias q="exit"
+alias vw='vim ~/.vimwiki/index.wiki'
+
+source ${HOME}/etc/dotfiles/bash_completion/git-completion.sh
+source ${HOME}/src/sentral/fake-data/bash_completion.sh
+source ${HOME}/src/sentral/grater/grater-completion.sh
+source ~/etc/dotfiles/bash/prompt
+
+#set -o vi
