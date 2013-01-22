@@ -12,10 +12,12 @@ highlight LineNr ctermfg=darkgrey
 highlight CursorLine ctermbg=53 ctermfg=darkgrey
 highlight CursorColumn ctermbg=53 ctermfg=darkgrey
 
-autocmd InsertEnter * set nocursorline
-autocmd InsertLeave * set cursorline
-autocmd InsertEnter * set nocursorcolumn
-autocmd InsertLeave * set cursorcolumn
+augroup xhairs
+    autocmd InsertEnter * set nocursorline
+    autocmd InsertLeave * set cursorline
+    autocmd InsertEnter * set nocursorcolumn
+    autocmd InsertLeave * set cursorcolumn
+augroup end
 
 set cursorline
 set cursorcolumn
