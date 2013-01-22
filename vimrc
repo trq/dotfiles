@@ -8,6 +8,17 @@ let NERDTreeDirArrows = 1
 let Tlist_File_Fold_Auto_Close = 1
 let Tlist_Compact_Format = 1
 
+highlight LineNr ctermfg=darkgrey
+highlight CursorLine ctermbg=53 ctermfg=darkgrey
+highlight CursorColumn ctermbg=53 ctermfg=darkgrey
+
+autocmd InsertEnter * set nocursorline
+autocmd InsertLeave * set cursorline
+autocmd InsertEnter * set nocursorcolumn
+autocmd InsertLeave * set cursorcolumn
+
+set cursorline
+set cursorcolumn
 set path=.,/usr/sentral/_inc,/usr/sentral/www/*/inc/classes
 set cindent
 set smartindent
