@@ -193,6 +193,7 @@ endif
 
 " Work
 if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
+    set path=.,/www/**
     " handle gpx files as php.
     au BufRead,BufNewFile *.gpx let is_php=1|setfiletype php
     au BufRead,BufNewFile *.gpx setlocal ts=4 sts=4 sw=4 expandtab
