@@ -6,10 +6,6 @@
 	path = vim/bundle/nerdtree
 	url = https://github.com/vim-scripts/The-NERD-tree.git
     ignore = dirty
-[submodule "vim/bundle/vimwiki"]
-	path = vim/bundle/vimwiki
-	url = https://github.com/trq/vimwiki.git
-    ignore = dirty
 [submodule "vim/bundle/fugitive"]
 	path = vim/bundle/fugitive
 	url = https://github.com/tpope/vim-fugitive.git
@@ -18,22 +14,6 @@
 	path = vim/bundle/unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
     ignore = dirty
-[submodule "vim/bundle/gist"]
-	path = vim/bundle/gist
-	url = https://github.com/vim-scripts/Gist.vim.git
-    ignore = dirty
-[submodule "vim/bundle/twitvim"]
-	path = vim/bundle/twitvim
-	url = https://github.com/vim-scripts/TwitVim.git
-    ignore = dirty
-[submodule "vim/bundle/googlereader"]
-	path = vim/bundle/googlereader
-	url = https://github.com/mattn/googlereader-vim.git
-    ignore = dirty
-[submodule "vim/bundle/ack"]
-	path = vim/bundle/ack
-	url = https://github.com/mileszs/ack.vim.git
-    ignore = dirty
 [submodule "vim/bundle/file_line"]
 	path = vim/bundle/file_line
 	url = https://github.com/bogado/file-line.git
@@ -41,10 +21,6 @@
 [submodule "vim/bundle/taglist"]
 	path = vim/bundle/taglist
 	url = https://github.com/vim-scripts/taglist.vim.git
-    ignore = dirty
-[submodule "vim/bundle/sessionman"]
-	path = vim/bundle/sessionman
-	url = https://github.com/vim-scripts/sessionman.vim.git
     ignore = dirty
 [submodule "vim/bundle/bufexplorer"]
 	path = vim/bundle/bufexplorer
