@@ -1,0 +1,56 @@
+[user]
+    name = tquilkey
+    email = tquilkey@sentral.com.au
+[alias]
+    owc = !vim `git whatchanged -n1 | grep ^: | awk '{print $NF}'`
+    om = !vim `git st | grep 'modified:' | awk '{print $NF}'`
+    omn = !vim `git st | egrep -w 'modified:|new file:' | awk '{print $NF}'`
+    com = !git checkout `git st | grep modified | awk '{print $3}'`
+    ai = add -i
+    ap = add -p
+    rb = rebase -i
+    co = checkout
+    br = branch
+    ci = commit --verbose
+    st = status
+    srb = svn rebase && grater update && grater list
+    slog = svn log --show-commit
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative
+    ll = !git log --stat
+    lgp = !git lg -p
+    lll = !git log --stat -n 1
+    wk = !git me --since='+7 days'
+    month = !git me --since='+1 Month'
+    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ => \\2/' | sort
+    uf = !git checkout $(git status | grep modified | awk '{print $3}')
+    usa = !git reset HEAD $(git status | grep modified | awk '{print $3}')
+    us = !git reset HEAD $1
+    bn = !git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'
+    export-patch = !git format-patch --stdout $1 > ~/`git bn`.diff
+    todo = !ugrep -e TODO
+    ar = !sh 'git branch -M $1 archived/$1' -
+    wc = !git whatchanged
+    wcp = !git whatchanged -p
+    d = diff
+    dc = diff --cached
+    last = cat-file commit HEAD
+[core]
+    excludesfile = ~/.gitignore
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[color]
+    ui = true
+[color "branch"]
+    current = green
+    local = blue
+    remote = red
+[color "diff"]
+    meta = yellow
+    frag = magenta
+    old = red bold
+    new = green
+[color "status"]
+    added = green
+    changed = green
+    untracked = red
+[color "diff"]
+    whitespace = red reverse
