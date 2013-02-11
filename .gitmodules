@@ -46,3 +46,6 @@
 	path = vim/bundle/vim-less
 	url = https://github.com/groenewege/vim-less.git
     ignore = dirty
+[submodule "vim/bundle/puppet"]
+	path = vim/bundle/puppet
+	url = git://github.com/rodjek/vim-puppet.git
