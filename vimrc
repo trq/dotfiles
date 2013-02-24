@@ -147,7 +147,7 @@ endif
 augroup chmodandshebang
     autocmd!
     autocmd BufWritePost *.sh,*.pl,*.rb,*.py :exe "silent !chmod 700 <afile>" | silent :w!
-    autocmd BufEnter *.sh if getline(1) == "" | :call setline(1, "#!/bin/bash") | endif
+    autocmd BufEnter *.sh if getline(1) == "" | :call setline(1, "#!/usr/bin/env bash") | endif
     autocmd BufEnter *.pl if getline(1) == "" | :call setline(1, "#!/usr/bin/env perl") | endif
     autocmd BufEnter *.pb if getline(1) == "" | :call setline(1, "#!/usr/bin/env ruby") | endif
     autocmd BufEnter *.py if getline(1) == "" | :call setline(1, "#!/usr/bin/env python") | endif
