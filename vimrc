@@ -162,6 +162,7 @@ if has("autocmd")
   filetype on
 
   au BufRead,BufNewFile *.json let is_javascript = 1| setfiletype javascript
+  au BufRead,BufNewFile *.less let is_css = 1| setfiletype css
 
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
