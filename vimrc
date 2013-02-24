@@ -48,6 +48,8 @@ highlight CursorLine ctermbg=darkgrey
 highlight CursorColumn ctermbg=darkgrey ctermfg=darkgrey
 highlight Vertsplit ctermbg=darkgrey ctermfg=darkgrey
 highlight Visual ctermbg=52
+highlight Pmenu ctermbg=darkgrey ctermfg=darkgrey
+highlight PmenuSel ctermbg=darkgrey ctermfg=white
 
 " Tlist
 nnoremap <silent> <leader>= :TlistToggle<cr>
