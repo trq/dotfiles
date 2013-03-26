@@ -30,3 +30,11 @@
 	path = vim/bundle/puppet
 	url = git://github.com/rodjek/vim-puppet.git
     ignore = dirty
+[submodule "vim/bundle/bufexplorer"]
+	path = vim/bundle/bufexplorer
+	url = https://github.com/vim-scripts/bufexplorer.zip.git
+    ignore = dirty
+[submodule "vim/bundle/zencoding"]
+	path = vim/bundle/zencoding
+	url = git://github.com/mattn/zencoding-vim.git
+    ignore = dirty

@@ -110,7 +110,7 @@ nnoremap <leader>n :set number!<CR>
 nnoremap <leader>s :set spell!<CR>
 inoremap jk <esc>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-"nnoremap ;; :w<cr>
+nnoremap <silent> <leader>; :BufExplorer<cr>
 nnoremap <silent> <leader>vp :!./vendor/bin/phake<CR>
 
 " lookup a php function interface
