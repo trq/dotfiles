@@ -22,7 +22,7 @@ source ~/etc/dotfiles/bash/aliases
 alias ll="ls -lG"
 alias ls="ls -G"
 alias all="ls -la"
-alias mux="tmux a || tmux"
+alias serve="php -S 127.0.0.1:8080"
 
 source ~/etc/dotfiles/bash_completion/*.sh
 source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
