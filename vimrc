@@ -1,10 +1,6 @@
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-"set t_Co=256
-"set t_AB=^[[48;5;%dm
-"set t_AF=^[[38;5;%dm
-
 "colorscheme morning
 "set autochdir
 set cindent
@@ -25,7 +21,7 @@ set nohlsearch
 set nowrap
 set fillchars=
 set whichwrap=b,s,<,>,[,],~
-" set hlsearch
+set hlsearch
 set incsearch
 set shortmess=I
 set laststatus=2
@@ -52,9 +48,6 @@ highlight CursorLine ctermbg=darkgrey
 highlight CursorColumn ctermbg=darkgrey ctermfg=darkgrey
 highlight Vertsplit ctermbg=darkgrey ctermfg=darkgrey
 highlight Visual ctermbg=52
-
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
 
 " Tlist
 nnoremap <silent> <leader>= :TlistToggle<cr>
@@ -96,12 +89,10 @@ function! MySQL() range
 endfunction
 command! -range=% -nargs=0 My :<line1>,<line2>call MySQL()
 
-inoremap ~~ <C-X><C-F>
 nnoremap <up> <nop>
 nnoremap <down> <nop>
 nnoremap <left> <nop>
 nnoremap <right> <nop>
-nnoremap <silent> <leader>l :NERDTreeToggle<CR>
 nnoremap <silent> <leader>9 :wincmd h<CR>
 nnoremap <silent> <leader>0 :wincmd l<CR>
 nnoremap <silent> <leader>[ :bp<CR>
@@ -114,14 +105,12 @@ nnoremap <silent> <leader>ls :!ls -l<CR>
 nnoremap <silent> <leader>tr :!tree<CR>
 nnoremap <silent> <leader>sv :source ~/.vimrc<CR>
 nnoremap <silent> <leader>ev :tabe ~/.vimrc<CR>
-nnoremap <silent> <leader>svns :!svn status<CR>
 nnoremap <leader>p :set paste!<CR>
 nnoremap <leader>n :set number!<CR>
 nnoremap <leader>s :set spell!<CR>
 inoremap jk <esc>
 nnoremap <leader>ev :vsplit $MYVIMRC<cr>
-nnoremap ;; :w<cr>
-nnoremap <silent> <leader>; :BufExplorer<cr>
+"nnoremap ;; :w<cr>
 nnoremap <silent> <leader>vp :!./vendor/bin/phake<CR>
 
 " lookup a php function interface
