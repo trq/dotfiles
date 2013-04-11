@@ -117,6 +117,12 @@ nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 nnoremap <silent> <leader>; :BufExplorer<cr>
 nnoremap <silent> <leader>vp :!./vendor/bin/phake<CR>
 
+" see http://vimcasts.org/episodes/the-edit-command
+cnoremap %% <C-R>=expand('%:h').'/'<cr>
+map <leader>ew :e %%
+map <leader>es :sp %%
+map <leader>ev :vsp %%
+
 " lookup a php function interface
 function! PHPMan(func)
     execute ':!php --rf ' . a:func
