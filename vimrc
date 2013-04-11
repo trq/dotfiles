@@ -50,6 +50,8 @@ highlight CursorLine ctermbg=darkgrey
 highlight CursorColumn ctermbg=darkgrey ctermfg=darkgrey
 highlight Vertsplit ctermbg=darkgrey ctermfg=darkgrey
 highlight Visual ctermbg=52
+highlight Pmenu ctermbg=darkgrey ctermfg=darkgrey
+highlight PmenuSel ctermbg=darkgrey ctermfg=white
 
 " Tlist
 nnoremap <silent> <leader>= :TlistToggle<cr>
@@ -150,7 +152,7 @@ endif
 augroup chmodandshebang
     autocmd!
     autocmd BufWritePost *.sh,*.pl,*.rb,*.py :exe "silent !chmod 700 <afile>" | silent :w!
-    autocmd BufEnter *.sh if getline(1) == "" | :call setline(1, "#!/bin/bash") | endif
+    autocmd BufEnter *.sh if getline(1) == "" | :call setline(1, "#!/usr/bin/env bash") | endif
     autocmd BufEnter *.pl if getline(1) == "" | :call setline(1, "#!/usr/bin/env perl") | endif
     autocmd BufEnter *.pb if getline(1) == "" | :call setline(1, "#!/usr/bin/env ruby") | endif
     autocmd BufEnter *.py if getline(1) == "" | :call setline(1, "#!/usr/bin/env python") | endif
@@ -165,6 +167,7 @@ if has("autocmd")
   filetype on
 
   au BufRead,BufNewFile *.json let is_javascript = 1| setfiletype javascript
+  au BufRead,BufNewFile *.less let is_css = 1| setfiletype css
 
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
