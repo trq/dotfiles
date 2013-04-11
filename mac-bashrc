@@ -1,5 +1,5 @@
 # My local bin directory.
-PATH=$PATH:$HOME/bin; export PATH
+PATH=$PATH:$HOME/bin:$HOME/lib/vendor/bin; export PATH
 
 TERM="xterm-color" ; export TERM
 

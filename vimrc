@@ -1,4 +1,5 @@
-call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
+call pathogen#incubate()
 call pathogen#helptags()
 
 "colorscheme morning
@@ -34,6 +35,7 @@ set wildmode=longest,list
 set formatprg=par-format\ -w80
 set wmh=0
 set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+" set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set hidden
 set backspace=indent,eol,start
 set whichwrap+=<,>,[,]
@@ -142,6 +144,9 @@ if has("autocmd")
   filetype plugin indent on
 endif
 
+" Remove fugitive buffers as they are closed.
+"autocmd BufReadPost fugitive://* set bufhidden=delete
+
 augroup chmodandshebang
     autocmd!
     autocmd BufWritePost *.sh,*.pl,*.rb,*.py :exe "silent !chmod 700 <afile>" | silent :w!
@@ -199,11 +204,8 @@ if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
 endif
 
 au BufRead,BufNewFile Vagrantfile let is_ruby=1|setfiletype ruby
-au BufRead,BufNewFile Vagrantfile setlocal ts=4 sts=4 sw=4 expandtab
 au BufRead,BufNewFile Phakefile let is_php=1|setfiletype php
-au BufRead,BufNewFile Phakefile setlocal ts=4 sts=4 sw=4 expandtab
 au BufRead,BufNewFile *.twig let is_html=1 | setfiletype html
-au BufRead,BufNewFile *.twig setlocal ts=2 sts=2 sw=2 expandtab
 
 " Toggle between .gpx and there corresponding .tpl files
 function! ToggleGpxTpl ()
