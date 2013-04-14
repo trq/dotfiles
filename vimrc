@@ -52,6 +52,7 @@ highlight Vertsplit ctermbg=darkgrey ctermfg=darkgrey
 highlight Visual ctermbg=52
 highlight Pmenu ctermbg=darkgrey ctermfg=darkgrey
 highlight PmenuSel ctermbg=darkgrey ctermfg=white
+" colorscheme desert
 
 " Tlist
 nnoremap <silent> <leader>= :TlistToggle<cr>
@@ -171,6 +172,9 @@ autocmd FileType gitcommit set spell
 if has("autocmd")
   " Enable file type detection
   filetype on
+
+  " auto source .vimrc on write
+  au BufWritePost .vimrc source $MYVIMRC
 
   au BufRead,BufNewFile *.json let is_javascript = 1| setfiletype javascript
   au BufRead,BufNewFile *.less let is_css = 1| setfiletype css

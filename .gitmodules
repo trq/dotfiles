@@ -44,3 +44,6 @@
 [submodule "vim/bundle/textobj-word-column"]
 	path = vim/bundle/textobj-word-column
 	url = git://github.com/coderifous/textobj-word-column.vim.git
+[submodule "vim/bundle/tabular"]
+	path = vim/bundle/tabular
+	url = git://github.com/godlygeek/tabular.git
