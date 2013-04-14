@@ -94,29 +94,16 @@ function! MySQL() range
 endfunction
 command! -range=% -nargs=0 My :<line1>,<line2>call MySQL()
 
-nnoremap <up> <nop>
-nnoremap <down> <nop>
-nnoremap <left> <nop>
-nnoremap <right> <nop>
-nnoremap <silent> <leader>9 :wincmd h<CR>
-nnoremap <silent> <leader>0 :wincmd l<CR>
-nnoremap <silent> <leader>[ :bp<CR>
-nnoremap <silent> <leader>] :bn<CR>
-nnoremap <silent> <leader>o :only<CR>
-nnoremap <silent> <leader>m :!mysql -t %:r:r < %<CR>
+"nnoremap <up> <nop>
+"nnoremap <down> <nop>
+"nnoremap <left> <nop>
+"nnoremap <right> <nop>
+nnoremap <silent> <leader>m :!mysql -t %:r:r < %<cr>
 vnoremap <silent> <leader>m :My<cr>
-nnoremap <silent> <leader>bl :buffers<CR>
-nnoremap <silent> <leader>ls :!ls -l<CR>
-nnoremap <silent> <leader>tr :!tree<CR>
-nnoremap <silent> <leader>sv :source ~/.vimrc<CR>
-nnoremap <silent> <leader>ev :tabe ~/.vimrc<CR>
-nnoremap <leader>p :set paste!<CR>
-nnoremap <leader>n :set number!<CR>
-nnoremap <leader>s :set spell!<CR>
-inoremap jk <esc>
-nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <silent> <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <silent> <leader>; :BufExplorer<cr>
-nnoremap <silent> <leader>vp :!./vendor/bin/phake<CR>
+nnoremap <silent> <leader>g :GundoToggle<cr>
+inoremap jk <esc>
 
 " see http://vimcasts.org/episodes/the-edit-command
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
