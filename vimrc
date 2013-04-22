@@ -44,7 +44,7 @@ set nobk
 "set textwidth=120
 "set colorcolumn=120
 highlight ColorColumn ctermbg=darkgrey
-highlight StatusLine cterm=none ctermfg=black
+highlight StatusLine cterm=none ctermfg=darkgrey
 highlight LineNr ctermfg=darkgrey
 highlight CursorLine ctermbg=darkgrey
 highlight CursorColumn ctermbg=darkgrey ctermfg=darkgrey
