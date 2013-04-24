@@ -100,8 +100,8 @@ command! -range=% -nargs=0 My :<line1>,<line2>call MySQL()
 "nnoremap <down> <nop>
 "nnoremap <left> <nop>
 "nnoremap <right> <nop>
-nnoremap <silent> <leader>m :!mysql -t %:r:r < %<cr>
-vnoremap <silent> <leader>m :My<cr>
+nnoremap <silent> <leader>my :!mysql -t %:r:r < %<cr>
+vnoremap <silent> <leader>my :My<cr>
 nnoremap <silent> <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <silent> <leader>; :BufExplorer<cr>
 nnoremap <silent> <leader>g :GundoToggle<cr>
