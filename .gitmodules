@@ -66,3 +66,7 @@
 	path = vim/bundle/syntastic
 	url = git://github.com/scrooloose/syntastic.git
     ignore = dirty
+[submodule "vim/bundle/obsession"]
+	path = vim/bundle/obsession
+	url = git://github.com/tpope/vim-obsession.git
+    ignore = dirty
