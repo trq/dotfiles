@@ -278,10 +278,11 @@ endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "end PHP Stuff
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""s
+
 
 " Strip trailing white space.
-function! <SID>StripTrailingWhitespaces()
+function! StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
     let _s=@/
     let l = line(".")
@@ -293,7 +294,7 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 " call the above function automatically when saving files of certain type.
-autocmd BufWritePre *.py,*.js,*.php,*.gpx,*.rb :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.py,*.js,*.php,*.gpx,*.rb,*.tpl :call StripTrailingWhitespaces()
 
 " php code sniffer via :Rhpcs
 function! RunPhpcs()
