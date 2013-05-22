@@ -41,7 +41,9 @@ set backspace=indent,eol,start
 set whichwrap+=<,>,[,]
 set noswapfile
 set nobk
-set grepprg=ack\ -a
+" set grepprg=ack\ -a
+set grepprg=ack\ --nogroup\ --column\ $*
+set grepformat=%f:%l:%c:%m
 set scrolloff=999
 "set textwidth=120
 "set colorcolumn=120
