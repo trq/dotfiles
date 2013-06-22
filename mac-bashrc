@@ -1,5 +1,8 @@
 # My local bin directory.
-PATH=$PATH:$HOME/bin:$HOME/lib/vendor/bin; export PATH
+PATH=$PATH:$HOME/bin:$HOME/lib/vendor/bin:$HOME/src/git-release:$HOME/src/git-release/gitflow; export PATH
+PATH=/usr/local/php5/bin:$PATH; export PATH
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 TERM="xterm-color" ; export TERM
 
@@ -26,3 +29,5 @@ alias serve="php -S 127.0.0.1:8080"
 
 source ~/etc/dotfiles/bash_completion/*.sh
 source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

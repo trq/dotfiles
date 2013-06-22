@@ -1,9 +1,6 @@
-"call pathogen#runtime_append_all_bundles()
 call pathogen#incubate()
 call pathogen#helptags()
 
-"colorscheme morning
-"set autochdir
 set cindent
 set smartindent
 set autoindent
@@ -16,6 +13,8 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4
 set smarttab
+set encoding=utf-8 nobomb " BOM often causes trouble
+set history=1000
 set background=dark
 set showmatch
 set nohlsearch
@@ -30,23 +29,22 @@ set foldmethod=marker
 set number
 set nocompatible
 set nottybuiltin term=$TERM
-set wildmenu
-set wildmode=longest,list
 set formatprg=par-format\ -w80
 set wmh=0
 set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
-" set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 set hidden
 set backspace=indent,eol,start
 set whichwrap+=<,>,[,]
 set noswapfile
 set nobk
-" set grepprg=ack\ -a
 set grepprg=ack\ --nogroup\ --column\ $*
 set grepformat=%f:%l:%c:%m
-set scrolloff=999
-"set textwidth=120
-"set colorcolumn=120
+set scrolloff=40
+set sidescrolloff=40
+set splitbelow " New window goes below
+set splitright " New windows goes right
+set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
+
 highlight ColorColumn ctermbg=darkgrey
 highlight StatusLine cterm=none ctermfg=darkgrey
 highlight LineNr ctermfg=darkgrey
@@ -56,7 +54,14 @@ highlight Vertsplit ctermbg=darkgrey ctermfg=darkgrey
 highlight Visual ctermbg=52
 highlight Pmenu ctermbg=darkgrey ctermfg=darkgrey
 highlight PmenuSel ctermbg=darkgrey ctermfg=white
-" colorscheme desert
+
+" Highlight whitespace.
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 " Tlist
 nnoremap <silent> <leader>= :TlistToggle<cr>
@@ -66,7 +71,6 @@ let Tlist_GainFocus_On_ToggleOpen = 1
 let Tlist_Close_On_Select = 1
 let Tlist_Exit_OnlyWindow = 1
 let Tlist_Enable_Fold_Column = 0
-"let Tlist_Auto_Highlight_Tag = 0
 let Tlist_Highlight_Tag_On_BufEnter = 1
 let Tlist_Auto_Highlight_Tag = 1
 let Tlist_Highlight_Tag_On_BufEnter = 1
@@ -93,21 +97,21 @@ if has("wildmenu")
     set wildmode=longest,list
 endif
 
-function! MySQL() range
-    echo system("mysql -t " . expand('%:r:r') . " -e " . shellescape(join(getline(a:firstline, a:lastline), "\n")))
-endfunction
-command! -range=% -nargs=0 My :<line1>,<line2>call MySQL()
+" Disable arrow keys entirely.
+noremap <Up> <nop>
+noremap <Down> <nop>
+noremap <Left> <nop>
+noremap <Right> <nop>
 
-"nnoremap <up> <nop>
-"nnoremap <down> <nop>
-"nnoremap <left> <nop>
-"nnoremap <right> <nop>
 nnoremap <silent> <leader>my :!mysql -t %:r:r < %<cr>
 vnoremap <silent> <leader>my :My<cr>
 nnoremap <silent> <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <silent> <leader>; :BufExplorer<cr>
 nnoremap <silent> <leader>g :GundoToggle<cr>
 inoremap jk <esc>
+
+" sudo write
+noremap <leader>W :w !sudo tee %<CR>
 
 " see http://vimcasts.org/episodes/the-edit-command
 cnoremap %% <C-R>=expand('%:h').'/'<cr>
@@ -120,6 +124,11 @@ function! PHPMan(func)
     execute ':!php --rf ' . a:func
 endfunction
 command! -nargs=1 Pm :call PHPMan("<args>")
+
+function! MySQL() range
+    echo system("mysql -t " . expand('%:r:r') . " -e " . shellescape(join(getline(a:firstline, a:lastline), "\n")))
+endfunction
+command! -range=% -nargs=0 My :<line1>,<line2>call MySQL()
 
 " ack
 let g:ackprg="ack-grep -H --nocolor --nogroup --column"
@@ -165,10 +174,10 @@ if has("autocmd")
   filetype on
 
   " auto source .vimrc on write
-  au BufWritePost .vimrc source $MYVIMRC
+  "au BufWritePost .vimrc source $MYVIMRC
 
-  au BufRead,BufNewFile *.json let is_javascript = 1| setfiletype javascript
-  au BufRead,BufNewFile *.less let is_css = 1| setfiletype css
+  au BufRead,BufNewFile *.json ft=json syntax=javascript
+  au BufRead,BufNewFile *.less ft=css syntax=css
 
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
@@ -190,7 +199,7 @@ if hostname() == 'dev'
 endif
 
 " Work
-if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
+"if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
     set path=.,/www/**
     " handle gpx files as php.
     au BufRead,BufNewFile *.gpx let is_php=1|setfiletype php
@@ -199,13 +208,13 @@ if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
     au BufRead,BufNewFile *.inc setlocal ts=4 sts=4 sw=4 expandtab
     au BufRead,BufNewFile *.tpl let is_smarty=1|setfiletype smarty
     au BufRead,BufNewFile *.tpl setlocal ts=2 sts=2 sw=2 expandtab
+    au BufRead,BufNewFile *.blade.php let is_html=1|setfiletype html
+    au BufRead,BufNewFile *.blade.php setlocal ts=2 sts=2 sw=2 expandtab
 
     autocmd BufNewFile */tpl/*.tpl 0r $HOME/.gptech-templates/gptech.tpl
     autocmd BufNewFile */www/*.gpx 0r $HOME/.gptech-templates/gptech.gpx
     autocmd BufNewFile */inc/*.php 0r $HOME/.gptech-templates/gptech.php
-
-
-endif
+"endif
 
 au BufRead,BufNewFile Vagrantfile let is_ruby=1|setfiletype ruby
 au BufRead,BufNewFile Phakefile let is_php=1|setfiletype php
@@ -226,14 +235,6 @@ function! ToggleGpxTpl ()
     execute ":edit /usr/sentral/www" . l:filepath
 endfunction
 nnoremap <silent> <leader>' :call ToggleGpxTpl()<CR>
-
-" Highlight whitespace.
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
 
 " Set the minimal split width
 set winwidth=24
@@ -283,7 +284,7 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Strip trailing white space.
-function! <SID>StripTrailingWhitespaces()
+function! StripTrailingWhitespaces()
     " Preparation: save last search, and cursor position.
     let _s=@/
     let l = line(".")
@@ -295,7 +296,7 @@ function! <SID>StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 " call the above function automatically when saving files of certain type.
-autocmd BufWritePre *.py,*.js,*.php,*.gpx,*.rb :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.py,*.js,*.php,*.gpx,*.rb :call StripTrailingWhitespaces()
 
 " php code sniffer via :Rhpcs
 function! RunPhpcs()
