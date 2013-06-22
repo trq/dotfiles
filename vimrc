@@ -281,7 +281,8 @@ endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "end PHP Stuff
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""s
+
 
 " Strip trailing white space.
 function! StripTrailingWhitespaces()
@@ -296,7 +297,7 @@ function! StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 " call the above function automatically when saving files of certain type.
-autocmd BufWritePre *.py,*.js,*.php,*.gpx,*.rb :call StripTrailingWhitespaces()
+autocmd BufWritePre *.py,*.js,*.php,*.gpx,*.rb,*.tpl :call StripTrailingWhitespaces()
 
 " php code sniffer via :Rhpcs
 function! RunPhpcs()

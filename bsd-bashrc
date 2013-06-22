@@ -1,3 +1,7 @@
+HISTFILESIZE=5000
+HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups
+HISTCONTROL=ignoreboth
+
 LESS="-F -X -R"; export LESS
 
 alias ll='ls -l'
@@ -8,6 +12,7 @@ alias v="vim"
 alias c="clear"
 alias q="exit"
 alias vw='vim ~/.vimwiki/index.wiki'
+alias gti=git
 
 source ${HOME}/src/sentral/fake-data/bash_completion.sh
 source ${HOME}/src/sentral/grater/grater-completion.sh
