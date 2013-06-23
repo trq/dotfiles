@@ -45,11 +45,11 @@ set splitbelow " New window goes below
 set splitright " New windows goes right
 set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
 
-highlight ColorColumn ctermbg=darkgrey
+highlight ColorColumn ctermbg=grey
 highlight StatusLine cterm=none ctermfg=darkgrey
 highlight LineNr ctermfg=darkgrey
 highlight CursorLine ctermbg=darkgrey
-highlight CursorColumn ctermbg=darkgrey ctermfg=darkgrey
+highlight CursorColumn ctermbg=darkgrey ctermfg=grey
 highlight Vertsplit ctermbg=darkgrey ctermfg=darkgrey
 highlight Visual ctermbg=52
 highlight Pmenu ctermbg=darkgrey ctermfg=darkgrey
