@@ -45,6 +45,13 @@ set splitbelow " New window goes below
 set splitright " New windows goes right
 set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" 'php', 'phpcs', 'phpmd'
+let g:syntastic_php_checkers=['php']
+
 highlight ColorColumn ctermbg=grey
 highlight StatusLine cterm=none ctermfg=darkgrey
 highlight LineNr ctermfg=darkgrey
@@ -175,6 +182,9 @@ if has("autocmd")
 
   " auto source .vimrc on write
   "au BufWritePost .vimrc source $MYVIMRC
+
+  au BufRead,BufNewFile *.json setfiletype=json syntax=javascript
+  au BufRead,BufNewFile *.less setfiletype=css syntax=css
 
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
