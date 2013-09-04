@@ -193,6 +193,9 @@ if has("autocmd")
   autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType ruby setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType bash setlocal ts=4 sts=4 sw=4 expandtab
+
+  au BufRead,BufNewFile *.opm setfiletype sh
+  au BufRead,BufNewFile *.opm setlocal ts=4 sts=4 sw=4 expandtab
 endif
 
 " Conditional based on location.

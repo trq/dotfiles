@@ -1,6 +1,5 @@
 # My local bin directory.
 PATH=$PATH:$HOME/bin:$HOME/lib/vendor/bin:$HOME/src/git-release:$HOME/src/git-release/gitflow; export PATH
-PATH=/usr/local/php5/bin:$PATH; export PATH
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
@@ -17,6 +16,7 @@ alias tree='tree -C'
 alias s='sudo'
 alias sv='sudo vim'
 alias g='grep -Hin --colour=always'
+alias m='mosh'
 
 source ~/etc/dotfiles/bash/aliases
 
