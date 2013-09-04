@@ -176,9 +176,6 @@ if has("autocmd")
   " auto source .vimrc on write
   "au BufWritePost .vimrc source $MYVIMRC
 
-  au BufRead,BufNewFile *.json setfiletype=json | syntax=javascript
-  au BufRead,BufNewFile *.less setfiletype=css
-
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
