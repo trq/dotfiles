@@ -176,8 +176,8 @@ if has("autocmd")
   " auto source .vimrc on write
   "au BufWritePost .vimrc source $MYVIMRC
 
-  au BufRead,BufNewFile *.json ft=json syntax=javascript
-  au BufRead,BufNewFile *.less ft=css syntax=css
+  au BufRead,BufNewFile *.json setfiletype=json | syntax=javascript
+  au BufRead,BufNewFile *.less setfiletype=css
 
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
@@ -186,6 +186,9 @@ if has("autocmd")
   autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType ruby setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType bash setlocal ts=4 sts=4 sw=4 expandtab
+
+  au BufRead,BufNewFile *.opm setfiletype sh
+  au BufRead,BufNewFile *.opm setlocal ts=4 sts=4 sw=4 expandtab
 endif
 
 " Conditional based on location.

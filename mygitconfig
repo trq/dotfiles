@@ -33,6 +33,7 @@
     d = diff
     dc = diff --cached
     last = cat-file commit HEAD
+    wf = "!f() { git checkout develop && git merge --no-ff $@ && git branch -d $@; }; f"
 
     # see http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired
     assume   = update-index --assume-unchanged
