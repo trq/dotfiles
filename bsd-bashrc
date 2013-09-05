@@ -1,6 +1,7 @@
 HISTFILESIZE=5000
 HISTCONTROL=$HISTCONTROL${HISTCONTROL+:}ignoredups
 HISTCONTROL=ignoreboth
+export HISTTIMEFORMAT=""
 
 LESS="-F -X -R"; export LESS
 
@@ -18,3 +19,15 @@ source ${HOME}/src/sentral/fake-data/bash_completion.sh
 source ${HOME}/src/sentral/grater/grater-completion.sh
 
 #set -o vi
+
+PATH=${PATH}:${HOME}/libs/vendor/bin; export PATH
+
+export CDPATH=.:~:/sentral/www
+
+gcb() {
+    git rev-parse --abbrev-ref HEAD
+}
+
+gp() {
+    git push origin $(gcb)
+}

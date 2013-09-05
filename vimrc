@@ -45,6 +45,13 @@ set splitbelow " New window goes below
 set splitright " New windows goes right
 set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
 
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" 'php', 'phpcs', 'phpmd'
+let g:syntastic_php_checkers=['php']
+
 highlight ColorColumn ctermbg=grey
 highlight StatusLine cterm=none ctermfg=darkgrey
 highlight LineNr ctermfg=darkgrey
@@ -176,8 +183,8 @@ if has("autocmd")
   " auto source .vimrc on write
   "au BufWritePost .vimrc source $MYVIMRC
 
-  au BufRead,BufNewFile *.json ft=json syntax=javascript
-  au BufRead,BufNewFile *.less ft=css syntax=css
+  au BufRead,BufNewFile *.json setfiletype=json syntax=javascript
+  au BufRead,BufNewFile *.less setfiletype=css syntax=css
 
   autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
   autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
@@ -186,6 +193,9 @@ if has("autocmd")
   autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType ruby setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType bash setlocal ts=4 sts=4 sw=4 expandtab
+
+  au BufRead,BufNewFile *.opm setfiletype sh
+  au BufRead,BufNewFile *.opm setlocal ts=4 sts=4 sw=4 expandtab
 endif
 
 " Conditional based on location.
