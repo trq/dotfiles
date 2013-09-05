@@ -34,6 +34,7 @@
     dc = diff --cached
     last = cat-file commit HEAD
     wf = "!wf() { cb=`git rev-parse --abbrev-ref HEAD` ; git checkout develop && git merge --no-ff $cb && git branch -d $cb }; wf"
+    conflicts = '!git ls-files -u | cut -f 2 | sort -u'
 
     # see http://blog.apiaxle.com/post/handy-git-tips-to-stop-you-getting-fired
     assume   = update-index --assume-unchanged
