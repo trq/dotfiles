@@ -90,3 +90,9 @@
 	path = vim/bundle/vim-multiple-cursors
 	url = https://github.com/terryma/vim-multiple-cursors.git
     ignore = dirty
+[submodule "vim/bundle/vim-signify"]
+	path = vim/bundle/vim-signify
+	url = https://github.com/mhinz/vim-signify.git
+[submodule "vim/bundle/vim-php-refactor"]
+	path = vim/bundle/vim-php-refactor
+	url = https://github.com/beberlei/vim-php-refactor.git
