@@ -96,3 +96,6 @@
 [submodule "vim/bundle/vim-php-refactor"]
 	path = vim/bundle/vim-php-refactor
 	url = https://github.com/beberlei/vim-php-refactor.git
+[submodule "vim/bundle/emmet"]
+	path = vim/bundle/emmet
+	url = https://github.com/mattn/emmet-vim.git
