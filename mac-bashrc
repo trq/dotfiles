@@ -5,6 +5,8 @@ PATH=$PATH:$HOME/bin:$HOME/lib/vendor/bin:$HOME/src/git-release:$HOME/src/git-re
 
 TERM="xterm-color" ; export TERM
 
+# vim bindings
+set -o vi
 source ~/etc/dotfiles/bash/prompt
 
 alias v="vim"
