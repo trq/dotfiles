@@ -3,8 +3,6 @@
 [ -d "${HOME}/bin" ] && PATH=${HOME}/bin:${PATH}
 [ -d "${HOME}/lib/vendor/bin" ] && PATH=${HOME}/lib/vendor/bin:${PATH}
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
-
 TERM="xterm-color" ; export TERM
 
 HISTCONTROL=erasedups:ignoredups
