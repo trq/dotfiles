@@ -1,5 +1,6 @@
 # My local bin directory.
 PATH=$PATH:$HOME/bin:$HOME/lib/vendor/bin:$HOME/src/git-release:$HOME/src/git-release/gitflow; export PATH
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
@@ -9,6 +10,7 @@ TERM="xterm-color" ; export TERM
 set -o vi
 source ~/etc/dotfiles/bash/prompt
 
+alias sb="source ~/.bashrc"
 alias v="vim"
 alias vr="vim -R"
 alias sv="sudo vim"
@@ -17,8 +19,8 @@ alias c='clear'
 alias tree='tree -C'
 alias s='sudo'
 alias sv='sudo vim'
-alias g='grep -Hin --colour=always'
 alias m='mosh'
+alias git='hub'
 
 source ~/etc/dotfiles/bash/aliases
 
@@ -32,4 +34,6 @@ alias serve="php -S 127.0.0.1:8080"
 source ~/etc/dotfiles/bash_completion/*.sh
 source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+if [ -f ~/.bashrc.local ] ;then
+    source ~/.bashrc.local
+fi
