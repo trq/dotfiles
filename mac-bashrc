@@ -29,6 +29,12 @@ source ~/etc/dotfiles/bash/prompt
 source ~/etc/dotfiles/bash/aliases
 source ~/etc/dotfiles/bash_completion/*.sh
 
+# Overide these aliases privided by the above
+# aliases file. They don't play well with BSD.
+alias ll="ls -lG"
+alias ls="ls -G"
+alias all="ls -la"
+
 if command -v brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 elif [ -f /etc/bash_completion ] && ! shopt -oq posix; then
