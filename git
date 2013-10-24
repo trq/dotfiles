@@ -1,0 +1,67 @@
+[alias]
+    ai = add -i
+    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ => \\2/' | sort
+    ap = add -p
+    ar = !sh 'git branch -M $1 archived/$1' -
+    assume   = update-index --assume-unchanged
+    assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+    bn = !git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \\(.*\\)/\\1/'
+    br = branch
+    changelog = log --no-merges --pretty=format:\" * %s\"
+    ci = commit --verbose
+    co = checkout
+    com = !git checkout `git st | grep modified | awk '{print $3}'`
+    conflicts = !git ls-files -u | cut -f 2 | sort -u
+    d = diff
+    dc = diff --cached
+    export-patch = !git format-patch --stdout $1 > ~/`git bn`.diff
+    last = cat-file commit HEAD
+    lc = !vim `git whatchanged -n 1 --pretty=format: --name-only`
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative
+    lgp = !git lg -p
+    lgp = log --graph -p --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative
+    ll = !git log --stat
+    lll = !git log --stat -n 1
+    month = !git me --since='+1 Month'
+    nb = checkout -b
+    om = !vim `git st | grep 'modified:' | awk '{print $NF}'`
+    omn = !vim `git st | egrep -w 'modified:|new file:' | awk '{print $NF}'`
+    ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
+    owc = !vim `git whatchanged -n1 | grep ^: | awk '{print $NF}'`
+    pack-mod = !~/bin/pack-mod.sh
+    rb = rebase -i
+    slog = svn log --show-commit
+    snapshot = !git stash save "snapshot: $(date)" && git stash apply "stash@{0}"
+    srb = svn rebase && grater update && grater list
+    st = status
+    tar = !git archive -o archive.tar.gz HEAD $(git diff --name-only HEAD^)
+    theirs = "!f() { git checkout --theirs $@ && git add $@; }; f"
+    todo = !ugrep -e TODO
+    uf = !git checkout $(git status | grep modified | awk '{print $3}')
+    unassume = update-index --no-assume-unchanged
+    uncommit = reset --soft HEAD^
+    unstage = reset HEAD
+    us = !git reset HEAD $1
+    usa = !git reset HEAD $(git status | grep modified | awk '{print $3}')
+    wc = !git whatchanged
+    wcp = !git whatchanged -p
+[core]
+    excludesfile = ~/.gitignore
+    whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
+[color]
+    ui = true
+[color "branch"]
+    current = green
+    local = blue
+    remote = red
+[color "diff"]
+    meta = yellow
+    frag = magenta
+    old = red bold
+    new = green
+[color "status"]
+    added = green
+    changed = green
+    untracked = red
+[color "diff"]
+    whitespace = red reverse
