@@ -18,7 +18,7 @@ alias gti=git
 source ${HOME}/src/sentral/fake-data/bash_completion.sh
 source ${HOME}/src/sentral/grater/grater-completion.sh
 
-#set -o vi
+set -o vi
 
 PATH=${PATH}:${HOME}/libs/vendor/bin; export PATH
 
