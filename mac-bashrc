@@ -1,38 +1,39 @@
 # My local bin directory.
-PATH=$PATH:$HOME/bin:$HOME/lib/vendor/bin:$HOME/src/git-release:$HOME/src/git-release/gitflow; export PATH
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+[ -d "${HOME}/.rvm/bin" ] && PATH=${HOME}/.rvm/bin:${PATH}
+[ -d "${HOME}/bin" ] && PATH=${HOME}/bin:${PATH}
+[ -d "${HOME}/lib/vendor/bin" ] && PATH=${HOME}/lib/vendor/bin:${PATH}
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 TERM="xterm-color" ; export TERM
 
+HISTCONTROL=erasedups:ignoredups
+HISTSIZE=10000
+HISTFILESIZE=20000
+HISTIGNORE='cd:ls:bg:fg:history'
+HISTTIMEFORMAT='%F %T '
+PROMPT_COMMAND='history -a'
+shopt -s histappend
+
+SSHAGENT=/usr/bin/ssh-agent
+SSHAGENTARGS="-s"
+if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
+    eval `$SSHAGENT $SSHAGENTARGS`
+    trap "kill $SSH_AGENT_PID" 0
+fi
+
 # vim bindings
 set -o vi
+
 source ~/etc/dotfiles/bash/prompt
-
-alias sb="source ~/.bashrc"
-alias v="vim"
-alias vr="vim -R"
-alias sv="sudo vim"
-alias q='exit'
-alias c='clear'
-alias tree='tree -C'
-alias s='sudo'
-alias sv='sudo vim'
-alias m='mosh'
-alias git='hub'
-
 source ~/etc/dotfiles/bash/aliases
-
-# Overide these aliases privided by the above
-# aliases file. They don't play well with BSD.
-alias ll="ls -lG"
-alias ls="ls -G"
-alias all="ls -la"
-alias serve="php -S 127.0.0.1:8080"
-
 source ~/etc/dotfiles/bash_completion/*.sh
-source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
+
+if command -v brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ]; then
+    . $(brew --prefix)/etc/bash_completion
+elif [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
 
 if [ -f ~/.bashrc.local ] ;then
     source ~/.bashrc.local
