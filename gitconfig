@@ -1,16 +1,8 @@
 [user]
     name = Tony R Quilkey
     email = thorpe@thorpesystems.com
-	signingkey = 130723E8
 [github]
     user = Tony R Quilkey
     email = thorpe@thorpesystems.com
 [include]
     path = ~/etc/dotfiles/git
-[push]
-	default = simple
-[diff]
-	algorithm = patience
-
-[url "git@github.com:trq/"]
-    insteadOf = trq:
