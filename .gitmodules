@@ -74,10 +74,6 @@
 	path = vim/bundle/vim-commentary
 	url = git://github.com/tpope/vim-commentary.git
     ignore = dirty
-[submodule "vim/bundle/ultisnips"]
-	path = vim/bundle/ultisnips
-	url = https://github.com/SirVer/ultisnips.git
-    ignore = dirty
 [submodule "vim/bundle/ag"]
 	path = vim/bundle/ag
 	url = https://github.com/rking/ag.vim.git
