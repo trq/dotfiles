@@ -106,3 +106,6 @@
 	path = vim/bundle/sneak
 	url = https://github.com/justinmk/vim-sneak.git
     ignore = dirty
+[submodule "vim/bundle/vim-markdown"]
+	path = vim/bundle/vim-markdown
+	url = https://github.com/tpope/vim-markdown.git
