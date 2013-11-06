@@ -92,16 +92,6 @@ let g:ctrlp_by_filename = 1
 let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
 
-" xhair stuff.
-set cursorline
-set cursorcolumn
-augroup xhairs
-    autocmd InsertEnter * set nocursorline
-    autocmd InsertLeave * set cursorline
-    autocmd InsertEnter * set nocursorcolumn
-    autocmd InsertLeave * set cursorcolumn
-augroup end
-
 " Wildmenu
 if has("wildmenu")
     set wildignore+=*.a,*.o,*.tbz,*.selfbk
