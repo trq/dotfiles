@@ -13,6 +13,7 @@
     current-branch = rev-parse --abbrev-ref HEAD
     d = diff
     dc = diff --cached
+    deploy = !bundle exec cap feature deploy
     fo = fetch origin
     fu = fetch upstream
     last = cat-file commit HEAD
