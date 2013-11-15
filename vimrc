@@ -102,6 +102,9 @@ if has("wildmenu")
     set wildmode=longest,list
 endif
 
+" Nerdtree
+nnoremap <leader>n :NERDTreeToggle<CR>
+
 " Disable arrow keys entirely.
 noremap <Up> <nop>
 noremap <Down> <nop>
