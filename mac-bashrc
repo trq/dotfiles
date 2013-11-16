@@ -1,7 +1,7 @@
 # My local bin directory.
 [ -d "${HOME}/.rvm/bin" ] && PATH=${HOME}/.rvm/bin:${PATH}
 [ -d "${HOME}/bin" ] && PATH=${HOME}/bin:${PATH}
-[ -d "${HOME}/lib/vendor/bin" ] && PATH=${HOME}/lib/vendor/bin:${PATH}
+[ -d "${HOME}/.composer/vendor/bin" ] && PATH=${HOME}/.composer/vendor/bin:${PATH}
 
 TERM="xterm-color" ; export TERM
 
