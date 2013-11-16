@@ -247,18 +247,21 @@ function! ToggleGpxTpl ()
 endfunction
 nnoremap <silent> <leader>' :call ToggleGpxTpl()<CR>
 
+let g:dbgPavimPort = 9009
+let g:dbgPavimBreakAtEntry = 0
+
 " Set the minimal split width
-set winwidth=24
-set winminwidth=24
-function! SplitToggle()
-  if(&winwidth == &winminwidth)
-    set winwidth=999
-  else
-    set winwidth=24
-    wincmd =
-  endif
-endfunc
-nnoremap <leader>- :call SplitToggle()<cr>
+"set winwidth=24
+"set winminwidth=24
+"function! SplitToggle()
+"  if(&winwidth == &winminwidth)
+"    set winwidth=999
+"  else
+"    set winwidth=24
+"    wincmd =
+"  endif
+"endfunc
+"nnoremap <leader>- :call SplitToggle()<cr>
 
 " templates.
 " autocmd BufEnter $HOME/bin/*.php 0r $HOME/.vim/templates/a.txt
