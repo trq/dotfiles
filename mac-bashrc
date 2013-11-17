@@ -21,7 +21,7 @@ if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
 fi
 
 # vim bindings
-set -o vi
+# set -o vi
 
 source ~/etc/dotfiles/bash/prompt
 source ~/etc/dotfiles/bash/aliases
