@@ -10,7 +10,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/L9'
 Bundle 'groenewege/vim-less'
 Bundle 'rodjek/vim-puppet'
-Bundle 'vim-scripts/bufexplorer'
+Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'godlygeek/tabular'
@@ -48,7 +48,6 @@ set softtabstop=4
 set smarttab
 set encoding=utf-8 nobomb " BOM often causes trouble
 set history=1000
-set background=dark
 set showmatch
 set nohlsearch
 set nowrap
@@ -81,6 +80,10 @@ set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.br
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+
+syntax on
+syntax enable
+set background=dark
 
 " 'php', 'phpcs', 'phpmd'
 let g:syntastic_php_checkers=['php']
