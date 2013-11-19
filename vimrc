@@ -93,7 +93,7 @@ set background=dark
 set tags+=./tags.vendors,tags.vendors
 
 " 'php', 'phpcs', 'phpmd'
-let g:syntastic_php_checkers=['php']
+let g:syntastic_php_checkers=['php', 'phpcs']
 
 highlight ColorColumn ctermbg=grey
 highlight StatusLine cterm=none ctermfg=darkgrey
@@ -112,6 +112,10 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
+
+" Vdebug stuff
+" let g:vdebug_options['break_on_open'] = 0
+" let g:vdebug_options['watch_window_style'] = 'compact'
 
 " Tlist
 nnoremap <silent> <leader>= :TlistToggle<cr>
@@ -259,59 +263,22 @@ if hostname() == 'dev'
 
 endif
 
-" Work
-"if hostname() == 'xtal.local' || hostname() == 'tonysentral.syd.gptech.local'
-    set path=.,/www/**
-    " handle gpx files as php.
-    au BufRead,BufNewFile *.gpx let is_php=1|setfiletype php
-    au BufRead,BufNewFile *.gpx setlocal ts=4 sts=4 sw=4 expandtab
-    au BufRead,BufNewFile *.inc let is_php=1|setfiletype php
-    au BufRead,BufNewFile *.inc setlocal ts=4 sts=4 sw=4 expandtab
-    au BufRead,BufNewFile *.tpl let is_smarty=1|setfiletype smarty
-    au BufRead,BufNewFile *.tpl setlocal ts=2 sts=2 sw=2 expandtab
-    au BufRead,BufNewFile *.blade.php let is_html=1|setfiletype html
-    au BufRead,BufNewFile *.blade.php setlocal ts=2 sts=2 sw=2 expandtab
-
-    autocmd BufNewFile */tpl/*.tpl 0r $HOME/.gptech-templates/gptech.tpl
-    autocmd BufNewFile */www/*.gpx 0r $HOME/.gptech-templates/gptech.gpx
-    autocmd BufNewFile */inc/*.php 0r $HOME/.gptech-templates/gptech.php
-"endif
-
 au BufRead,BufNewFile Vagrantfile let is_ruby=1|setfiletype ruby
 au BufRead,BufNewFile Phakefile let is_php=1|setfiletype php
 au BufRead,BufNewFile *.twig let is_html=1 | setfiletype html
 
-" Toggle between .gpx and there corresponding .tpl files
-function! ToggleGpxTpl ()
-    let l:ext = expand('%:e')
-    let l:filepath = substitute(expand('%:p'), '\/usr\/sentral\/www', '', '')
-    echo filepath
-    if l:ext == 'gpx'
-        let l:filepath = substitute(expand(l:filepath), 'www', 'tpl', '')
-        let l:filepath = substitute(expand(l:filepath), '.gpx', '.tpl', '')
-    else
-        let l:filepath = substitute(expand(l:filepath), 'tpl', 'www', '')
-        let l:filepath = substitute(expand(l:filepath), '.tpl', '.gpx', '')
-    endif
-    execute ":edit /usr/sentral/www" . l:filepath
-endfunction
-nnoremap <silent> <leader>' :call ToggleGpxTpl()<CR>
-
-let g:dbgPavimPort = 9009
-let g:dbgPavimBreakAtEntry = 0
-
 " Set the minimal split width
-"set winwidth=24
-"set winminwidth=24
-"function! SplitToggle()
-"  if(&winwidth == &winminwidth)
-"    set winwidth=999
-"  else
-"    set winwidth=24
-"    wincmd =
-"  endif
-"endfunc
-"nnoremap <leader>- :call SplitToggle()<cr>
+set winwidth=24
+set winminwidth=24
+function! SplitToggle()
+  if(&winwidth == &winminwidth)
+    set winwidth=999
+  else
+    set winwidth=24
+    wincmd =
+  endif
+endfunc
+nnoremap <leader>- :call SplitToggle()<cr>
 
 " templates.
 " autocmd BufEnter $HOME/bin/*.php 0r $HOME/.vim/templates/a.txt
