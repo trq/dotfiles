@@ -32,7 +32,11 @@ Bundle 'justinmk/vim-sneak'
 Bundle 'tpope/vim-markdown'
 Bundle 'benmills/vimux'
 Bundle 'scrooloose/nerdtree'
-Bundle 'brookhong/DBGPavim'
+Bundle 'docteurklein/vim-symfony'
+Bundle 'msanders/snipmate.vim'
+Bundle 'docteurklein/vim-phpunit'
+Bundle 'arnaud-lb/vim-php-namespace'
+Bundle 'joonty/vdebug.git'
 
 set cindent
 set smartindent
@@ -80,10 +84,13 @@ set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.br
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
 
 syntax on
 syntax enable
 set background=dark
+
+set tags+=./tags.vendors,tags.vendors
 
 " 'php', 'phpcs', 'phpmd'
 let g:syntastic_php_checkers=['php']
@@ -134,6 +141,7 @@ if has("wildmenu")
     set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
     set wildignore+=.DS_Store,.git,.hg,.svn
     set wildignore+=*~,*.swp,*.tmp
+    set wildignore+=*app/cache/*
     set wildmenu
     set wildmode=longest,list
 endif
@@ -153,6 +161,12 @@ nnoremap <silent> <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <silent> <leader>; :BufExplorer<cr>
 nnoremap <silent> <leader>g :GundoToggle<cr>
 inoremap jk <esc>
+
+" https://github.com/arnaud-lb/vim-php-namespace
+inoremap <Leader>u <c-o>:call PhpInsertUse()<cr>
+noremap <Leader>u :call PhpInsertUse()<cr>
+inoremap <Leader>q <c-o>:call PhpExpandClass()<cr>
+noremap <Leader>q :call PhpExpandClass()<cr>
 
 " sudo write
 noremap <leader>W :w !sudo tee %<CR>
@@ -202,7 +216,7 @@ endif
 
 augroup chmodandshebang
     autocmd!
-    autocmd BufWritePost *.sh,*.pl,*.rb,*.py :exe "silent !chmod 700 <afile>" | silent :w!
+    autocmd BufWritePost ~/bin/*,*.sh,*.pl,*.rb,*.py :exe "silent !chmod 700 <afile>" | silent :w!
     autocmd BufEnter *.sh if getline(1) == "" | :call setline(1, "#!/usr/bin/env bash") | endif
     autocmd BufEnter *.pl if getline(1) == "" | :call setline(1, "#!/usr/bin/env perl") | endif
     autocmd BufEnter *.pb if getline(1) == "" | :call setline(1, "#!/usr/bin/env ruby") | endif
