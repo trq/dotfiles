@@ -1,7 +1,16 @@
 # My local bin directory.
-[ -d "${HOME}/.rvm/bin" ] && PATH=${HOME}/.rvm/bin:${PATH}
-[ -d "${HOME}/bin" ] && PATH=${HOME}/bin:${PATH}
-[ -d "${HOME}/.composer/vendor/bin" ] && PATH=${HOME}/.composer/vendor/bin:${PATH}
+[ -d "$HOME/bin" ] && PATH="$PATH:$HOME/bin";
+[ -d "$HOME/etc/dotfiles/bin" ] && PATH="$PATH:$HOME/etc/dotfiles/bin";
+[ -d "$HOME/.rvm/bin" ] && PATH="$PATH:$HOME/.rvm/bin";
+[ -d "/usr/local/mysql/bin" ] && PATH="$PATH:/usr/local/mysql/bin";
+[ -d "$HOME/.composer/vendor/bin" ] && PATH="$PATH:$HOME/.composer/vendor/bin:$PATH"
+# [ -d "$HOME/.gem/ruby/1.8/bin" ] && PATH="$PATH:$HOME/.gem/ruby/1.8/bin";
+# [ -d "/usr/local/mysql-5.6.14-osx10.7-x86_64/bin/" ] && PATH=$PATH:/usr/local/mysql-5.6.14-osx10.7-x86_64/bin/
+
+# Add to beginning of PATH
+[ -d "/usr/local/bin" ] && PATH="/usr/local/bin:$PATH";
+
+export PATH
 
 TERM="xterm-color" ; export TERM
 
@@ -12,6 +21,8 @@ HISTIGNORE='cd:ls:bg:fg:history'
 HISTTIMEFORMAT='%F %T '
 PROMPT_COMMAND='history -a'
 shopt -s histappend
+
+CDPATH=".:/Volumes/Sites";
 
 SSHAGENT=/usr/bin/ssh-agent
 SSHAGENTARGS="-s"
