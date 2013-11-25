@@ -114,8 +114,8 @@ autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
 
 " Vdebug stuff
-" let g:vdebug_options['break_on_open'] = 0
-" let g:vdebug_options['watch_window_style'] = 'compact'
+"let g:vdebug_options['break_on_open'] = 0
+"let g:vdebug_options['watch_window_style'] = 'compact'
 
 " Tlist
 nnoremap <silent> <leader>= :TlistToggle<cr>
@@ -138,6 +138,7 @@ let g:ctrlp_regexp = 1
 let g:ctrlp_by_filename = 1
 let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
+nnoremap <silent> <leader>b :CtrlPBuffer<cr>
 
 " Wildmenu
 if has("wildmenu")
