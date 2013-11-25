@@ -37,6 +37,7 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'docteurklein/vim-phpunit'
 Bundle 'arnaud-lb/vim-php-namespace'
 Bundle 'joonty/vdebug.git'
+Bundle 'Valloric/YouCompleteMe'
 
 set cindent
 set smartindent
