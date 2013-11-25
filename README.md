@@ -5,23 +5,38 @@
 Create a symbolic link from the vimrc file within the root of the repo to
 ~/.vimrc and another from the vim directory within the repo root to ~/.vim.
 
-All plugins are maintained as git submodules.
+All plugins are maintained via Vundle.
 
 ### Installation
 
 ```
-git submodule add https://someurl.com/somerepo vim/bundle/somerepo
-git submodule init && git submodule update
+git clone https://github.com/gmarik/vundle.git vim/bundle/vundle
+vim +InstallBundle +qall
+```
+
+### Add new
+
+```
+vim vimrc
+Bundle "some/bundle"
 ```
 
 ### Updating
 
 ```
-git submodule foreach git pull origin master
+vim +InstallBundle +qall
 ```
 
 ### Removal
 
-* Remove it from .gitmodules
-* Remove it from .git/config
-* Run git rm --cached <path-to-module></path-to-module>
+```
+Remove it from .vimrc
+rm -fr vim/bundle/<plugin>
+```
+
+## YouCompleteMe
+
+```
+cd ~/.vim/bundle/YouCompleteMe
+./install.sh --clang-completer
+```
