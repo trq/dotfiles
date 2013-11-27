@@ -2,10 +2,8 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-pathogen'
 Bundle 'tpope/vim-fugitive'
-Bundle 'bogado/file-line'
-Bundle 'vim-scripts/taglist.vim'
+Bundle 'majutsushi/tagbar'
 Bundle 'tpope/vim-surround'
 Bundle 'vim-scripts/L9'
 Bundle 'groenewege/vim-less'
@@ -34,19 +32,24 @@ Bundle 'benmills/vimux'
 Bundle 'scrooloose/nerdtree'
 Bundle 'docteurklein/vim-symfony'
 Bundle 'msanders/snipmate.vim'
-Bundle 'docteurklein/vim-phpunit'
 Bundle 'arnaud-lb/vim-php-namespace'
 Bundle 'joonty/vdebug.git'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'bling/vim-airline'
+Bundle 'bling/vim-bufferline'
+Bundle 'Yggdroot/indentLine'
 
 set cindent
 set smartindent
 set autoindent
 set expandtab
+set lazyredraw
 set tabstop=2
 set shiftwidth=2
 set cinkeys=0{,0},:,0#,!^F
-set showcmd
+"set showcmd
+set relativenumber
+set numberwidth=3
 set shiftwidth=4
 set tabstop=4
 set softtabstop=4
@@ -56,7 +59,6 @@ set history=1000
 set showmatch
 set nohlsearch
 set nowrap
-set fillchars=
 set whichwrap=b,s,<,>,[,],~
 set hlsearch
 set incsearch
@@ -68,7 +70,8 @@ set nocompatible
 set nottybuiltin term=$TERM
 set formatprg=par-format\ -w80
 set wmh=0
-set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
+set term=xterm-256color
+"set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
 set hidden
 set backspace=indent,eol,start
 set whichwrap+=<,>,[,]
@@ -81,33 +84,52 @@ set sidescrolloff=40
 set splitbelow " New window goes below
 set splitright " New windows goes right
 set suffixes=.bak,~,.swp,.swo,.o,.d,.info,.aux,.log,.dvi,.pdf,.bin,.bbl,.blg,.brf,.cb,.dmg,.exe,.ind,.idx,.ilg,.inx,.out,.toc,.pyc,.pyd,.dll
+set ttimeoutlen=20
+set noshowmode
+set fillchars+=stl:\ ,stlnc:\
+set encoding=utf-8
+set tags+=./tags.vendors,tags.vendors
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-set statusline=%<%f\ %h%m%r%{fugitive#statusline()}%=%-14.(%l,%c%V%)\ %P
+" mouse :(
+set ttyfast
+set mouse=a
+set ttymouse=xterm2
 
+" appearance
 syntax on
 syntax enable
 set background=dark
+set t_Co=256 " 256 colors in terminal
+set cursorline
+colorscheme molokai_custom
 
-set tags+=./tags.vendors,tags.vendors
+" powerline
+"let g:airline_powerline_fonts   = 1
+let g:airline_theme             = 'powerlineish'
+let g:airline_enable_branch     = 1
+let g:airline_enable_syntastic  = 1
+let g:airline_symbols = {}
 
-" 'php', 'phpcs', 'phpmd'
-let g:syntastic_php_checkers=['php', 'phpcs']
+" Yggdroot/indentLine
+set list lcs=tab:\|\
+let g:indentLine_color_term=234
+let g:indentLine_char = '┆'
 
-highlight ColorColumn ctermbg=grey
-highlight StatusLine cterm=none ctermfg=darkgrey
-highlight LineNr ctermfg=darkgrey
-highlight CursorLine ctermbg=darkgrey
-highlight CursorColumn ctermbg=darkgrey ctermfg=grey
-highlight Vertsplit ctermbg=darkgrey ctermfg=darkgrey
-highlight Visual ctermbg=52
-highlight Pmenu ctermbg=darkgrey ctermfg=darkgrey
-highlight PmenuSel ctermbg=darkgrey ctermfg=white
+"Buffer line
+let g:bufferline_echo = 0
+
+" Nerdtree
+nnoremap <leader>- :NERDTreeToggle<CR>
+
+" Tagbar
+nnoremap <silent> <leader>= :TagbarToggle<cr>
+let g:tagbar_autofocus = 1
+let g:tagbar_left = 1
+let g:tagbar_compact = 1
+let g:tagbar_indent = 1
 
 " Highlight whitespace.
-highlight ExtraWhitespace ctermbg=red guibg=red
+highlight ExtraWhitespace ctermbg=96
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
@@ -118,27 +140,15 @@ autocmd BufWinLeave * call clearmatches()
 " let g:vdebug_options['break_on_open'] = 0
 " let g:vdebug_options['watch_window_style'] = 'compact'
 
-" Tlist
-nnoremap <silent> <leader>= :TlistToggle<cr>
-let Tlist_File_Fold_Auto_Close = 1
-let Tlist_Compact_Format = 1
-let Tlist_GainFocus_On_ToggleOpen = 1
-let Tlist_Close_On_Select = 1
-let Tlist_Exit_OnlyWindow = 1
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Highlight_Tag_On_BufEnter = 1
-let Tlist_Auto_Highlight_Tag = 1
-let Tlist_Highlight_Tag_On_BufEnter = 1
-highlight MyTagListTagName ctermfg=darkgrey
-highlight MyTagListFileName ctermfg=darkgrey
+" 'php', 'phpcs', 'phpmd'
+let g:syntastic_php_checkers=['php']
 
 "ctrlp
-"let g:ctrlp_root_markers = ['_inc/', 'inc/']
 let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_regexp = 1
 let g:ctrlp_by_filename = 1
 let g:ctrlp_switch_buffer = 'Et'
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:40,results:40'
+let g:ctrlp_custom_ignore = 'cache'
 
 " Wildmenu
 if has("wildmenu")
@@ -146,13 +156,10 @@ if has("wildmenu")
     set wildignore+=*.bmp,*.gif,*.ico,*.jpg,*.png
     set wildignore+=.DS_Store,.git,.hg,.svn
     set wildignore+=*~,*.swp,*.tmp
-    set wildignore+=*app/cache/*
+    set wildignore+=*/app/cache/*
     set wildmenu
     set wildmode=longest,list
 endif
-
-" Nerdtree
-nnoremap <leader>n :NERDTreeToggle<CR>
 
 " Disable arrow keys entirely.
 noremap <Up> <nop>
@@ -187,6 +194,12 @@ function! PHPMan(func)
     execute ':!php --rf ' . a:func
 endfunction
 command! -nargs=1 Pm :call PHPMan("<args>")
+
+" lookup a php function interface
+function! SymfonyConsole(func)
+    execute ':!./app/console ' . a:func
+endfunction
+command! -nargs=1 Symfony :call SymfonyConsole("<args>")
 
 function! MySQL() range
     echo system("mysql -t " . expand('%:r:r') . " -e " . shellescape(join(getline(a:firstline, a:lastline), "\n")))
@@ -279,7 +292,7 @@ function! SplitToggle()
     wincmd =
   endif
 endfunc
-nnoremap <leader>- :call SplitToggle()<cr>
+"nnoremap <leader>- :call SplitToggle()<cr>
 
 " templates.
 " autocmd BufEnter $HOME/bin/*.php 0r $HOME/.vim/templates/a.txt
@@ -389,4 +402,4 @@ function! QuickfixFilenames()
   endfor
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
-command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+" command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()

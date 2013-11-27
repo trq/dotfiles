@@ -13,6 +13,7 @@
 export PATH
 
 TERM="xterm-color" ; export TERM
+LANG=en_US.utf8
 
 HISTCONTROL=erasedups:ignoredups
 HISTSIZE=10000

@@ -40,3 +40,8 @@ rm -fr vim/bundle/<plugin>
 cd ~/.vim/bundle/YouCompleteMe
 ./install.sh --clang-completer
 ```
+
+### Fonts
+Checkout https://github.com/Lokaltog/powerline-fonts and install them all into ~/Library/Fonts
+
+Meslo LG S DZ for Powerline (11)
