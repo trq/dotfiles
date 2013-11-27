@@ -151,6 +151,39 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:40,results:40'
 let g:ctrlp_custom_ignore = 'cache'
 nnoremap <silent> <leader>b :CtrlPBuffer<cr>
 
+" Vdebug
+let g:vdebug_keymap = {
+\    "run" : "<Leader>/",
+\    "run_to_cursor" : "<Down>",
+\    "step_over" : "<Up>",
+\    "step_into" : "<Left>",
+\    "step_out" : "<Right>",
+\    "close" : "q",
+\    "detach" : "x",
+\    "set_breakpoint" : "<Leader>p",
+\    "get_context" : "<F11>",
+\    "eval_under_cursor" : "<F12>",
+\    "eval_visual" : "<Leader>e"
+\}
+
+let g:vdebug_options = {
+\    "port" : 9000,
+\    "timeout" : 20,
+\    "server" : 'localhost',
+\    "on_close" : 'detach',
+\    "break_on_open" : 0,
+\    "ide_key" : '',
+\    "debug_window_level" : 0,
+\    "debug_file_level" : 0,
+\    "debug_file" : "",
+\    "path_maps" : {},
+\    "watch_window_style" : 'expanded',
+\    "marker_default" : '⬦',
+\    "marker_closed_tree" : '▸',
+\    "marker_open_tree" : '▾',
+\    "continuous_mode"  : 1
+\}
+
 " Wildmenu
 if has("wildmenu")
     set wildignore+=*.a,*.o,*.tbz,*.selfbk
@@ -168,6 +201,7 @@ noremap <Down> <nop>
 noremap <Left> <nop>
 noremap <Right> <nop>
 
+" Custom mappings
 nnoremap <silent> <leader>my :!mysql -t %:r:r < %<cr>
 vnoremap <silent> <leader>my :My<cr>
 nnoremap <silent> <leader>v :vsplit $MYVIMRC<cr>
@@ -196,7 +230,7 @@ function! PHPMan(func)
 endfunction
 command! -nargs=1 Pm :call PHPMan("<args>")
 
-" lookup a php function interface
+" Attempt at a symfony console
 function! SymfonyConsole(func)
     execute ':!./app/console ' . a:func
 endfunction
