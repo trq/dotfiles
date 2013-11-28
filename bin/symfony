@@ -14,12 +14,12 @@ do
   echo -ne "$MY_PROMPT "
   read line
 
-  if [ "$line" = "q" ] ;then
+  if [ "$line" = "q" ]; then
     echo -e '\033[00;36mBye!\033[0m'
     exit 0
   fi
 
-  if [ "$line" = "" ] ] ;then
+  if [ "$line" = "" ]; then
     app/console
     exit 0
   fi
