@@ -38,6 +38,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
 Bundle 'Yggdroot/indentLine'
+Bundle 'estin/htmljinja'
 
 set cindent
 set smartindent
