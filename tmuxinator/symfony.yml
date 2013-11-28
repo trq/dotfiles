@@ -3,13 +3,13 @@ project_root: ~/src/symfony
 socket_path: /tmp/tmux-symfony
 windows:
   - editor:
-      layout: 59e8,181x55,0,0[181x47,0,0,4,181x7,0,48,5]]
+      layout: fbd5,181x55,0,0[181x45,0,0,0,181x9,0,46,1]
       panes:
         - vim
         -
   - console: bash ~/etc/dotfiles/bin/symfony
   - server:
-      layout: 59e8,181x55,0,0[181x47,0,0,4,181x7,0,48,5]]
+      layout: fbd5,181x55,0,0[181x45,0,0,0,181x9,0,46,1]
       panes:
         - app/console --env=dev server:run
         - guard

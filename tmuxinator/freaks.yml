@@ -1,0 +1,9 @@
+project_name: freaks
+project_root: ~/
+socket_path: /tmp/tmux-freaks
+windows:
+  - console:
+      layout: fbd5,181x55,0,0[181x45,0,0,0,181x9,0,46,1]
+      panes:
+        - mosh freaks
+        -

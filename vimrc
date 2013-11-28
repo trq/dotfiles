@@ -37,7 +37,6 @@ Bundle 'joonty/vdebug.git'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
-"Bundle 'Yggdroot/indentLine'
 
 set cindent
 set smartindent
