@@ -310,7 +310,7 @@ endif
 
 au BufRead,BufNewFile Vagrantfile let is_ruby=1|setfiletype ruby
 au BufRead,BufNewFile Phakefile let is_php=1|setfiletype php
-au BufRead,BufNewFile *.twig let is_html=1 | setfiletype html
+au BufRead,BufNewFile *.twig set filetype=htmljinja
 
 " Set the minimal split width
 set winwidth=24
