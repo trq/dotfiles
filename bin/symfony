@@ -21,7 +21,6 @@ do
 
   if [ "$line" = "" ]; then
     app/console
-    exit 0
   fi
 
   app/console "$line"
