@@ -1,0 +1,7 @@
+project_name: irc
+project_root: ~/
+socket_path: /tmp/tmux-irc
+windows:
+  - irc:
+    - mosh freaks
+    - tmux a

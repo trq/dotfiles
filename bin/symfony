@@ -1,0 +1,31 @@
+#!/bin/bash
+
+if ! [ -f app/console ]; then
+    echo -e '\033[00;31mYou do not appear to be within a symfony project.\033[0m'
+    exit 1
+fi
+
+MY_PROMPT='\033[00;32msymfony>\033[0m'
+
+echo -e '\033[00;36mThe Symfony interactive shell, type q to leave:\033[0m'
+
+while :
+do
+  echo -ne "$MY_PROMPT "
+  read line
+
+  if [ "$line" = "q" ]; then
+    echo -e '\033[00;36mBye!\033[0m'
+    exit 0
+  fi
+
+  if [ "$line" = "" ]; then
+    app/console
+  fi
+
+  app/console "$line"
+done
+
+echo -e '\033[00;31mWoops!\033[0m'
+
+exit 0

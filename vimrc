@@ -37,7 +37,6 @@ Bundle 'joonty/vdebug.git'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
-Bundle 'Yggdroot/indentLine'
 Bundle 'estin/htmljinja'
 
 set cindent
@@ -89,7 +88,7 @@ set ttimeoutlen=20
 set noshowmode
 set fillchars+=stl:\ ,stlnc:\
 set encoding=utf-8
-set tags+=./tags.vendors,tags.vendors
+set tags+=./tags,./vendor.tags
 
 " mouse :(
 set ttyfast
@@ -136,10 +135,6 @@ autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
 autocmd BufWinLeave * call clearmatches()
-
-" Vdebug stuff
-"let g:vdebug_options['break_on_open'] = 0
-"let g:vdebug_options['watch_window_style'] = 'compact'
 
 " 'php', 'phpcs', 'phpmd'
 let g:syntastic_php_checkers=['php']
