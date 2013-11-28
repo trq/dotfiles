@@ -1,13 +1,14 @@
-# My local bin directory.
-[ -d "$HOME/bin" ] && PATH="$PATH:$HOME/bin";
+# Append
 [ -d "$HOME/etc/dotfiles/bin" ] && PATH="$PATH:$HOME/etc/dotfiles/bin";
 [ -d "$HOME/.rvm/bin" ] && PATH="$PATH:$HOME/.rvm/bin";
 [ -d "/usr/local/mysql/bin" ] && PATH="$PATH:/usr/local/mysql/bin";
-# [ -d "$HOME/.gem/ruby/1.8/bin" ] && PATH="$PATH:$HOME/.gem/ruby/1.8/bin";
-# [ -d "/usr/local/mysql-5.6.14-osx10.7-x86_64/bin/" ] && PATH=$PATH:/usr/local/mysql-5.6.14-osx10.7-x86_64/bin/
+[ -d "$HOME/.gem/ruby/1.8/bin" ] && PATH="$PATH:$HOME/.gem/ruby/1.8/bin";
+[ -d "/usr/local/share/npm/bin" ] && PATH=$PATH:/usr/local/share/npm/bin
 
+# Prepend
 [ -d "/usr/local/bin" ] && PATH="/usr/local/bin:$PATH";
 [ -d "$HOME/.composer/vendor/bin" ] && PATH="$HOME/.composer/vendor/bin:$PATH"
+[ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH";
 
 export PATH
 
