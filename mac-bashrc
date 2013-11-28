@@ -12,8 +12,8 @@
 
 export PATH
 
+EDITOR=/usr/local/bin/vim ; export EDITOR
 TERM="screen-256color" ; export TERM
-LANG=en_US.utf8
 
 HISTCONTROL=erasedups:ignoredups
 HISTSIZE=10000
@@ -35,7 +35,10 @@ fi
 
 source ~/etc/dotfiles/bash/prompt
 source ~/etc/dotfiles/bash/aliases
-source ~/etc/dotfiles/bash_completion/*.sh
+
+for f in ~/etc/dotfiles/bash_completion/*.sh; do
+    source $f
+done
 
 # Overide these aliases privided by the above
 # aliases file. They don't play well with BSD.
