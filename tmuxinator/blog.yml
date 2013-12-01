@@ -1,0 +1,9 @@
+project_name: blog
+project_root: ~/www/blog
+socket_path: /tmp/tmux-blog
+windows:
+  - blog:
+      layout: fbd5,181x55,0,0[181x45,0,0,0,181x9,0,46,1]
+      panes:
+        - vim
+        - sculpin generate --server --watch
