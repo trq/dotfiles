@@ -9,6 +9,10 @@ MY_PROMPT='\033[00;32msymfony>\033[0m'
 
 echo -e '\033[00;36mThe Symfony interactive shell, type q to leave:\033[0m'
 
+# Clear and show help
+clear
+app/console
+
 while :
 do
   echo -ne "$MY_PROMPT "
@@ -23,7 +27,9 @@ do
     app/console
   fi
 
+  # Execute, then show help.
   app/console "$line"
+  app/console
 done
 
 echo -e '\033[00;31mWoops!\033[0m'
