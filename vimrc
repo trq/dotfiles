@@ -140,11 +140,9 @@ autocmd BufWinLeave * call clearmatches()
 let g:syntastic_php_checkers=['php']
 
 "ctrlp
-let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
-let g:ctrlp_by_filename = 1
+let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore app/cache --ignore vendor -g ""'
 let g:ctrlp_switch_buffer = 'Et'
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:40,results:40'
-let g:ctrlp_custom_ignore = 'cache'
+let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
 nnoremap <silent> <leader>b :CtrlPBuffer<cr>
 
 " Vdebug
