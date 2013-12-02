@@ -11,6 +11,6 @@ windows:
   - server:
       layout: fbd5,181x55,0,0[181x45,0,0,0,181x9,0,46,1]
       panes:
-        - app/console --env=dev --port=8000 server:run
+        - app/console --env=dev server:run localhost:8000
         - guard
   - logs: tail -f app/logs/dev.log
