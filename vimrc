@@ -1,43 +1,45 @@
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-fugitive'
-Bundle 'majutsushi/tagbar'
-Bundle 'tpope/vim-surround'
-Bundle 'vim-scripts/L9'
-Bundle 'groenewege/vim-less'
-Bundle 'rodjek/vim-puppet'
-Bundle 'vim-scripts/bufexplorer.zip'
-Bundle 'tpope/vim-unimpaired'
-Bundle 'coderifous/textobj-word-column.vim'
-Bundle 'godlygeek/tabular'
-Bundle 'sjl/gundo.vim'
-Bundle 'troydm/pb.vim'
-Bundle 'tpope/vim-abolish'
-Bundle 'scrooloose/syntastic'
-Bundle 'tpope/vim-obsession'
-Bundle 'christoomey/vim-tmux-navigator'
-Bundle 'tpope/vim-commentary'
-Bundle 'rking/ag.vim'
-Bundle 'kien/ctrlp.vim'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'mhinz/vim-signify'
-Bundle 'beberlei/vim-php-refactor'
-Bundle 'mattn/emmet-vim'
-Bundle 'gregsexton/gitv'
-Bundle 'justinmk/vim-sneak'
-Bundle 'tpope/vim-markdown'
-Bundle 'benmills/vimux'
-Bundle 'scrooloose/nerdtree'
-Bundle 'docteurklein/vim-symfony'
-Bundle 'msanders/snipmate.vim'
 Bundle 'arnaud-lb/vim-php-namespace'
-Bundle 'joonty/vdebug.git'
-Bundle 'Valloric/YouCompleteMe'
+Bundle 'beberlei/vim-php-refactor'
+Bundle 'benmills/vimux'
 Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
-Bundle 'estin/htmljinja'
+Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'coderifous/textobj-word-column.vim'
+Bundle 'docteurklein/vim-symfony'
+Bundle 'edkolev/tmuxline.vim'
+Bundle 'gmarik/vundle'
+Bundle 'godlygeek/tabular'
+Bundle 'gregsexton/gitv'
+Bundle 'groenewege/vim-less'
+Bundle 'joonty/vdebug.git'
+Bundle 'justinmk/vim-sneak'
+Bundle 'kien/ctrlp.vim'
+Bundle 'majutsushi/tagbar'
+Bundle 'mattn/emmet-vim'
+Bundle 'mhinz/vim-signify'
+Bundle 'msanders/snipmate.vim'
+Bundle 'rking/ag.vim'
+Bundle 'rodjek/vim-puppet'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'sjl/clam.vim'
+Bundle 'sjl/gundo.vim'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'tpope/vim-abolish'
+Bundle 'tpope/vim-commentary'
+Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-obsession'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-unimpaired'
+Bundle 'troydm/pb.vim'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'vim-scripts/bufexplorer.zip'
+Bundle 'vim-scripts/L9'
 
 set cindent
 set smartindent
@@ -90,6 +92,11 @@ set fillchars+=stl:\ ,stlnc:\
 set encoding=utf-8
 set tags+=./tags,./vendor.tags
 
+" highlight conflict markers
+match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
+" shortcut to jump to next conflict marker
+nnoremap <silent> <leader>c /^\(<\\|=\\|>\)\{7\}\([^=].\+\)\?$<CR>
+
 " mouse :(
 set ttyfast
 set mouse=a
@@ -104,16 +111,31 @@ set cursorline
 colorscheme molokai_custom
 
 " powerline
-"let g:airline_powerline_fonts   = 1
-let g:airline_theme             = 'powerlineish'
-let g:airline_enable_branch     = 1
-let g:airline_enable_syntastic  = 1
-let g:airline_symbols = {}
+let g:airline_powerline_fonts                 = 1
+let g:airline_theme                           = 'powerlineish'
+let g:airline_enable_branch                   = 1
+let g:bufferline_echo                         = 0
+let g:airline_enable_syntastic                = 1
+let g:airline_left_sep                        = '⮀'
+let g:airline_left_alt_sep                    = '⮁'
+let g:airline_right_sep                       = '⮂'
+let g:airline_right_alt_sep                   = '⮃'
+let g:airline_symbols                         = {}
+let g:airline_symbols.branch                  = '⭠'
+let g:airline_symbols.readonly                = '⭤'
+let g:airline_symbols.linenr                  = '⭡'
+let g:airline#extensions#bufferline#enabled   = 0
+let g:airline#extensions#ctrlp#color_template = 'normal'
+let g:airline#extensions#tmuxline#enabled     = 0
 
 " Yggdroot/indentLine
-set list lcs=tab:\|\
-let g:indentLine_color_term=234
-let g:indentLine_char = '┆'
+"set list lcs=tab:\|\
+"let g:indentLine_color_term=234
+"let g:indentLine_char = '┆'
+
+" Sort paragraphs
+vnoremap <leader>s !sort -f<CR>gv
+nnoremap <leader>s vip!sort -f<CR><Esc>
 
 "Buffer line
 let g:bufferline_echo = 0
@@ -165,7 +187,7 @@ let g:vdebug_options = {
 \    "timeout" : 20,
 \    "server" : 'localhost',
 \    "on_close" : 'detach',
-\    "break_on_open" : 0,
+\    "break_on_open" : 1,
 \    "ide_key" : '',
 \    "debug_window_level" : 0,
 \    "debug_file_level" : 0,
@@ -201,6 +223,10 @@ vnoremap <silent> <leader>my :My<cr>
 nnoremap <silent> <leader>v :vsplit $MYVIMRC<cr>
 nnoremap <silent> <leader>; :BufExplorer<cr>
 nnoremap <silent> <leader>g :GundoToggle<cr>
+nnoremap <silent> <leader>1 :Tabularize /=<cr>
+nnoremap <silent> <leader>2 :Tabularize /=><cr>
+vnoremap <silent> <leader>1 :Tabularize /=<cr>
+vnoremap <silent> <leader>2 :Tabularize /=><cr>
 inoremap jk <esc>
 
 " https://github.com/arnaud-lb/vim-php-namespace
@@ -259,7 +285,12 @@ if has("autocmd")
 endif
 
 " Remove fugitive buffers as they are closed.
-"autocmd BufReadPost fugitive://* set bufhidden=delete
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" Switch from block-cursor to vertical-line-cursor when going into/out of
+" insert mode
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 augroup chmodandshebang
     autocmd!
@@ -322,6 +353,22 @@ function! SplitToggle()
   endif
 endfunc
 "nnoremap <leader>- :call SplitToggle()<cr>
+
+" Toggle the quickfix window
+" From Steve Losh, http://learnvimscriptthehardway.stevelosh.com/chapters/38.html
+nnoremap <C-q> :call <SID>QuickfixToggle()<cr>
+let g:quickfix_is_open = 0
+function! s:QuickfixToggle()
+    if g:quickfix_is_open
+        cclose
+        let g:quickfix_is_open = 0
+        execute g:quickfix_return_to_window . "wincmd w"
+    else
+        let g:quickfix_return_to_window = winnr()
+        copen
+        let g:quickfix_is_open = 1
+    endif
+endfunction
 
 " templates.
 " autocmd BufEnter $HOME/bin/*.php 0r $HOME/.vim/templates/a.txt
