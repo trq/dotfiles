@@ -187,7 +187,7 @@ let g:vdebug_options = {
 \    "timeout" : 20,
 \    "server" : 'localhost',
 \    "on_close" : 'detach',
-\    "break_on_open" : 1,
+\    "break_on_open" : 0,
 \    "ide_key" : '',
 \    "debug_window_level" : 0,
 \    "debug_file_level" : 0,
