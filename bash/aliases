@@ -3,6 +3,7 @@ alias all="ls -la"
 alias all='ls -AlhiF --color'
 alias c='clear'
 alias git='hub'
+alias gitalias='/usr/local/bin/git alias'
 alias h='history | grep $1'
 alias ll="ls -lG"
 alias ll='ls -lhF --color'
