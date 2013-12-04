@@ -27,6 +27,7 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
 Bundle 'sjl/clam.vim'
 Bundle 'sjl/gundo.vim'
+Bundle 'tacahiroy/ctrlp-funky'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-abolish'
 Bundle 'tpope/vim-commentary'
@@ -90,7 +91,7 @@ set ttimeoutlen=20
 set noshowmode
 set fillchars+=stl:\ ,stlnc:\
 set encoding=utf-8
-set tags+=./tags,./vendor.tags
+set tags+=tags,vendor.tags
 
 " highlight conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -165,7 +166,12 @@ let g:syntastic_php_checkers=['php']
 let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore app/cache --ignore vendor -g ""'
 let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
+let g:ctrlp_extensions = ['funky']
 nnoremap <silent> <leader>b :CtrlPBuffer<cr>
+nnoremap <silent> <leader>t :CtrlPTag<cr>
+nnoremap <silent> <leader>q :CtrlPQuickfix<cr>
+nnoremap <silent> <leader>f :CtrlPFunky<cr>
+nnoremap <silent> <leader>l :CtrlPMRUFiles<cr>
 
 " Vdebug
 let g:vdebug_keymap = {
@@ -251,10 +257,14 @@ endfunction
 command! -nargs=1 Pm :call PHPMan("<args>")
 
 " Attempt at a symfony console
-function! SymfonyConsole(func)
-    execute ':!./app/console ' . a:func
+function! SymfonyConsole(...)
+    if a:0 > 0
+        execute ':!./app/console ' . a:1
+    else
+        execute ':!./app/console'
+    endif
 endfunction
-command! -nargs=1 Symfony :call SymfonyConsole("<args>")
+command! Symfony :call SymfonyConsole("<args>")
 
 function! MySQL() range
     echo system("mysql -t " . expand('%:r:r') . " -e " . shellescape(join(getline(a:firstline, a:lastline), "\n")))
