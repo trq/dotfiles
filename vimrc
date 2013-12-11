@@ -38,7 +38,8 @@ Bundle 'tpope/vim-obsession'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'troydm/pb.vim'
-Bundle 'Valloric/YouCompleteMe'
+" Removed, too fucking slow.
+"Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'vim-scripts/L9'
 
@@ -428,7 +429,7 @@ function! StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 " call the above function automatically when saving files of certain type.
-autocmd BufWritePre *.py,*.js,*.php,*.gpx,*.rb,*.tpl :call StripTrailingWhitespaces()
+" autocmd BufWritePre *.py,*.js,*.php,*.gpx,*.rb,*.tpl :call StripTrailingWhitespaces()
 
 " php code sniffer via :Rhpcs
 function! RunPhpcs()
