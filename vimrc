@@ -176,7 +176,7 @@ nnoremap <silent> <leader>b :CtrlPBuffer<cr>
 nnoremap <silent> <leader>t :CtrlPTag<cr>
 nnoremap <silent> <leader>q :CtrlPQuickfix<cr>
 nnoremap <silent> <leader>f :CtrlPFunky<cr>
-nnoremap <silent> <leader>l :CtrlPMRUFiles<cr>
+nnoremap <silent> <leader>r :CtrlPMRUFiles<cr>
 
 " Vdebug
 let g:vdebug_keymap = {
