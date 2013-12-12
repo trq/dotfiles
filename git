@@ -43,6 +43,7 @@
     unassume = update-index --no-assume-unchanged
     uncommit = reset --soft HEAD^
     unstage = reset HEAD
+    update-develop = !git fetch upstream && git merge --ff-only upstream/develop develop
     us = !git reset HEAD $1
     usa = !git reset HEAD $(git status | grep modified | awk '{print $3}')
     wc = !git whatchanged
