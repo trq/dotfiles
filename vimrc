@@ -10,6 +10,7 @@ Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'docteurklein/vim-symfony'
 Bundle 'edkolev/tmuxline.vim'
+Bundle 'estin/htmljinja'
 Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
 Bundle 'gregsexton/gitv'
@@ -167,6 +168,8 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore app/cache --ignore vendo
 let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
 let g:ctrlp_extensions = ['funky']
+let g:ctrlp_open_multiple_files = '1ijr'
+let g:ctrlp_use_caching = 1
 nnoremap <silent> <leader>b :CtrlPBuffer<cr>
 nnoremap <silent> <leader>t :CtrlPTag<cr>
 nnoremap <silent> <leader>q :CtrlPQuickfix<cr>
@@ -178,8 +181,8 @@ let g:vdebug_keymap = {
 \    "run" : "<Leader>/",
 \    "run_to_cursor" : "<Down>",
 \    "step_over" : "<Up>",
-\    "step_into" : "<Left>",
-\    "step_out" : "<Right>",
+\    "step_into" : "<Right>",
+\    "step_out" : "<Left>",
 \    "close" : "q",
 \    "detach" : "x",
 \    "set_breakpoint" : "<Leader>p",
