@@ -1,0 +1,14 @@
+airmail-beta
+alfred
+dash
+dropbox
+github
+google-chrome
+hipchat
+iterm2
+onepassword
+spotify
+spotifymenubar
+vagrant
+virtualbox
+viscosity
