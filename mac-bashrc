@@ -1,11 +1,9 @@
-# Append
-[ -d "$HOME/etc/dotfiles/bin" ] && PATH="$PATH:$HOME/etc/dotfiles/bin";
-[ -d "$HOME/.rvm/bin" ] && PATH="$PATH:$HOME/.rvm/bin";
-[ -d "/usr/local/mysql/bin" ] && PATH="$PATH:/usr/local/mysql/bin";
-[ -d "$HOME/.gem/ruby/1.8/bin" ] && PATH="$PATH:$HOME/.gem/ruby/1.8/bin";
-[ -d "/usr/local/share/npm/bin" ] && PATH=$PATH:/usr/local/share/npm/bin
-
 # Prepend
+[ -d "$HOME/etc/dotfiles/bin" ] && PATH="$HOME/etc/dotfiles/bin:$PATH";
+[ -d "$HOME/.rvm/bin" ] && PATH="$HOME/.rvm/bin:$PATH";
+[ -d "/usr/local/mysql/bin" ] && PATH="/usr/local/mysql/bin:$PATH";
+[ -d "$HOME/.gem/ruby/1.8/bin" ] && PATH="$HOME/.gem/ruby/1.8/bin:$PATH";
+[ -d "/usr/local/share/npm/bin" ] && PATH="/usr/local/share/npm/bin:$PATH"
 [ -d "/usr/local/bin" ] && PATH="/usr/local/bin:$PATH";
 [ -d "$HOME/.composer/vendor/bin" ] && PATH="$HOME/.composer/vendor/bin:$PATH"
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH";
@@ -14,6 +12,8 @@ export PATH
 
 EDITOR=/usr/local/bin/vim ; export EDITOR
 TERM="screen-256color" ; export TERM
+
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 HISTCONTROL=erasedups:ignoredups
 HISTSIZE=10000
