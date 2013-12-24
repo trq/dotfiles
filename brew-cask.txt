@@ -6,6 +6,7 @@ github
 google-chrome
 hipchat
 iterm2
+mplayerx
 onepassword
 spotify
 spotifymenubar

@@ -8,12 +8,8 @@ grep
 hub
 irssi
 json-c
-node
+par
 phantomjs
-php55
-php55-intl
-php55-mcrypt
-php55-xdebug
 sqlite
 the_silver_searcher
 tmux
