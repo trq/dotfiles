@@ -2,6 +2,7 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 Bundle 'arnaud-lb/vim-php-namespace'
+Bundle 'austintaylor/vim-commaobject'
 Bundle 'beberlei/vim-php-refactor'
 Bundle 'benmills/vimux'
 Bundle 'bling/vim-airline'
@@ -27,6 +28,7 @@ Bundle 'rking/ag.vim'
 Bundle 'rodjek/vim-puppet'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
+Bundle 'SirVer/ultisnips'
 Bundle 'sjl/clam.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'tacahiroy/ctrlp-funky'
@@ -40,10 +42,12 @@ Bundle 'tpope/vim-obsession'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'troydm/pb.vim'
-" Removed, too fucking slow.
 "Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-scripts/bufexplorer.zip'
+Bundle 'vim-scripts/camelcasemotion'
 Bundle 'vim-scripts/L9'
+Bundle 'xolox/vim-easytags'
+Bundle 'xolox/vim-misc'
 
 set cindent
 set smartindent
@@ -144,8 +148,28 @@ nnoremap <leader>s vip!sort -f<CR><Esc>
 "Buffer line
 let g:bufferline_echo = 0
 
+" Camalcase Motion
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+sunmap w
+sunmap b
+sunmap e
+
+" make the TCOmment toggle <leader>c
+map <leader>c gcc
+
+" Easytags
+:let g:easytags_dynamic_files = 1
+
 " Nerdtree
 nnoremap <leader>- :NERDTreeToggle<CR>
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger = "<leader>u"
+let g:UltiSnipsListSnippets = "<leader>ul"
+let g:UltiSnipsJumpForwardTrigger = "<leader>uf"
+let g:UltiSnipsJumpBackwardTrigger = "<leader>ub"
 
 " Tagbar
 nnoremap <silent> <leader>= :TagbarToggle<cr>
@@ -153,6 +177,21 @@ let g:tagbar_autofocus = 1
 let g:tagbar_left = 1
 let g:tagbar_compact = 1
 let g:tagbar_indent = 1
+
+" YouCompleteMe Settings
+let g:ycm_filetype_blacklist = {
+      \ 'markdown' : 1,
+      \ 'text' : 1,
+      \ 'gitcommit' : 1,
+      \}
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
+
+let g:ycm_complete_in_strings = 0
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_filetype_whitelist = { 'php': 1 }
+let g:ycm_seed_identifiers_with_syntax = 1
 
 " Highlight whitespace.
 highlight ExtraWhitespace ctermbg=96
@@ -211,6 +250,13 @@ let g:vdebug_options = {
 \    "continuous_mode"  : 1
 \}
 
+" Make j/k move to next visual line instead of physical line
+" " http://yubinkim.com/?p=6
+nnoremap k gk
+nnoremap j gj
+nnoremap gk k
+nnoremap gj j
+
 " Wildmenu
 if has("wildmenu")
     set wildignore+=*.a,*.o,*.tbz,*.selfbk
@@ -241,10 +287,10 @@ vnoremap <silent> <leader>2 :Tabularize /=><cr>
 inoremap jk <esc>
 
 " https://github.com/arnaud-lb/vim-php-namespace
-inoremap <Leader>u <c-o>:call PhpInsertUse()<cr>
-noremap <Leader>u :call PhpInsertUse()<cr>
-inoremap <Leader>q <c-o>:call PhpExpandClass()<cr>
-noremap <Leader>q :call PhpExpandClass()<cr>
+inoremap <Leader>ns <c-o>:call PhpInsertUse()<cr>
+noremap <Leader>ns :call PhpInsertUse()<cr>
+inoremap <Leader>ex <c-o>:call PhpExpandClass()<cr>
+noremap <Leader>ex :call PhpExpandClass()<cr>
 
 " sudo write
 noremap <leader>W :w !sudo tee %<CR>

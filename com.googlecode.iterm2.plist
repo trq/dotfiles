@@ -715,12 +715,8 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
-	<key>NSFontPanelPreviewHeight</key>
-	<real>0.0</real>
 	<key>NSNavLastRootDirectory</key>
 	<string>~/etc/dotfiles</string>
-	<key>NSNavPanelExpandedStateForSaveMode</key>
-	<true/>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -738,24 +734,16 @@
 		BAtzdHJlYW10eXBlZIHoA4QBQISEhAhOU1N0cmluZwGEhAhOU09iamVjdACF
 		hAErATGG
 		</data>
-		<string>302</string>
+		<string>198</string>
 	</array>
 	<key>NSTableView Hidden Columns KeyBingingTable</key>
 	<array/>
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
-	<key>NSWindow Frame NSColorPanel</key>
-	<string>422 313 201 309 0 0 1280 778 </string>
-	<key>NSWindow Frame NSFontPanel</key>
-	<string>216 210 779 308 0 0 1680 1028 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>261 175 924 485 0 0 1280 778 </string>
+	<string>269 162 605 485 0 0 1280 800 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1680 1050 0 0 1680 1028 </string>
-	<key>NSWindow Frame iTerm Window 1</key>
-	<string>271 195 1138 642 0 0 1680 1028 </string>
-	<key>NSWindow Frame iTerm Window 2</key>
-	<string>332 209 730 446 0 0 1280 778 </string>
+	<string>0 0 1280 800 0 0 1280 778 </string>
 	<key>NeverWarnAboutShortLivedSessions_3B96347D-FAF6-4BED-9332-267485D9DAAC</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -918,11 +906,11 @@
 			<key>Background Color</key>
 			<dict>
 				<key>Blue Component</key>
-				<real>0.074165724217891693</real>
+				<real>0.10051459074020386</real>
 				<key>Green Component</key>
-				<real>0.074165724217891693</real>
+				<real>0.10051288455724716</real>
 				<key>Red Component</key>
-				<real>0.074165724217891693</real>
+				<real>0.10051589459180832</real>
 			</dict>
 			<key>Background Image Is Tiled</key>
 			<false/>
@@ -974,7 +962,7 @@
 				<real>0.76960963010787964</real>
 			</dict>
 			<key>Cursor Type</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>Custom Command</key>
 			<string>No</string>
 			<key>Custom Directory</key>
@@ -1311,7 +1299,7 @@
 			<key>Non-ASCII Anti Aliased</key>
 			<true/>
 			<key>Normal Font</key>
-			<string>MesloLGSDZ-RegularForPowerline 10</string>
+			<string>MesloLGLDZ-RegularForPowerline 10</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
 			<key>Prompt Before Closing 2</key>
@@ -1477,7 +1465,7 @@
 			<key>Use Italic Font</key>
 			<false/>
 			<key>Vertical Spacing</key>
-			<real>1.0809094905853271</real>
+			<real>1.0720808506011963</real>
 			<key>Visual Bell</key>
 			<false/>
 			<key>Window Type</key>
@@ -2261,7 +2249,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/thorpe/etc/dotfiles</string>
+	<string>/Users/trq/etc/dotfiles</string>
 	<key>PromptOnClose</key>
 	<true/>
 	<key>PromptOnQuit</key>
@@ -2281,9 +2269,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2013-12-11T21:14:45Z</date>
-	<key>SUSkippedVersion</key>
-	<string>1.0.0.20131124</string>
+	<date>2013-12-25T05:59:25Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
@@ -2329,6 +2315,6 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>1.0.0.20131116</string>
+	<string>1.0.0.20130622</string>
 </dict>
 </plist>

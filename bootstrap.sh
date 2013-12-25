@@ -80,7 +80,7 @@ php.install() {
     brew.util.install.brew php55-mcrypt
     brew.util.install.brew php55-xdebug
 
-    curl -sS https://getcomposer.org/installer | php -- --install-dir=bin
+    curl -sS https://getcomposer.org/installer | php -- --install-dir=~/bin
 
     # Currently broken due to requiring minimum stability of dev.
     #composer global require 'rhumsaa/jenkins-php=~1.2

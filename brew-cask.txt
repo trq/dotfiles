@@ -9,7 +9,6 @@ iterm2
 mplayerx
 onepassword
 spotify
-spotifymenubar
 vagrant
 virtualbox
 viscosity
