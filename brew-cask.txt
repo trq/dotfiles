@@ -2,7 +2,6 @@ airmail-beta
 alfred
 dash
 dropbox
-github
 google-chrome
 hipchat
 iterm2
