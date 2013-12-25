@@ -741,9 +741,9 @@
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>269 162 605 485 0 0 1280 800 </string>
+	<string>269 151 605 485 0 0 1280 778 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 0 1280 800 0 0 1280 778 </string>
+	<string>70 132 906 530 0 0 1280 778 </string>
 	<key>NeverWarnAboutShortLivedSessions_3B96347D-FAF6-4BED-9332-267485D9DAAC</key>
 	<true/>
 	<key>New Bookmarks</key>
@@ -940,7 +940,7 @@
 			<key>Close Sessions On End</key>
 			<true/>
 			<key>Columns</key>
-			<integer>188</integer>
+			<integer>128</integer>
 			<key>Command</key>
 			<string></string>
 			<key>Cursor Color</key>
@@ -1307,9 +1307,9 @@
 			<key>Right Option Key Sends</key>
 			<integer>0</integer>
 			<key>Rows</key>
-			<integer>44</integer>
+			<integer>28</integer>
 			<key>Screen</key>
-			<integer>0</integer>
+			<integer>-1</integer>
 			<key>Scrollback Lines</key>
 			<integer>0</integer>
 			<key>Scrollback With Status Bar</key>
@@ -1469,7 +1469,7 @@
 			<key>Visual Bell</key>
 			<false/>
 			<key>Window Type</key>
-			<integer>1</integer>
+			<integer>0</integer>
 			<key>Working Directory</key>
 			<string>/Users/thorpe</string>
 		</dict>
