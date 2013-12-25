@@ -6,3 +6,5 @@
     email = trq@thorpesystems.com
 [include]
     path = ~/etc/dotfiles/git
+[push]
+	default = simple
