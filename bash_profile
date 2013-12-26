@@ -5,3 +5,7 @@
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+if [ -f "/opt/boxen/env.sh" ] ; then
+    source /opt/boxen/env.sh
+fi
