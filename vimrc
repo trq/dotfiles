@@ -48,6 +48,7 @@ Bundle 'vim-scripts/camelcasemotion'
 Bundle 'vim-scripts/L9'
 Bundle 'xolox/vim-easytags'
 Bundle 'xolox/vim-misc'
+Bundle 'tpope/vim-vinegar'
 
 set cindent
 set smartindent

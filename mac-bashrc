@@ -10,10 +10,8 @@
 
 export PATH
 
-EDITOR=/usr/local/bin/vim ; export EDITOR
+EDITOR=/opt/boxen/homebrew/bin/vim ; export EDITOR
 TERM="screen-256color" ; export TERM
-
-export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
 HISTCONTROL=erasedups:ignoredups
 HISTSIZE=10000
@@ -55,3 +53,6 @@ fi
 if [ -f ~/.bashrc.local ] ;then
     source ~/.bashrc.local
 fi
+
+# source boxen stuff.
+source /opt/boxen/env.sh
