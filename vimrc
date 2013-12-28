@@ -337,8 +337,19 @@ setlocal spelllang=en_au
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
 if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+  au BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g'\"" |
+    \ endif
 endif
+
+augroup gitCommitEditMsg
+  autocmd!
+  autocmd BufReadPost *
+    \ if @% == '.git/COMMIT_EDITMSG' |
+    \   exe "normal gg" |
+    \ endif
+augroup END
 
 " Uncomment the following to have Vim load indentation rules and plugins
 " according to the detected filetype.
