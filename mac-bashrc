@@ -43,6 +43,7 @@ done
 alias ll="ls -lG"
 alias ls="ls -G"
 alias all="ls -la"
+alias agnojs="ag --ignore='*.js'"
 
 if command -v brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion

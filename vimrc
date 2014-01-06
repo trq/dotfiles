@@ -408,7 +408,6 @@ if hostname() == 'dev'
     " proem
     autocmd BufEnter $HOME/src/proem/lib/Proem/*.php 0r $HOME/.vim-templates/proem.class.php
     autocmd BufEnter $HOME/src/proem/tests/Proem/*.php 0r $HOME/.vim-templates/proem.test.php
-
 endif
 
 au BufRead,BufNewFile Vagrantfile let is_ruby=1|setfiletype ruby
@@ -492,7 +491,7 @@ function! StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 " call the above function automatically when saving files of certain type.
-" autocmd BufWritePre *.py,*.js,*.php,*.gpx,*.rb,*.tpl :call StripTrailingWhitespaces()
+autocmd BufWritePre *.py,*.js,*.php,*.gpx,*.rb,*.tpl :call StripTrailingWhitespaces()
 
 " php code sniffer via :Rhpcs
 function! RunPhpcs()

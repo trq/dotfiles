@@ -1,12 +1,14 @@
 project_name: mlf
-project_root: ~/src/sites/mlf
+project_root: /Volumes/Sites/mylocalfoodie
 socket_path: /tmp/tmux-mlf
 windows:
-  - editor: vim
-  - console: bash ~/etc/dotfiles/bin/symfony
-  - shell:
+  - editor:
       layout: fbd5,181x55,0,0[181x45,0,0,0,181x9,0,46,1]
       panes:
+        - vim
         -
-        - guard
-  - logs: tail -f app/logs/dev.log
+  - shell:
+      layout: even-vertical
+      panes:
+        -
+        -
