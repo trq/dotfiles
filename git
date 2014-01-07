@@ -8,6 +8,7 @@
     ci = commit --verbose
     cia = commit --verbose -a
     ciaa = commit --verbose -a --amend 
+    ciaap = !git commit --verbose -a --amend && git push
     co = checkout
     conflicts = !git ls-files -u | cut -f 2 | sort -u
     current-branch = rev-parse --abbrev-ref HEAD
@@ -32,6 +33,7 @@
     owc = !vim `git whatchanged -n1 | grep ^: | awk '{print $NF}'`
     po = push origin
     poc = !git push origin `git current-branch`
+    pocf = !git push -f origin `git current-branch`
     pu = push upstream
     puc = !git push upstream `git current-branch`
     pull = pull --ff-only
