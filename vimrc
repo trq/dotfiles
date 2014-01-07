@@ -50,6 +50,10 @@ Bundle 'vim-scripts/camelcasemotion'
 Bundle 'vim-scripts/L9'
 Bundle 'xolox/vim-easytags'
 Bundle 'xolox/vim-misc'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
+Bundle 'rizzatti/funcoo.vim'
+Bundle 'rizzatti/dash.vim'
 
 set cindent
 set smartindent
