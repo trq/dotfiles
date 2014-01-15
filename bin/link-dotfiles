@@ -16,6 +16,7 @@ _link() {
         mv ${d} ~/.dotfile-bkps/${bkp}-${date}
     fi
 
+    #echo "$s $d"
     ln -sF ${s} ${d}
 }
 
@@ -33,7 +34,7 @@ link_by_fact() {
 }
 
 link_most() {
-    for dotfile in $(find ~/etc/dotfiles -name *.symlink) ; do
+    for dotfile in $(find ~/etc/dotfiles -depth 1 -name *.symlink) ; do
         link=${dotfile#*etc/dotfiles/}
         link=".${link%*.symlink}"
 
