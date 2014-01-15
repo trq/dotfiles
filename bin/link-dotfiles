@@ -1,0 +1,51 @@
+#!/usr/bin/env bash
+
+date=$(date "+%Y-%m-%d-%H:%M:%S")
+
+cd ~/
+
+_link() {
+    s="$1"
+    d="$2"
+    if [ -a "${d}" ] && ! [ -h "${d}" ] ; then
+        if ! [ -d ~/.dotfile-bkps ] ; then
+            mkdir ~/.dotfile-bkps
+        fi
+
+        bkp=${d#*.}
+        mv ${d} ~/.dotfile-bkps/${bkp}-${date}
+    fi
+
+    ln -sF ${s} ${d}
+}
+
+link_by_fact() {
+    # Try to resolve by uname
+    uname=$(uname)
+    for param in "$@" ; do
+        if [ -a ~/etc/dotfiles/${uname}-${param} ] ; then
+            _link ~/etc/dotfiles/${uname}-${param} ".${param}"
+        fi
+    done
+
+    # Here we can eventually resolve Debian/Funtoo
+    # stuff based on some facts.
+}
+
+link_most() {
+    for dotfile in $(find ~/etc/dotfiles -name *.symlink) ; do
+        link=${dotfile#*etc/dotfiles/}
+        link=".${link%*.symlink}"
+
+        _link "${dotfile}" "${link}"
+    done
+}
+
+main() {
+    link_most
+
+    # Excpetions to the rule.
+    link_by_fact bashrc gitconfig
+}
+
+main
