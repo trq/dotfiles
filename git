@@ -31,8 +31,8 @@
     omn = !vim `git st | egrep -w 'modified:|new file:' | awk '{print $NF}'`
     ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
     owc = !vim `git whatchanged -n1 | grep ^: | awk '{print $NF}'`
-    prd = !git pull-request -b develop -h `git current-branch`
-    prm = !git pull-request -b master -h `git current-branch`
+    prd = !hub pull-request -b develop -h `git current-branch`
+    prm = !hub pull-request -b master -h `git current-branch`
     po = push origin
     poc = !git push origin `git current-branch`
     pocf = !git push -f origin `git current-branch`
