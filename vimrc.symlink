@@ -1,8 +1,9 @@
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+"Bundle 'file:///Users/trq/src/vim-symfony'
+"Bundle 'file:///Users/trq/src/vimsym'
 "Bundle 'Valloric/YouCompleteMe'
-Bundle "joonty/vim-phpunitqf"
 Bundle 'arnaud-lb/vim-php-namespace'
 Bundle 'austintaylor/vim-commaobject'
 Bundle 'beberlei/vim-php-refactor'
@@ -11,33 +12,22 @@ Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'coderifous/textobj-word-column.vim'
-Bundle 'docteurklein/vim-symfony'
 Bundle 'edkolev/tmuxline.vim'
 Bundle 'estin/htmljinja'
-Bundle 'file:///Users/trq/src/vim-symfony'
-Bundle 'file:///Users/trq/src/vimsym'
 Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
 Bundle 'google/maktaba'
-Bundle 'gregsexton/gitv'
-Bundle 'groenewege/vim-less'
 Bundle 'joonty/vdebug.git'
-Bundle 'justinmk/vim-sneak'
+Bundle "joonty/vim-phpunitqf"
 Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'mattn/emmet-vim'
 Bundle 'mhinz/vim-signify'
 Bundle 'mhinz/vim-startify'
-Bundle 'msanders/snipmate.vim'
-Bundle 'rizzatti/dash.vim'
-Bundle 'rizzatti/dash.vim'
-Bundle 'rizzatti/funcoo.vim'
-Bundle 'rizzatti/funcoo.vim'
 Bundle 'rking/ag.vim'
 Bundle 'rodjek/vim-puppet'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
-Bundle 'SirVer/ultisnips'
 Bundle 'sjl/clam.vim'
 Bundle 'sjl/gundo.vim'
 Bundle 'tacahiroy/ctrlp-funky'
@@ -55,7 +45,6 @@ Bundle 'troydm/pb.vim'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'vim-scripts/camelcasemotion'
 Bundle 'vim-scripts/L9'
-Bundle 'xolox/vim-easytags'
 Bundle 'xolox/vim-misc'
 
 set cindent
@@ -132,7 +121,7 @@ let g:airline_powerline_fonts                 = 1
 let g:airline_theme                           = 'powerlineish'
 let g:airline_enable_branch                   = 1
 let g:bufferline_echo                         = 0
-let g:airline_enable_syntastic                = 1
+let g:airliane_enable_syntastic               = 0
 let g:airline_left_sep                        = '⮀'
 let g:airline_left_alt_sep                    = '⮁'
 let g:airline_right_sep                       = '⮂'
@@ -168,17 +157,8 @@ sunmap e
 " make the TCOmment toggle <leader>c
 map <leader>c gcc
 
-" Easytags
-:let g:easytags_dynamic_files = 1
-
 " Nerdtree
 nnoremap <leader>- :NERDTreeToggle<CR>
-
-" Ultisnips
-let g:UltiSnipsExpandTrigger = "<leader>u"
-let g:UltiSnipsListSnippets = "<leader>ul"
-let g:UltiSnipsJumpForwardTrigger = "<leader>uf"
-let g:UltiSnipsJumpBackwardTrigger = "<leader>ub"
 
 " Tagbar
 nnoremap <silent> <leader>= :TagbarToggle<cr>
