@@ -1,6 +1,6 @@
 [alias]
     ai = add -i
-    alias = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ => \\2/' | sort
+    aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ => \\2/' | sort
     ap = add -p
     assume   = update-index --assume-unchanged
     assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
