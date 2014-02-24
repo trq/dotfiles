@@ -2,6 +2,9 @@
 
 date=$(date "+%Y-%m-%d-%H:%M:%S")
 
+# Exceptions to the auto linking rules.
+exceptions="bashrc gitconfig"
+
 cd ~/
 
 _link() {
@@ -21,16 +24,21 @@ _link() {
 }
 
 link_by_fact() {
-    # Try to resolve by uname
+    sysname=
+    # Link stuff based on specific system facts.
+    if uname -a | grep "Tonys-iMac" > /dev/null 2>&1 ; then
+        sysname=Newism
+    fi
     uname=$(uname)
+
     for param in "$@" ; do
-        if [ -a ~/etc/dotfiles/${uname}-${param} ] ; then
+        if [ -a ~/etc/dotfiles/${sysname}-${param} ] ; then
+            echo "_link ~/etc/dotfiles/${sysname}-${param} .${param}"
+            _link ~/etc/dotfiles/${sysname}-${param} ".${param}"
+        elif [ -a ~/etc/dotfiles/${uname}-${param} ] ; then
             _link ~/etc/dotfiles/${uname}-${param} ".${param}"
         fi
     done
-
-    # Here we can eventually resolve Debian/Funtoo
-    # stuff based on some facts.
 }
 
 link_most() {
@@ -45,8 +53,8 @@ link_most() {
 main() {
     link_most
 
-    # Excpetions to the rule.
-    link_by_fact bashrc gitconfig
+    # Excpetions to the "*symlink" rule.
+    link_by_fact $exceptions
 }
 
 main

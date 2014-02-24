@@ -1,8 +1,6 @@
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-"Bundle 'file:///Users/trq/src/vim-symfony'
-"Bundle 'file:///Users/trq/src/vimsym'
 "Bundle 'Valloric/YouCompleteMe'
 Bundle 'arnaud-lb/vim-php-namespace'
 Bundle 'austintaylor/vim-commaobject'
@@ -12,24 +10,33 @@ Bundle 'bling/vim-airline'
 Bundle 'bling/vim-bufferline'
 Bundle 'christoomey/vim-tmux-navigator'
 Bundle 'coderifous/textobj-word-column.vim'
+Bundle 'docteurklein/vim-symfony'
 Bundle 'edkolev/tmuxline.vim'
 Bundle 'estin/htmljinja'
 Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
 Bundle 'google/maktaba'
+Bundle 'gregsexton/gitv'
+Bundle 'groenewege/vim-less'
 Bundle 'joonty/vdebug.git'
-Bundle "joonty/vim-phpunitqf"
+Bundle 'joonty/vim-phpunitqf'
+Bundle 'justinmk/vim-sneak'
 Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'mattn/emmet-vim'
 Bundle 'mhinz/vim-signify'
 Bundle 'mhinz/vim-startify'
+Bundle 'msanders/snipmate.vim'
+Bundle 'rizzatti/dash.vim'
+Bundle 'rizzatti/funcoo.vim'
 Bundle 'rking/ag.vim'
 Bundle 'rodjek/vim-puppet'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
+Bundle 'SirVer/ultisnips'
 Bundle 'sjl/clam.vim'
 Bundle 'sjl/gundo.vim'
+Bundle 'stephpy/vim-yaml'
 Bundle 'tacahiroy/ctrlp-funky'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-abolish'
@@ -76,7 +83,7 @@ set foldmethod=marker
 set number
 set nocompatible
 set nottybuiltin term=$TERM
-set formatprg=par\ -w80
+set formatprg=par-format\ -w80
 set wmh=0
 set term=xterm-256color
 "set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
@@ -121,7 +128,7 @@ let g:airline_powerline_fonts                 = 1
 let g:airline_theme                           = 'powerlineish'
 let g:airline_enable_branch                   = 1
 let g:bufferline_echo                         = 0
-let g:airliane_enable_syntastic               = 0
+let g:airline_enable_syntastic                = 1
 let g:airline_left_sep                        = '⮀'
 let g:airline_left_alt_sep                    = '⮁'
 let g:airline_right_sep                       = '⮂'
@@ -133,6 +140,9 @@ let g:airline_symbols.linenr                  = '⭡'
 let g:airline#extensions#bufferline#enabled   = 0
 let g:airline#extensions#ctrlp#color_template = 'normal'
 let g:airline#extensions#tmuxline#enabled     = 0
+
+" Startify
+let g:startify_change_to_dir = 0
 
 " Yggdroot/indentLine
 "set list lcs=tab:\|\
@@ -147,18 +157,40 @@ nnoremap <leader>s vip!sort -f<CR><Esc>
 let g:bufferline_echo = 0
 
 " Camalcase Motion
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
+map <silent>w <Plug>CamelCaseMotion_w
+map <silent>b <Plug>CamelCaseMotion_b
+map <silent>e <Plug>CamelCaseMotion_e
 sunmap w
 sunmap b
 sunmap e
 
+" See https://github.com/bkad/CamelCaseMotion/issues/10
+" omap iw <Plug>CamelCaseMotion_iw 
+" xmap iw <Plug>CamelCaseMotion_iw 
+" omap ib <Plug>CamelCaseMotion_ib 
+" xmap ib <Plug>CamelCaseMotion_ib 
+" omap ie <Plug>CamelCaseMotion_ie 
+" xmap ie <Plug>CamelCaseMotion_ie
+" nmap c,w c,e
+" nmap ciw cie
+"nmap ci,w ci,e
+
+map <silent>gf <c-w>f
+
 " make the TCOmment toggle <leader>c
 map <leader>c gcc
 
+" Easytags
+:let g:easytags_dynamic_files = 1
+
 " Nerdtree
 nnoremap <leader>- :NERDTreeToggle<CR>
+
+" Ultisnips
+let g:UltiSnipsExpandTrigger = "<leader>u"
+let g:UltiSnipsListSnippets = "<leader>ul"
+let g:UltiSnipsJumpForwardTrigger = "<leader>uf"
+let g:UltiSnipsJumpBackwardTrigger = "<leader>ub"
 
 " Tagbar
 nnoremap <silent> <leader>= :TagbarToggle<cr>
@@ -168,19 +200,19 @@ let g:tagbar_compact = 1
 let g:tagbar_indent = 1
 
 " YouCompleteMe Settings
-" let g:ycm_filetype_blacklist = {
-"       \ 'markdown' : 1,
-"       \ 'text' : 1,
-"       \ 'gitcommit' : 1,
-"       \}
-" set completeopt-=preview
-" let g:ycm_add_preview_to_completeopt = 0
+let g:ycm_filetype_blacklist = {
+      \ 'markdown' : 1,
+      \ 'text' : 1,
+      \ 'gitcommit' : 1,
+      \}
+set completeopt-=preview
+let g:ycm_add_preview_to_completeopt = 0
 
-" let g:ycm_complete_in_strings = 0
-" let g:ycm_collect_identifiers_from_comments_and_strings = 1
-" let g:ycm_collect_identifiers_from_tags_files = 1
-" let g:ycm_filetype_whitelist = { 'php': 1 }
-" let g:ycm_seed_identifiers_with_syntax = 1
+let g:ycm_complete_in_strings = 0
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_filetype_whitelist = { 'php': 1 }
+let g:ycm_seed_identifiers_with_syntax = 1
 
 " Highlight whitespace.
 highlight ExtraWhitespace ctermbg=96
@@ -192,6 +224,7 @@ autocmd BufWinLeave * call clearmatches()
 
 " 'php', 'phpcs', 'phpmd'
 let g:syntastic_php_checkers=['php']
+let g:syntastic_disabled_filetypes=['yaml']
 
 "ctrlp
 let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore app/cache --ignore vendor -g ""'
@@ -205,6 +238,12 @@ nnoremap <silent> <leader>t :CtrlPTag<cr>
 nnoremap <silent> <leader>q :CtrlPQuickfix<cr>
 nnoremap <silent> <leader>f :CtrlPFunky<cr>
 nnoremap <silent> <leader>r :CtrlPMRUFiles<cr>
+
+" map ctrl-] to g<c-]> and vs verse
+nnoremap <c-]> g<c-]>
+vnoremap <c-]> g<c-]>
+nnoremap g<c-]> <c-]>
+vnoremap g<c-]> <c-]>
 
 " Vdebug
 let g:vdebug_keymap = {
@@ -273,7 +312,7 @@ nnoremap <silent> <leader>1 :Tabularize /=<cr>
 nnoremap <silent> <leader>2 :Tabularize /=><cr>
 vnoremap <silent> <leader>1 :Tabularize /=<cr>
 vnoremap <silent> <leader>2 :Tabularize /=><cr>
-inoremap jj <esc>
+inoremap jk <esc>
 
 " https://github.com/arnaud-lb/vim-php-namespace
 inoremap <Leader>ns <c-o>:call PhpInsertUse()<cr>
@@ -295,6 +334,16 @@ function! PHPMan(func)
     execute ':!php --rf ' . a:func
 endfunction
 command! -nargs=1 Pm :call PHPMan("<args>")
+
+" Attempt at a symfony console
+function! SymfonyConsole(...)
+    if a:0 > 0
+        execute ':!./app/console ' . a:1
+    else
+        execute ':!./app/console'
+    endif
+endfunction
+command! Symfony :call SymfonyConsole("<args>")
 
 function! MySQL() range
     echo system("mysql -t " . expand('%:r:r') . " -e " . shellescape(join(getline(a:firstline, a:lastline), "\n")))
@@ -343,14 +392,14 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
-" augroup chmodandshebang
-"     autocmd!
-"     autocmd BufWritePost ~/bin/*,*.sh,*.pl,*.rb,*.py :exe "silent !chmod 700 <afile>" | silent :w!
-"     autocmd BufEnter *.sh if getline(1) == "" | :call setline(1, "#!/usr/bin/env bash") | endif
-"     autocmd BufEnter *.pl if getline(1) == "" | :call setline(1, "#!/usr/bin/env perl") | endif
-"     autocmd BufEnter *.rb if getline(1) == "" | :call setline(1, "#!/usr/bin/env ruby") | endif
-"     autocmd BufEnter *.py if getline(1) == "" | :call setline(1, "#!/usr/bin/env python") | endif
-" augroup END
+augroup chmodandshebang
+    autocmd!
+    autocmd BufWritePost ~/bin/*,*.sh,*.pl,*.rb,*.py :exe "silent !chmod 700 <afile>" | silent :w!
+    autocmd BufEnter *.sh if getline(1) == "" | :call setline(1, "#!/usr/bin/env bash") | endif
+    autocmd BufEnter *.pl if getline(1) == "" | :call setline(1, "#!/usr/bin/env perl") | endif
+    autocmd BufEnter *.pb if getline(1) == "" | :call setline(1, "#!/usr/bin/env ruby") | endif
+    autocmd BufEnter *.py if getline(1) == "" | :call setline(1, "#!/usr/bin/env python") | endif
+augroup END
 
 " Turn on spell checking when writting a GIT commit.
 autocmd FileType gitcommit set spell
@@ -366,10 +415,10 @@ if has("autocmd")
   au BufRead,BufNewFile *.json setfiletype=json syntax=javascript
   au BufRead,BufNewFile *.less setfiletype=css syntax=css
 
-  autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType html setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType css setlocal ts=2 sts=2 sw=2 expandtab
-  autocmd FileType javascript setlocal ts=2 sts=2 sw=2 expandtab
+  autocmd FileType yaml setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType html setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType css setlocal ts=4 sts=4 sw=4 expandtab
+  autocmd FileType javascript setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType python setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType ruby setlocal ts=4 sts=4 sw=4 expandtab
   autocmd FileType bash setlocal ts=4 sts=4 sw=4 expandtab
@@ -385,7 +434,6 @@ if hostname() == 'dev'
     " proem
     autocmd BufEnter $HOME/src/proem/lib/Proem/*.php 0r $HOME/.vim-templates/proem.class.php
     autocmd BufEnter $HOME/src/proem/tests/Proem/*.php 0r $HOME/.vim-templates/proem.test.php
-
 endif
 
 au BufRead,BufNewFile Vagrantfile let is_ruby=1|setfiletype ruby
@@ -469,7 +517,7 @@ function! StripTrailingWhitespaces()
     call cursor(l, c)
 endfunction
 " call the above function automatically when saving files of certain type.
-" autocmd BufWritePre *.py,*.js,*.php,*.gpx,*.rb,*.tpl :call StripTrailingWhitespaces()
+autocmd BufWritePre *.py,*.js,*.php,*.gpx,*.rb,*.tpl :call StripTrailingWhitespaces()
 
 " php code sniffer via :Rhpcs
 function! RunPhpcs()

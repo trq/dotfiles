@@ -12,7 +12,12 @@
 
 export PATH
 
-EDITOR=/opt/boxen/homebrew/bin/vim ; export EDITOR
+if [ -f /opt/boxen/homebrew/bin/vim ] ; then
+    EDITOR=/opt/boxen/homebrew/bin/vim
+else
+    EDITOR=/usr/local/bin/vim
+fi
+export EDITOR
 TERM="screen-256color" ; export TERM
 
 HISTCONTROL=erasedups:ignoredups
@@ -45,6 +50,7 @@ done
 alias ll="ls -lG"
 alias ls="ls -G"
 alias all="ls -la"
+alias agnojs="ag --ignore='*.js'"
 
 if command -v brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
@@ -57,4 +63,6 @@ if [ -f ~/.bashrc.local ] ;then
 fi
 
 # source boxen stuff.
-source /opt/boxen/env.sh
+if [ -f /opt/boxen/env.sh ] ; then
+    source /opt/boxen/env.sh
+fi

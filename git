@@ -8,11 +8,13 @@
     ci = commit --verbose
     cia = commit --verbose -a
     ciaa = commit --verbose -a --amend 
+    ciaap = !git commit --verbose -a --amend && git push
     co = checkout
     conflicts = !git ls-files -u | cut -f 2 | sort -u
     current-branch = rev-parse --abbrev-ref HEAD
     d = diff
     dc = diff --cached
+    deploy = !bundle exec cap feature deploy
     fo = fetch origin
     fu = fetch upstream
     last = cat-file commit HEAD
@@ -21,6 +23,7 @@
     lgp = log --graph -p --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative
     ll = !git log --stat
     m = merge --no-ff
+    mff = merge --ff-only
     mo = !git merge --no-ff origin/`git current-branch`
     moff = !git merge --ff-only origin/`git current-branch`
     mu = !git merge --no-ff upstream/`git current-branch`
@@ -28,10 +31,14 @@
     nb = checkout -b
     om = !vim `git st | grep 'modified:' | awk '{print $NF}'`
     omn = !vim `git st | egrep -w 'modified:|new file:' | awk '{print $NF}'`
+    olc = !vim `git log --name-status HEAD^..HEAD | grep ^M | awk '{print $2}'`
     ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
     owc = !vim `git whatchanged -n1 | grep ^: | awk '{print $NF}'`
+    prd = !hub pull-request -b develop -h `git current-branch`
+    prm = !hub pull-request -b master -h `git current-branch`
     po = push origin
     poc = !git push origin `git current-branch`
+    pocf = !git push -f origin `git current-branch`
     pu = push upstream
     puc = !git push upstream `git current-branch`
     pull = pull --ff-only
