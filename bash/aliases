@@ -2,8 +2,6 @@ alias ZZ='exit'
 alias all="ls -la"
 alias all='ls -AlhiF --color'
 alias c='clear'
-alias git='hub'
-alias gitalias='/usr/local/bin/git alias'
 alias h='history | grep $1'
 alias ll="ls -lG"
 alias ll='ls -lhF --color'
@@ -20,3 +18,7 @@ alias serve="php -S 127.0.0.1:8080"
 alias sv='sudo vim'
 alias tree='tree -C'
 alias v='vim'
+
+if hub --version > /dev/null 2>&1 ; then
+    alias git='hub'
+fi
