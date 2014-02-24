@@ -141,6 +141,9 @@ let g:airline#extensions#bufferline#enabled   = 0
 let g:airline#extensions#ctrlp#color_template = 'normal'
 let g:airline#extensions#tmuxline#enabled     = 0
 
+" Startify
+let g:startify_change_to_dir = 0
+
 " Yggdroot/indentLine
 "set list lcs=tab:\|\
 "let g:indentLine_color_term=234
