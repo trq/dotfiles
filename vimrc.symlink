@@ -36,6 +36,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
 Bundle 'sjl/clam.vim'
 Bundle 'sjl/gundo.vim'
+Bundle 'stephpy/vim-yaml'
 Bundle 'tacahiroy/ctrlp-funky'
 Bundle 'terryma/vim-multiple-cursors'
 Bundle 'tpope/vim-abolish'
@@ -153,12 +154,25 @@ nnoremap <leader>s vip!sort -f<CR><Esc>
 let g:bufferline_echo = 0
 
 " Camalcase Motion
-map <silent> w <Plug>CamelCaseMotion_w
-map <silent> b <Plug>CamelCaseMotion_b
-map <silent> e <Plug>CamelCaseMotion_e
+map <silent>w <Plug>CamelCaseMotion_w
+map <silent>b <Plug>CamelCaseMotion_b
+map <silent>e <Plug>CamelCaseMotion_e
 sunmap w
 sunmap b
 sunmap e
+
+" See https://github.com/bkad/CamelCaseMotion/issues/10
+" omap iw <Plug>CamelCaseMotion_iw 
+" xmap iw <Plug>CamelCaseMotion_iw 
+" omap ib <Plug>CamelCaseMotion_ib 
+" xmap ib <Plug>CamelCaseMotion_ib 
+" omap ie <Plug>CamelCaseMotion_ie 
+" xmap ie <Plug>CamelCaseMotion_ie
+" nmap c,w c,e
+" nmap ciw cie
+"nmap ci,w ci,e
+
+map <silent>gf <c-w>f
 
 " make the TCOmment toggle <leader>c
 map <leader>c gcc
@@ -207,6 +221,7 @@ autocmd BufWinLeave * call clearmatches()
 
 " 'php', 'phpcs', 'phpmd'
 let g:syntastic_php_checkers=['php']
+let g:syntastic_disabled_filetypes=['yaml']
 
 "ctrlp
 let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore app/cache --ignore vendor -g ""'
@@ -220,6 +235,12 @@ nnoremap <silent> <leader>t :CtrlPTag<cr>
 nnoremap <silent> <leader>q :CtrlPQuickfix<cr>
 nnoremap <silent> <leader>f :CtrlPFunky<cr>
 nnoremap <silent> <leader>r :CtrlPMRUFiles<cr>
+
+" map ctrl-] to g<c-]> and vs verse
+nnoremap <c-]> g<c-]>
+vnoremap <c-]> g<c-]>
+nnoremap g<c-]> <c-]>
+vnoremap g<c-]> <c-]>
 
 " Vdebug
 let g:vdebug_keymap = {

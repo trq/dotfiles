@@ -23,6 +23,7 @@
     lgp = log --graph -p --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative
     ll = !git log --stat
     m = merge --no-ff
+    mff = merge --ff-only
     mo = !git merge --no-ff origin/`git current-branch`
     moff = !git merge --ff-only origin/`git current-branch`
     mu = !git merge --no-ff upstream/`git current-branch`
@@ -30,6 +31,7 @@
     nb = checkout -b
     om = !vim `git st | grep 'modified:' | awk '{print $NF}'`
     omn = !vim `git st | egrep -w 'modified:|new file:' | awk '{print $NF}'`
+    olc = !vim `git log --name-status HEAD^..HEAD | grep ^M | awk '{print $2}'`
     ours   = "!f() { git checkout --ours $@ && git add $@; }; f"
     owc = !vim `git whatchanged -n1 | grep ^: | awk '{print $NF}'`
     prd = !hub pull-request -b develop -h `git current-branch`
