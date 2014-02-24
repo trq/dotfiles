@@ -1,0 +1,10 @@
+[user]
+    name = Tony Quilkey
+    email = tony.quilkey@newism.com.au
+[github]
+    user = Tony R Quilkey
+    email = trq@thorpesystems.com
+[include]
+    path = ~/etc/dotfiles/git
+[push]
+	default = simple
