@@ -24,7 +24,7 @@ let g:colors_name="molokai_custom"
 if exists("g:molokai_original")
     let s:molokai_original = g:molokai_original
 else
-    let s:molokai_original = 0
+    let s:molokai_original = 1
 endif
 
 
