@@ -10,7 +10,10 @@
     ciaa = commit --verbose -a --amend 
     ciaap = !git commit --verbose -a --amend && git push
     co = checkout
+    com = checkout master
+    cod = checkout develop
     conflicts = !git ls-files -u | cut -f 2 | sort -u
+    cpr = !git cia && git poc && git prm
     current-branch = rev-parse --abbrev-ref HEAD
     d = diff
     dc = diff --cached
