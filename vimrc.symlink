@@ -36,6 +36,7 @@ Bundle 'scrooloose/syntastic'
 Bundle 'SirVer/ultisnips'
 Bundle 'sjl/clam.vim'
 Bundle 'sjl/gundo.vim'
+Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'stephpy/vim-yaml'
 Bundle 'tacahiroy/ctrlp-funky'
 Bundle 'terryma/vim-multiple-cursors'
@@ -46,6 +47,7 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-obsession'
+Bundle 'tpope/vim-projectile'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'tpope/vim-vinegar'
@@ -141,6 +143,12 @@ let g:airline_symbols.linenr                  = '⭡'
 let g:airline#extensions#bufferline#enabled   = 0
 let g:airline#extensions#ctrlp#color_template = 'normal'
 let g:airline#extensions#tmuxline#enabled     = 0
+
+" Symfony
+map <leader>sf :execute ":!"g:symfony_enable_shell_cmd<CR>
+
+" PHPComplete
+let g:phpcomplete_parse_docblock_comments = 1
 
 " Startify
 let g:startify_change_to_dir = 0
