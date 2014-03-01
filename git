@@ -25,6 +25,8 @@
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative
     lgp = log --graph -p --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative
     ll = !git log --stat
+    mcd = !b=`git current-branch` ; git cod && git m $b && git br -d $b
+    mcm = !b=`git current-branch` ; git com && git m $b && git br -d $b
     m = merge --no-ff
     mff = merge --ff-only
     mo = !git merge --no-ff origin/`git current-branch`
