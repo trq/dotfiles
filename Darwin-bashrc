@@ -9,6 +9,7 @@
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH";
 [ -d "$HOME/src/vyro/bin" ] && PATH="$HOME/src/vyro/bin:$PATH";
 [ -d "$HOME/src/pydbg" ] && PATH="$HOME/src/pydbg:$PATH";
+[ -d "$HOME/.rvm/gems/ruby-2.0.0-p247/bin" ] && PATH="$HOME/.rvm/gems/ruby-2.0.0-p247/bin:$PATH";
 
 export PATH
 

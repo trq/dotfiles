@@ -17,7 +17,8 @@
     current-branch = rev-parse --abbrev-ref HEAD
     d = diff
     dc = diff --cached
-    deploy = !bundle exec cap feature deploy
+    deploy = !bundle exec cap feature deploy && echo "$(git current-branch) $(git rev-parse HEAD) $(date)" > "$(git rev-parse --show-toplevel)/.deployed"
+    deployed = !cat "$(git rev-parse --show-toplevel)/.deployed"
     fo = fetch origin
     fu = fetch upstream
     last = cat-file commit HEAD
