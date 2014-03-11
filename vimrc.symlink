@@ -54,6 +54,7 @@ Bundle 'tpope/vim-vinegar'
 Bundle 'troydm/pb.vim'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'vim-scripts/camelcasemotion'
+Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
 Bundle 'vim-scripts/L9'
 Bundle 'xolox/vim-misc'
 
@@ -66,7 +67,7 @@ set tabstop=2
 set shiftwidth=2
 set cinkeys=0{,0},:,0#,!^F
 "set showcmd
-set relativenumber
+"set relativenumber
 set numberwidth=3
 set shiftwidth=4
 set tabstop=4
@@ -86,7 +87,7 @@ set foldmethod=marker
 set number
 set nocompatible
 set nottybuiltin term=$TERM
-set formatprg=par-format\ -w80
+"set formatprg=par-format\ -w80
 set wmh=0
 set term=xterm-256color
 "set statusline=%F%m%r%h%w\ [TYPE=%Y]\ [ASCII=\%03.3b]\ [HEX=\%02.2B]\ [POS=%04l,%04v][%p%%]\ [LEN=%L]
@@ -401,14 +402,14 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 let &t_SI = "\<Esc>]50;CursorShape=1\x7"
 let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
-augroup chmodandshebang
-    autocmd!
-    autocmd BufWritePost ~/bin/*,*.sh,*.pl,*.rb,*.py :exe "silent !chmod 700 <afile>" | silent :w!
-    autocmd BufEnter *.sh if getline(1) == "" | :call setline(1, "#!/usr/bin/env bash") | endif
-    autocmd BufEnter *.pl if getline(1) == "" | :call setline(1, "#!/usr/bin/env perl") | endif
-    autocmd BufEnter *.pb if getline(1) == "" | :call setline(1, "#!/usr/bin/env ruby") | endif
-    autocmd BufEnter *.py if getline(1) == "" | :call setline(1, "#!/usr/bin/env python") | endif
-augroup END
+" augroup chmodandshebang
+"     autocmd!
+"     autocmd BufWritePost ~/bin/*,*.sh,*.pl,*.rb,*.py :exe "silent !chmod 700 <afile>" | silent :w!
+"     autocmd BufEnter *.sh if getline(1) == "" | :call setline(1, "#!/usr/bin/env bash") | endif
+"     autocmd BufEnter *.pl if getline(1) == "" | :call setline(1, "#!/usr/bin/env perl") | endif
+"     autocmd BufEnter *.pb if getline(1) == "" | :call setline(1, "#!/usr/bin/env ruby") | endif
+"     autocmd BufEnter *.py if getline(1) == "" | :call setline(1, "#!/usr/bin/env python") | endif
+" augroup END
 
 " Turn on spell checking when writting a GIT commit.
 autocmd FileType gitcommit set spell

@@ -7,7 +7,9 @@
 [ -d "/usr/local/bin" ] && PATH="/usr/local/bin:$PATH";
 [ -d "$HOME/.composer/vendor/bin" ] && PATH="$HOME/.composer/vendor/bin:$PATH"
 [ -d "$HOME/bin" ] && PATH="$HOME/bin:$PATH";
-[ -d "$HOME/src/vyro/bin" ] && PATH="$HOME/src/vyro/bin:$PATH";
+
+[ -d "$HOME/src/php-pm/bin" ] && PATH="$HOME/src/php-pm/bin:$PATH";
+[ -d "$HOME/src/vyro/src/bin" ] && PATH="$HOME/src/vyro/src/bin:$PATH";
 [ -d "$HOME/src/pydbg" ] && PATH="$HOME/src/pydbg:$PATH";
 
 export PATH
