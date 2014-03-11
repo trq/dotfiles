@@ -153,6 +153,10 @@ let g:phpcomplete_parse_docblock_comments = 1
 
 " Startify
 let g:startify_change_to_dir = 0
+let g:startify_skiplist = [
+    \ '.git/COMMIT_EDITMSG',
+    \ 'app/bootstrap.php.cache'
+    \ ]
 
 " Yggdroot/indentLine
 "set list lcs=tab:\|\
@@ -162,6 +166,11 @@ let g:startify_change_to_dir = 0
 " Sort paragraphs
 vnoremap <leader>s !sort -f<CR>gv
 nnoremap <leader>s vip!sort -f<CR><Esc>
+
+" Fugitive
+" https://github.com/tpope/vim-fugitive/issues/286#issuecomment-36371401
+noremap :let line = line('.'):cn:exec ':' . line
+noremap :let line = line('.'):cp:exec ':' . line
 
 "Buffer line
 let g:bufferline_echo = 0

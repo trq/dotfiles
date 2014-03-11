@@ -11,6 +11,7 @@
 [ -d "$HOME/src/php-pm/bin" ] && PATH="$HOME/src/php-pm/bin:$PATH";
 [ -d "$HOME/src/vyro/src/bin" ] && PATH="$HOME/src/vyro/src/bin:$PATH";
 [ -d "$HOME/src/pydbg" ] && PATH="$HOME/src/pydbg:$PATH";
+[ -d "$HOME/.rvm/gems/ruby-2.0.0-p247/bin" ] && PATH="$HOME/.rvm/gems/ruby-2.0.0-p247/bin:$PATH";
 
 export PATH
 
