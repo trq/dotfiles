@@ -13,6 +13,7 @@ Bundle 'coderifous/textobj-word-column.vim'
 Bundle 'docteurklein/vim-symfony'
 Bundle 'edkolev/tmuxline.vim'
 Bundle 'estin/htmljinja'
+Bundle 'FelikZ/ctrlp-py-matcher'
 Bundle 'gmarik/vundle'
 Bundle 'godlygeek/tabular'
 Bundle 'google/maktaba'
@@ -252,6 +253,18 @@ let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
 let g:ctrlp_extensions = ['funky']
 let g:ctrlp_open_multiple_files = '1ijr'
 let g:ctrlp_use_caching = 1
+let g:ctrlp_lazy_update = 350
+let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_max_files = 0
+" If ag is available use it as filename list generator instead of 'find'
+if executable("ag")
+    set grepprg=ag\ --nogroup\ --nocolor
+    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
+endif
+" PyMatcher for CtrlP
+if has('python')
+    let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+endif
 nnoremap <silent> <leader>b :CtrlPBuffer<cr>
 nnoremap <silent> <leader>t :CtrlPTag<cr>
 nnoremap <silent> <leader>q :CtrlPQuickfix<cr>
