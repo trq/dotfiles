@@ -61,6 +61,7 @@
     usa = !git reset HEAD $(git status | grep modified | awk '{print $3}')
     wc = !git whatchanged
     wcp = !git whatchanged -p
+    wf = !cb=`git current-branch` && git co develop && git m $cb && git br -d $cb
 [core]
     excludesfile = ~/.gitignore
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol

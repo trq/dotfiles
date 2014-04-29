@@ -25,6 +25,7 @@ Bundle 'justinmk/vim-sneak'
 Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'mattn/emmet-vim'
+Bundle 'mattn/gist-vim'
 Bundle 'mhinz/vim-signify'
 Bundle 'mhinz/vim-startify'
 Bundle 'msanders/snipmate.vim'
@@ -34,10 +35,10 @@ Bundle 'rking/ag.vim'
 Bundle 'rodjek/vim-puppet'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
+Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'sjl/clam.vim'
 Bundle 'sjl/gundo.vim'
-Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'stephpy/vim-yaml'
 Bundle 'tacahiroy/ctrlp-funky'
 Bundle 'terryma/vim-multiple-cursors'
@@ -55,8 +56,8 @@ Bundle 'tpope/vim-vinegar'
 Bundle 'troydm/pb.vim'
 Bundle 'vim-scripts/bufexplorer.zip'
 Bundle 'vim-scripts/camelcasemotion'
-Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
 Bundle 'vim-scripts/L9'
+Bundle 'vim-scripts/PDV--phpDocumentor-for-Vim'
 Bundle 'xolox/vim-misc'
 
 set cindent
@@ -109,6 +110,9 @@ set noshowmode
 set fillchars+=stl:\ ,stlnc:\
 set encoding=utf-8
 set tags+=tags,vendor.tags
+
+set exrc    " enable per-directory .vimrc files
+set secure  " disable unsafe commands in local .vimrc files
 
 " highlight conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -295,14 +299,14 @@ let g:vdebug_keymap = {
 let g:vdebug_options = {
 \    "port" : 9000,
 \    "timeout" : 20,
+\    "ide_key" : '',
 \    "server" : 'localhost',
+\    "path_maps" : {},
 \    "on_close" : 'detach',
 \    "break_on_open" : 0,
-\    "ide_key" : '',
 \    "debug_window_level" : 0,
 \    "debug_file_level" : 0,
 \    "debug_file" : "",
-\    "path_maps" : {},
 \    "watch_window_style" : 'expanded',
 \    "marker_default" : '⬦',
 \    "marker_closed_tree" : '▸',

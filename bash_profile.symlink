@@ -6,4 +6,6 @@ if [ -x /usr/libexec/path_helper ]; then
     source /etc/profile
 fi
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc
+if [ -f ~/.bashrc ] ; then
+    . ~/.bashrc
+fi
