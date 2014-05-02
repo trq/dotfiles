@@ -9,3 +9,5 @@ fi
 if [ -f ~/.bashrc ] ; then
     . ~/.bashrc
 fi
+
+alias crontab="VIM_CRONTAB=true crontab"

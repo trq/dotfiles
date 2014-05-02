@@ -1,7 +1,6 @@
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-"Bundle 'Valloric/YouCompleteMe'
 Bundle 'arnaud-lb/vim-php-namespace'
 Bundle 'austintaylor/vim-commaobject'
 Bundle 'beberlei/vim-php-refactor'
@@ -19,6 +18,7 @@ Bundle 'godlygeek/tabular'
 Bundle 'google/maktaba'
 Bundle 'gregsexton/gitv'
 Bundle 'groenewege/vim-less'
+Bundle 'honza/vim-snippets'
 Bundle 'joonty/vdebug.git'
 Bundle 'joonty/vim-phpunitqf'
 Bundle 'justinmk/vim-sneak'
@@ -26,16 +26,14 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'
 Bundle 'mattn/emmet-vim'
 Bundle 'mattn/gist-vim'
+Bundle 'mattn/webapi-vim'
 Bundle 'mhinz/vim-signify'
-Bundle 'mhinz/vim-startify'
-Bundle 'msanders/snipmate.vim'
 Bundle 'rizzatti/dash.vim'
 Bundle 'rizzatti/funcoo.vim'
 Bundle 'rking/ag.vim'
 Bundle 'rodjek/vim-puppet'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
-Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'sjl/clam.vim'
 Bundle 'sjl/gundo.vim'
@@ -113,6 +111,11 @@ set tags+=tags,vendor.tags
 
 set exrc    " enable per-directory .vimrc files
 set secure  " disable unsafe commands in local .vimrc files
+
+if $VIM_CRONTAB == "true"
+    set nobackup
+    set nowritebackup
+endif
 
 " highlight conflict markers
 match ErrorMsg '^\(<\|=\|>\)\{7\}\([^=].\+\)\?$'
@@ -211,10 +214,8 @@ map <leader>c gcc
 nnoremap <leader>- :NERDTreeToggle<CR>
 
 " Ultisnips
-let g:UltiSnipsExpandTrigger = "<leader>u"
-let g:UltiSnipsListSnippets = "<leader>ul"
-let g:UltiSnipsJumpForwardTrigger = "<leader>uf"
-let g:UltiSnipsJumpBackwardTrigger = "<leader>ub"
+let g:UltiSnipsExpandTrigger = "<leader>l"
+let g:UltiSnipsJumpForwardTrigger = "<leader>;"
 
 " Tagbar
 nnoremap <silent> <leader>= :TagbarToggle<cr>
@@ -224,19 +225,45 @@ let g:tagbar_compact = 1
 let g:tagbar_indent = 1
 
 " YouCompleteMe Settings
-let g:ycm_filetype_blacklist = {
-      \ 'markdown' : 1,
-      \ 'text' : 1,
-      \ 'gitcommit' : 1,
-      \}
-set completeopt-=preview
-let g:ycm_add_preview_to_completeopt = 0
+" function! g:UltiSnips_Complete()
+"     call UltiSnips#ExpandSnippet()
+"     if g:ulti_expand_res == 0
+"         if pumvisible()
+"             return "\<C-n>"
+"         else
+"             call UltiSnips#JumpForwards()
+"             if g:ulti_jump_forwards_res == 0
+"                return "\<TAB>"
+"             endif
+"         endif
+"     endif
+"     return ""
+" endfunction
 
-let g:ycm_complete_in_strings = 0
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_collect_identifiers_from_tags_files = 1
-let g:ycm_filetype_whitelist = { 'php': 1 }
-let g:ycm_seed_identifiers_with_syntax = 1
+" au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsListSnippets="<c-e>"
+" " this mapping Enter key to <C-y> to chose the current highlight item 
+" " and close the selection list, same as other IDEs.
+" " CONFLICT with some plugins like tpope/Endwise
+" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" let g:ycm_filetype_blacklist = {
+"       \ 'markdown' : 1,
+"       \ 'text' : 1,
+"       \ 'gitcommit' : 1,
+"       \}
+" set completeopt-=preview
+" let g:ycm_add_preview_to_completeopt = 0
+
+" let g:ycm_complete_in_strings = 0
+" let g:ycm_collect_identifiers_from_comments_and_strings = 1
+" let g:ycm_collect_identifiers_from_tags_files = 1
+" let g:ycm_filetype_whitelist = { 'php': 1 }
+" let g:ycm_seed_identifiers_with_syntax = 1
+
+" let g:ycm_autoclose_preview_window_after_completion = 1
+" let g:ycm_min_num_of_chars_for_completion = 1
 
 " Highlight whitespace.
 highlight ExtraWhitespace ctermbg=96
