@@ -9,7 +9,7 @@
 
 
 cb=$(git current-branch)
-msg=$(echo "$cb" | 's/\//: /g' | sed 's/-/ /g')
+msg=$(echo "$cb" | sed 's/\//: /g' | sed 's/-/ /g')
 
 git cia -m "$msg"
 
