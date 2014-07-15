@@ -11,6 +11,6 @@
 cb=$(git current-branch)
 msg=$(echo "$cb" | sed 's/\//: /g' | sed 's/-/ /g')
 
-git cia -m "$msg"
+git cia -m "$msg" -e
 
 git co develop && git m $cb && git br -d $cb

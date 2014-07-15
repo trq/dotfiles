@@ -63,6 +63,7 @@
     wcp = !git whatchanged -p
     wf = !cb=`git current-branch` && git co develop && git m $cb && git br -d $cb
     wfe = !bash ~/etc/dotfiles/bin/wfe
+    wfem = !bash ~/etc/dotfiles/bin/wfem
 [core]
     excludesfile = ~/.gitignore
     whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol

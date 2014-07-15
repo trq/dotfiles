@@ -19,8 +19,8 @@ Bundle 'google/maktaba'
 Bundle 'gregsexton/gitv'
 Bundle 'groenewege/vim-less'
 Bundle 'honza/vim-snippets'
+Bundle 'idanarye/vim-merginal'
 Bundle 'joonty/vdebug.git'
-Bundle 'joonty/vim-phpunitqf'
 Bundle 'justinmk/vim-sneak'
 Bundle 'kien/ctrlp.vim'
 Bundle 'majutsushi/tagbar'
@@ -34,6 +34,8 @@ Bundle 'rking/ag.vim'
 Bundle 'rodjek/vim-puppet'
 Bundle 'scrooloose/nerdtree'
 Bundle 'scrooloose/syntastic'
+Bundle 'SirVer/ultisnips'
+Bundle 'shawncplus/phpcomplete.vim'
 Bundle 'SirVer/ultisnips'
 Bundle 'sjl/clam.vim'
 Bundle 'sjl/gundo.vim'
@@ -213,10 +215,6 @@ map <leader>c gcc
 " Nerdtree
 nnoremap <leader>- :NERDTreeToggle<CR>
 
-" Ultisnips
-let g:UltiSnipsExpandTrigger = "<leader>l"
-let g:UltiSnipsJumpForwardTrigger = "<leader>;"
-
 " Tagbar
 nnoremap <silent> <leader>= :TagbarToggle<cr>
 let g:tagbar_autofocus = 1
@@ -278,7 +276,7 @@ let g:syntastic_php_checkers=['php']
 let g:syntastic_disabled_filetypes=['yaml']
 
 "ctrlp
-let g:ctrlp_user_command = 'ag %s -l --nocolor --ignore app/cache --ignore vendor -g ""'
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''*vagrant'' --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
 let g:ctrlp_switch_buffer = 'Et'
 let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
 let g:ctrlp_extensions = ['funky']
@@ -290,7 +288,7 @@ let g:ctrlp_max_files = 0
 " If ag is available use it as filename list generator instead of 'find'
 if executable("ag")
     set grepprg=ag\ --nogroup\ --nocolor
-    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
+    let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --ignore ''*vagrant'' --ignore ''.git'' --ignore ''.DS_Store'' --ignore ''node_modules'' --hidden -g ""'
 endif
 " PyMatcher for CtrlP
 if has('python')
