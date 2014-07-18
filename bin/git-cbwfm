@@ -1,0 +1,16 @@
+#!/usr/bin/env
+
+# Quickly creates a branch, commits some changes making a
+# message from the branch name, then merges said branch
+# into master.
+#
+
+git co -b "$1"
+
+cb=$(git current-branch)
+
+msg=$(echo "$cb" | sed 's/\//: /g' | sed 's/-/ /g')
+
+git cia -m "$msg" -e
+
+git co master && git m $cb && git br -d $cb

@@ -1,0 +1,16 @@
+#!/usr/bin/env
+
+# Turns a git feature branch name into a commit message,
+# makes a commit, merges branch into develope and
+# then deletes the features branch.
+#
+# Example:
+#   fix/some-bug-preventing-foo --> fix: some bug preventing foo
+
+
+cb=$(git current-branch)
+msg=$(echo "$cb" | sed 's/\//: /g' | sed 's/-/ /g')
+
+git cia -m "$msg" -e
+
+git co master && git m $cb && git br -d $cb

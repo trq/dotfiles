@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+route=$(php app/console router:debug | grep "$1" | awk '{ print $1 }')
+
+if [ "$?" = 0 ] ; then
+
+        file="src/$(php app/console router:debug $route |       \
+                egrep -o '_controller: [a-zA-Z\]*' |            \
+                awk '{ print $2 }' |                            \
+                sed 's/\\/\//g').php"
+
+        if [ -f $file ] ; then
+                vim $file
+        fi
+fi
