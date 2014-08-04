@@ -111,7 +111,6 @@ set encoding=utf-8
 set tags+=tags,vendor.tags
 
 set exrc    " enable per-directory .vimrc files
-set secure  " disable unsafe commands in local .vimrc files
 
 if $VIM_CRONTAB == "true"
     set nobackup
@@ -184,6 +183,8 @@ noremap :let line = line('.'):cp:exec ':' . line
 "Buffer line
 let g:bufferline_echo = 0
 
+map <silent><leader>ue UltiSnipsEdit<cr>
+
 " Camalcase Motion
 map <silent>w <Plug>CamelCaseMotion_w
 map <silent>b <Plug>CamelCaseMotion_b
@@ -237,13 +238,13 @@ let g:tagbar_indent = 1
 "     return ""
 " endfunction
 
-" au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsListSnippets="<c-e>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-e>"
 " " this mapping Enter key to <C-y> to chose the current highlight item 
 " " and close the selection list, same as other IDEs.
 " " CONFLICT with some plugins like tpope/Endwise
-" inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
 
 " let g:ycm_filetype_blacklist = {
 "       \ 'markdown' : 1,
