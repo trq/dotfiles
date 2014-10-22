@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/usr/bin/env bash
 
 # Turns a git feature branch name into a commit message,
 # makes a commit, merges branch into develope and
@@ -9,6 +9,7 @@
 
 
 cb=$(git current-branch)
+
 msg=$(echo "$cb" | sed 's/\//: /g' | sed 's/-/ /g')
 
 git cia -m "$msg" -e

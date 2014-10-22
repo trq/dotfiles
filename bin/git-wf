@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/usr/bin/env bash
 
 # Turns a git feature branch name into a commit message,
 # makes a commit, merges branch into develope and
@@ -7,8 +7,8 @@
 # Example:
 #   fix/some-bug-preventing-foo --> fix: some bug preventing foo
 
-
 cb=$(git current-branch)
+
 msg=$(echo "$cb" | sed 's/\//: /g' | sed 's/-/ /g')
 
 git cia -m "$msg" -e

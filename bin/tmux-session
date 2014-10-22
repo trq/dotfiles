@@ -10,6 +10,7 @@ dump() {
 
 save() {
   dump > ~/.tmux-session
+  echo "sessions saved to ~/.tmux-session"
 }
 
 terminal_size() {
@@ -45,7 +46,7 @@ restore() {
     fi
   done < ~/.tmux-session
 
-  echo "restored $count sessions"
+  echo "restored $count sessions from ~/.tmux-session"
 }
 
 case "$1" in

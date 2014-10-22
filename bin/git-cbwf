@@ -1,4 +1,4 @@
-#!/usr/bin/env
+#!/usr/bin/env bash
 
 # Quickly creates a branch, commits some changes making a
 # message from the branch name, then merges said branch

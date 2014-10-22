@@ -20,6 +20,16 @@ alias tree='tree -C'
 alias v='vim'
 alias composer='composer --profile -vvv'
 
+alias tn='tmux new-session -s '
+alias ta='tmux a -t '
+alias ts='tmux switch -t '
+alias tss='tmux-session save'
+alias tsr='tmux-session restore'
+
+function tsl() {
+    tmux ls | awk '{print $1}' | uniq | tr ":" ""
+}
+
 if hub --version > /dev/null 2>&1 ; then
     alias git='hub'
 fi
