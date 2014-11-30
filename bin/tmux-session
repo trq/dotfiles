@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # Save and restore the state of tmux sessions and windows.
 # TODO: persist and restore the state & position of panes.
-set -e
+#set -e
 
 dump() {
   local d=$'\t'
-  tmux list-windows -a -F "#S${d}#W${d}#{pane_current_path}"
+  tmux list-windows -a -F "#S${d}#W${d}#{pane_current_path}${d}'ls -l'"
 }
 
 save() {
@@ -13,8 +13,12 @@ save() {
   echo "sessions saved to ~/.tmux-session"
 }
 
-terminal_size() {
-  stty size 2>/dev/null | awk '{ printf "-x%d -y%d", $2, $1 }'
+terminal_width() {
+  stty size 2>/dev/null | awk '{ printf "%d", $2 }'
+}
+
+terminal_height() {
+  stty size 2>/dev/null | awk '{ printf "%d", $1 }'
 }
 
 session_exists() {
@@ -22,25 +26,27 @@ session_exists() {
 }
 
 add_window() {
-  tmux new-window -d -t "$1:" -n "$2" -c "$3"
+  tmux new-window -d -t "$1:" -n "$2" -c "$3" "$4"
 }
 
 new_session() {
   cd "$3" &&
-  tmux new-session -d -s "$1" -n "$2" $4
+  echo tmux new-session -d -s "$1" -n "$2" -x"$4" -y"$5" "$6"
+  tmux new-session -d -s "$1" -n "$2" -x"$4" -y"$5" "$6"
 }
 
 restore() {
   tmux start-server
   local count=0
-  local dimensions="$(terminal_size)"
+  local x="$(terminal_width)"
+  local y="$(terminal_height)"
 
-  while IFS=$'\t' read session_name window_name dir; do
+  while IFS=$'\t' read session_name window_name dir cmd; do
     if [[ -d "$dir" && $window_name != "log" && $window_name != "man" ]]; then
       if session_exists "$session_name"; then
-        add_window "$session_name" "$window_name" "$dir"
+        add_window "$session_name" "$window_name" "$dir" "$cmd"
       else
-        new_session "$session_name" "$window_name" "$dir" "$dimensions"
+        new_session "$session_name" "$window_name" "$dir" "$x" "$y" "$cmd"
         count=$(( count + 1 ))
       fi
     fi

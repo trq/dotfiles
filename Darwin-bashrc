@@ -55,12 +55,6 @@ alias ls="ls -G"
 alias all="ls -la"
 alias agnojs="ag --ignore='*.js'"
 
-if command -v brew > /dev/null 2>&1 && [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
-elif [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
-
 if [ -f ~/.bashrc.local ] ;then
     source ~/.bashrc.local
 fi
@@ -68,6 +62,15 @@ fi
 # source boxen stuff.
 if [ -f /opt/boxen/env.sh ] ; then
     source /opt/boxen/env.sh
+fi
+
+# This must go "after" the boxen env stuff.
+if command -v brew > /dev/null 2>&1; then
+    if [ -f $(brew --prefix)/etc/bash_completion ]; then
+        . $(brew --prefix)/etc/bash_completion
+    fi
+elif [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
 fi
 
 ### Added by the Heroku Toolbelt
