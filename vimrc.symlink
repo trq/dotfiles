@@ -27,9 +27,6 @@ Plugin 'idanarye/vim-merginal'
 Plugin 'joonty/vdebug.git'
 Plugin 'justinmk/vim-sneak'
 Plugin 'kien/ctrlp.vim'
-Plugin 'm2mdas/phpcomplete-extended'
-Plugin 'm2mdas/phpcomplete-extended-laravel'
-Plugin 'm2mdas/phpcomplete-extended-symfony'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 Plugin 'mattn/gist-vim'
@@ -43,6 +40,7 @@ Plugin 'rking/ag.vim'
 Plugin 'rodjek/vim-puppet'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'SirVer/ultisnips'
@@ -204,6 +202,16 @@ let g:startify_skiplist = [
 "let g:indentLine_color_term=234
 "let g:indentLine_char = '┆'
 
+" phpspec.vim
+let g:phpspec_conceal = 0
+
+let g:feature_filetype='behat'
+let g:behat_executables = ['./vendor/bin/behat']
+if !exists('g:neocomplcache_omni_patterns')
+    let g:neocomplcache_omni_patterns = {}
+endif
+let g:neocomplcache_omni_patterns.behat = '\(When\|Then\|Given\|And\)\s.*$'
+
 " Sort paragraphs
 vnoremap <leader>s !sort -f<CR>gv
 nnoremap <leader>s vip!sort -f<CR><Esc>
@@ -217,6 +225,10 @@ noremap :let line = line('.'):cp:exec ':' . line
 let g:bufferline_echo = 0
 
 map <silent><leader>ue UltiSnipsEdit<cr>
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
 
 " Camalcase Motion
 map <silent>w <Plug>CamelCaseMotion_w
