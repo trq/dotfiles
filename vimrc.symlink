@@ -8,9 +8,9 @@ Plugin 'beberlei/vim-php-refactor'
 Plugin 'benmills/vimux'
 Plugin 'bling/vim-airline'
 Plugin 'bling/vim-bufferline'
+Plugin 'c0r73x/vimdir.vim'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'coderifous/textobj-word-column.vim'
-Plugin 'docteurklein/vim-symfony'
 Plugin 'edkolev/tmuxline.vim'
 Plugin 'ervandew/supertab'
 Plugin 'estin/htmljinja'
@@ -20,11 +20,16 @@ Plugin 'godlygeek/tabular'
 Plugin 'google/maktaba'
 Plugin 'gregsexton/gitv'
 Plugin 'groenewege/vim-less'
+Plugin 'haya14busa/incsearch.vim'
+Plugin 'Herzult/phpspec-vim'
 Plugin 'honza/vim-snippets'
 Plugin 'idanarye/vim-merginal'
 Plugin 'joonty/vdebug.git'
 Plugin 'justinmk/vim-sneak'
 Plugin 'kien/ctrlp.vim'
+Plugin 'm2mdas/phpcomplete-extended'
+Plugin 'm2mdas/phpcomplete-extended-laravel'
+Plugin 'm2mdas/phpcomplete-extended-symfony'
 Plugin 'majutsushi/tagbar'
 Plugin 'mattn/emmet-vim'
 Plugin 'mattn/gist-vim'
@@ -38,8 +43,9 @@ Plugin 'rking/ag.vim'
 Plugin 'rodjek/vim-puppet'
 Plugin 'scrooloose/nerdtree'
 Plugin 'scrooloose/syntastic'
+Plugin 'Shougo/unite.vim'
+Plugin 'Shougo/vimproc.vim'
 Plugin 'SirVer/ultisnips'
-Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'sjl/clam.vim'
 Plugin 'sjl/gundo.vim'
 Plugin 'stephpy/vim-yaml'
@@ -57,6 +63,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-vinegar'
 Plugin 'troydm/pb.vim'
+Plugin 'veloce/vim-behat'
 Plugin 'vim-scripts/bufexplorer.zip'
 Plugin 'vim-scripts/camelcasemotion'
 Plugin 'vim-scripts/L9'
@@ -167,6 +174,18 @@ map <leader>sf :execute ":!"g:symfony_enable_shell_cmd<CR>
 " PHPComplete
 let g:phpcomplete_parse_docblock_comments=1
 let g:phpcomplete_cache_taglists=0
+
+" let g:SuperTabDefaultCompletionType = 'context'
+" let g:EclimCompletionMethod = 'omnifunc'
+
+autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
+let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
+let g:phpcomplete_index_composer_command = '/opt/boxen/homebrew/bin/composer'
+
+" haya14busa/incsearch.vim
+map /  <Plug>(incsearch-forward)
+map ?  <Plug>(incsearch-backward)
+map g/ <Plug>(incsearch-stay)
 
 " PhpDoc
 inoremap <c-d> <ESC>:call PhpDocSingle()<cr>i
@@ -603,4 +622,4 @@ function! QuickfixFilenames()
   endfor
   return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
-" command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
+command! -nargs=0 -bar Qargs execute 'args' QuickfixFilenames()
