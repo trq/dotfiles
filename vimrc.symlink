@@ -173,12 +173,10 @@ map <leader>sf :execute ":!"g:symfony_enable_shell_cmd<CR>
 let g:phpcomplete_parse_docblock_comments=1
 let g:phpcomplete_cache_taglists=0
 
-" let g:SuperTabDefaultCompletionType = 'context'
 " let g:EclimCompletionMethod = 'omnifunc'
 
-autocmd FileType php setlocal omnifunc=phpcomplete_extended#CompletePHP
 let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
-let g:phpcomplete_index_composer_command = '/opt/boxen/homebrew/bin/composer'
+" let g:SuperTabDefaultCompletionType = 'context'
 
 " haya14busa/incsearch.vim
 map /  <Plug>(incsearch-forward)
