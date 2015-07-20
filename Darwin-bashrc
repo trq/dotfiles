@@ -15,6 +15,10 @@
 
 export PATH
 
+if [ -f ~/.iterm2_shell_integration.bash ] ; then
+    source ~/.iterm2_shell_integration.bash
+fi
+
 if [ -f /opt/boxen/homebrew/bin/vim ] ; then
     EDITOR=/opt/boxen/homebrew/bin/vim
 else
@@ -72,6 +76,3 @@ if command -v brew > /dev/null 2>&1; then
 elif [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"

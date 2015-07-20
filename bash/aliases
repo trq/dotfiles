@@ -18,7 +18,6 @@ alias serve="php -S 127.0.0.1:8080"
 alias sv='sudo vim'
 alias tree='tree -C'
 alias v='vim'
-alias composer='composer --profile -vvv'
 
 alias tn='tmux new-session -s '
 alias ta='tmux a -t '

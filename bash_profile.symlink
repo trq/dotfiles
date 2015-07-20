@@ -11,3 +11,5 @@ if [ -f ~/.bashrc ] ; then
 fi
 
 alias crontab="VIM_CRONTAB=true crontab"
+
+#source /Users/trq/.iterm2_shell_integration.bash
