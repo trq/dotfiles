@@ -12,15 +12,15 @@ _link() {
     d="$2"
     if [ -a "${d}" ] && ! [ -h "${d}" ] ; then
         if ! [ -d ~/.dotfile-bkps ] ; then
-            mkdir ~/.dotfile-bkps
+            mkdir ~/.dotfile-bkps &>/dev/null
         fi
 
         bkp=${d#*.}
-        mv ${d} ~/.dotfile-bkps/${bkp}-${date}
+        mv ${d} ~/.dotfile-bkps/${bkp}-${date} &>/dev/null
     fi
 
     #echo "$s $d"
-    ln -sF ${s} ${d}
+    ln -sF ${s} ${d} &>/dev/null
 }
 
 link_by_fact() {
@@ -58,3 +58,4 @@ main() {
 }
 
 main
+exit 0
