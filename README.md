@@ -10,8 +10,8 @@ All plugins are maintained via Vundle.
 ### Installation
 
 ```
-git clone https://github.com/gmarik/vundle.git vim/bundle/vundle
-vim +InstallBundle +qall
+git clone https://github.com/gmarik/vundle.git .vim/bundle/vundle
+vim +PluginInstall +qall
 ```
 
 ### Add new
@@ -24,7 +24,7 @@ Bundle "some/bundle"
 ### Updating
 
 ```
-vim +InstallBundle +qall
+vim +PluginInstall +qall
 ```
 
 ### Removal
