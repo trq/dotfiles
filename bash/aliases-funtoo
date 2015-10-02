@@ -1,7 +1,0 @@
-alias emerge='sudo emerge'
-alias ebuild='sudo ebuild'
-alias vzctl='sudo vzctl'
-alias dispatch-conf='sudo dispatch-conf'
-alias eselect='sudo eselect'
-alias vzlist='sudo vzlist'
-alias update-world='emerge -auDN world'

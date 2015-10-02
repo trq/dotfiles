@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-# terminal-notifier -message "$*";exit;
-
-/Applications/MacVim.app/Contents/MacOS/Vim -g $*

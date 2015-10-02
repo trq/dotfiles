@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-vim $(find "$1" -type f  -maxdepth 1 | sort | tail -n 1)

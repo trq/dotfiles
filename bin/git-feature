@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-
-prefix=${0##*-}
-feature=$(echo "$@" | tr '[:upper:]' '[:lower:]')
-feature=${feature// /-}
-git co -b "$prefix/${feature// /-}"
