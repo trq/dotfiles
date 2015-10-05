@@ -1,0 +1,50 @@
+fancy_echo "Installing local customisations ..."
+# Fix so as to handle brews with / in their names.
+# eg; homebrew/php/php56
+#
+brew_expand_alias() {
+  name=$(brew info "$1" 2>/dev/null | head -1 | awk '{gsub(/:/, ""); print $1}')
+  echo "${name##*/}"
+}
+
+brew_install_or_upgrade 'tree'
+brew_install_or_upgrade 'watch'
+brew_install_or_upgrade 'mariadb'
+brew_launchctl_restart 'mariadb'
+
+brew tap homebrew/dupes 2> /dev/null
+brew tap homebrew/versions 2> /dev/null
+brew tap homebrew/homebrew-php 2> /dev/null
+
+brew_install_or_upgrade 'composer'
+
+brew unlink --force 'php56'
+brew_install_or_upgrade 'php70'
+brew unlink --force 'php70'
+
+brew_install_or_upgrade 'php56'
+brew link 'php56'
+
+brew_install_or_upgrade 'php56-intl'
+brew_install_or_upgrade 'php56-mcrypt'
+brew_install_or_upgrade 'php56-xdebug'
+
+brew_launchctl_restart 'php56'
+
+brew_install_or_upgrade 'nginx'
+brew_launchctl_restart 'nginx'
+
+if ! command -v yo >/dev/null; then
+  fancy_echo "Installing Yeoman ..."
+  npm install -g yo
+else
+  fancy_echo "Yeoman already installed. Skipping ..."
+fi
+
+if ! command -v sass >/dev/null; then
+  fancy_echo "Installing sass & compass ..."
+  gem install sass
+  gem install compass
+else
+  fancy_echo "sass/compass already installed. Skipping ..."
+fi
