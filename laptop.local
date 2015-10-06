@@ -22,12 +22,13 @@ brew unlink --force 'php56'
 brew_install_or_upgrade 'php70'
 brew unlink --force 'php70'
 
-brew_install_or_upgrade 'php56'
+brew_install_or_upgrade php56 --with-mssql
 brew link 'php56'
 
 brew_install_or_upgrade 'php56-intl'
 brew_install_or_upgrade 'php56-mcrypt'
 brew_install_or_upgrade 'php56-xdebug'
+brew_install_or_upgrade 'php56-imagick'
 
 brew_launchctl_restart 'php56'
 
@@ -48,3 +49,5 @@ if ! command -v sass >/dev/null; then
 else
   fancy_echo "sass/compass already installed. Skipping ..."
 fi
+
+brew_install_or_upgrade 'awscli'
