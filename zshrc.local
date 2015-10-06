@@ -16,4 +16,4 @@ function git_prompt {
     echo " $s"
   fi
 }
-export PS1='%{$fg_bold[cyan]%}%n%{$reset_color%}@%{$fg_bold[magenta]%}%m: $fg_bold[green]%}%~%{$reset_color%}$(git_prompt) '
+export PS1='%{$fg_bold[cyan]%}%n%{$reset_color%}@%{$fg_bold[magenta]%}%m: $fg_bold[green]%}%~%{$reset_color%}$(git_prompt) % '
