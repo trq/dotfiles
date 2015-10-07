@@ -1,3 +1,6 @@
+ulimit -n 65536
+ulimit -u 2048
+
 export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
 export PATH="$(brew --prefix)/sbin:$PATH"
 export PATH="$HOME/.gem/ruby/2.2.0/bin:$PATH"
@@ -16,4 +19,4 @@ function git_prompt {
     echo " $s"
   fi
 }
-export PS1='%{$fg_bold[cyan]%}%n%{$reset_color%}@%{$fg_bold[magenta]%}%m: $fg_bold[green]%}%~%{$reset_color%}$(git_prompt) % '
+export PS1='%{$fg_bold[cyan]%}%n%{$reset_color%}@%{$fg_bold[magenta]%}%m: %{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt) '
