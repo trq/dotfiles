@@ -5,8 +5,9 @@
     ai = add -i
     aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ => \\2/' | sort
     assume   = update-index --assume-unchanged
-    assumed  = "!git ls-files -v | grep ^h | cut -c 3-"
+    assumed  = !git ls-files -v | grep ^h | cut -c 3-
     br = branch
+    brs = !git branches | grep Tony
     ci = commit --verbose
     cia = commit --verbose -a
     ciaa = commit --verbose -a --amend 
@@ -17,7 +18,7 @@
     fu = fetch upstream
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative
     lgp = log --graph -p --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative
-    ll = !git log --stat
+    ll = log --stat
     m = merge --no-ff
     po = push origin
     poc = !git push origin `git current-branch`
@@ -30,9 +31,9 @@
     unassume = update-index --no-assume-unchanged
     uncommit = reset --soft HEAD^
     unstage = reset HEAD
-    us = !git reset HEAD $1
-    wc = !git whatchanged
-    wcp = !git whatchanged -p
+    us = reset HEAD $1
+    wc = whatchanged
+    wcp = whatchanged -p
 [color]
     ui = true
 [color "branch"]

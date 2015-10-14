@@ -1,14 +1,19 @@
-ulimit -n 65536
-ulimit -u 2048
-
-export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
-export PATH="$(brew --prefix)/sbin:$PATH"
+# Ruby
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 export PATH="$HOME/.gem/ruby/2.2.0/bin:$PATH"
+
+# Node
+export NPM_PACKAGE="$HOME/.npm-packages"
+export PATH="$NPM_PACKAGES/bin:$PATH"
+export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+
+# All path stuff should be before these
 export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/src/news/phoenix/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 
-[[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
-
-eval "$(rbenv init - --no-rehash zsh)"
+eval "$(rbenv init -)"
 
 source $HOME/src/utils/zsh-git-prompt/zshrc.sh
 
@@ -20,3 +25,6 @@ function git_prompt {
   fi
 }
 export PS1='%{$fg_bold[cyan]%}%n%{$reset_color%}@%{$fg_bold[magenta]%}%m: %{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt) '
+
+export http_proxy=http://10.68.66.91:8002
+export https_proxy=http://10.68.66.91:8002
