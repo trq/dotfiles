@@ -1,4 +1,5 @@
 fancy_echo "Installing local customisations ..."
+
 # Fix so as to handle brews with / in their names.
 # eg; homebrew/php/php56
 #
@@ -7,47 +8,52 @@ brew_expand_alias() {
   echo "${name##*/}"
 }
 
-brew_install_or_upgrade 'tree'
-brew_install_or_upgrade 'watch'
-brew_install_or_upgrade 'mariadb'
-brew_launchctl_restart 'mariadb'
+npm_install_or_update() {
+  if npm -g list "$1" > /dev/null 2&> /dev/null; then
+    fancy_echo "Updating %s ..." "$1"
+    npm update "$@"
+  else
+    fancy_echo "Installing %s ..." "$1"
+    npm -g install "$@"
+  fi
+}
+
+brew_install_or_upgrade tree
+brew_install_or_upgrade watch
+brew_install_or_upgrade wget
+
+brew_install_or_upgrade mariadb
+brew_launchctl_restart mariadb
 
 brew tap homebrew/dupes 2> /dev/null
 brew tap homebrew/versions 2> /dev/null
 brew tap homebrew/homebrew-php 2> /dev/null
 
-brew_install_or_upgrade 'composer'
+brew_install_or_upgrade composer
 
-brew unlink --force 'php56'
-brew_install_or_upgrade 'php70'
-brew unlink --force 'php70'
+brew unlink --force php56
+brew_install_or_upgrade php70
+brew unlink --force php70
 
 brew_install_or_upgrade php56 --with-mssql
-brew link 'php56'
+brew link php56
 
-brew_install_or_upgrade 'php56-intl'
-brew_install_or_upgrade 'php56-mcrypt'
-brew_install_or_upgrade 'php56-xdebug'
-brew_install_or_upgrade 'php56-imagick'
+brew_install_or_upgrade php56-intl
+brew_install_or_upgrade php56-mcrypt
+brew_install_or_upgrade php56-xdebug
+brew_install_or_upgrade php56-imagick
 
-brew_launchctl_restart 'php56'
+brew_launchctl_restart php56
 
-brew_install_or_upgrade 'nginx'
-brew_launchctl_restart 'nginx'
+brew_install_or_upgrade nginx
+brew_launchctl_restart nginx
 
-if ! command -v yo >/dev/null; then
-  fancy_echo "Installing Yeoman ..."
-  npm install -g yo
-else
-  fancy_echo "Yeoman already installed. Skipping ..."
-fi
+npm_install_or_update yo
 
-if ! command -v sass >/dev/null; then
-  fancy_echo "Installing sass & compass ..."
-  gem install sass
-  gem install compass
-else
-  fancy_echo "sass/compass already installed. Skipping ..."
-fi
+gem_install_or_update sass
+gem_install_or_update compass
 
-brew_install_or_upgrade 'awscli'
+brew_install_or_upgrade awscli
+brew_install_or_upgrade jq
+brew_install_or_upgrade ghostscript
+brew_install_or_upgrade imagemagick --with-ghostscript
