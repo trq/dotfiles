@@ -11,6 +11,7 @@ alias sz='. ~/.zshrc'
 alias pu='./vendor/bin/phpunit'
 alias ph-up='prlctl start phoenix && ssh phoenix'
 alias ph-down='prlctl stop phoenix'
+alias serve="php -S 127.0.0.1:8080"
 
 alias -g gp='| grep'
 alias -g jq='| jq .'
