@@ -2,3 +2,6 @@ set list&
 set listchars&
 set colorcolumn=
 set nofoldenable
+
+set wrap
+set linebreak

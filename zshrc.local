@@ -1,6 +1,7 @@
 ulimit -n 65536
 ulimit -u 2048
 
+export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="$(brew --prefix homebrew/php/php56)/bin:$PATH"
 export PATH="$(brew --prefix)/bin:$PATH"
 export PATH="$(brew --prefix)/sbin:$PATH"

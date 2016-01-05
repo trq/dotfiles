@@ -28,6 +28,8 @@
     pull = pull --ff-only
     rb = rebase -i
     st = status
+    sumb = !"for branch in `git branch -r --merged | grep -v HEAD`; do echo -e `git show --format="%ci %cr %an" $branch | head -n 1` \\t$branch; done | sort -r"
+    smb = !"for branch in `git branch -r --no-merged | grep -v HEAD`; do echo -e `git show --format="%ci %cr %an" $branch | head -n 1` \\t$branch; done | sort -r"
     unassume = update-index --no-assume-unchanged
     uncommit = reset --soft HEAD^
     unstage = reset HEAD
