@@ -18,42 +18,29 @@ npm_install_or_update() {
   fi
 }
 
-brew_install_or_upgrade tree
-brew_install_or_upgrade watch
-brew_install_or_upgrade wget
-
-brew_install_or_upgrade mariadb
-brew_launchctl_restart mariadb
-
 brew tap homebrew/dupes 2> /dev/null
 brew tap homebrew/versions 2> /dev/null
 brew tap homebrew/homebrew-php 2> /dev/null
+brew tap caskroom/cask 2> /dev/null
 
+#brew cask install google-chrome
+
+brew_install_or_upgrade siege
+brew_install_or_upgrade tree
+brew_install_or_upgrade watch
+brew_install_or_upgrade wget
+brew_install_or_upgrade mariadb
 brew_install_or_upgrade composer
-
-brew unlink --force php56
 brew_install_or_upgrade php70
-brew unlink --force php70
-
-brew_install_or_upgrade php56 --with-mssql
-brew link php56
-
-brew_install_or_upgrade php56-intl
-brew_install_or_upgrade php56-mcrypt
-brew_install_or_upgrade php56-xdebug
-brew_install_or_upgrade php56-imagick
-
-brew_launchctl_restart php56
-
 brew_install_or_upgrade nginx
-brew_launchctl_restart nginx
-
-npm_install_or_update yo
-
-gem_install_or_update sass
-gem_install_or_update compass
-
 brew_install_or_upgrade awscli
 brew_install_or_upgrade jq
 brew_install_or_upgrade ghostscript
 brew_install_or_upgrade imagemagick --with-ghostscript
+
+brew_launchctl_restart nginx
+brew_launchctl_restart mariadb
+
+npm_install_or_update yo
+gem_install_or_update sass
+gem_install_or_update compass

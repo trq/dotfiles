@@ -1,3 +1,6 @@
+set -g status on
+set -g status-utf8 on
+
 # unbind some default keybindings
 unbind C-b
 
@@ -10,10 +13,12 @@ set -g history-limit 20001
 set -g base-index 1
 set-window-option -g pane-base-index 1
 
-# use vim style binding
-setw -g mode-keys vi
+# If run as "tmux attach", create a session if one does not already exist
+new-session -n $HOST
 
-# copy/paste using vim-style keys
+# Vi copypaste mode
+set-window-option -g mode-keys vi
+
 bind Escape copy-mode
 unbind p
 bind p paste-buffer
@@ -45,10 +50,59 @@ bind -r j resize-pane -D 10
 bind -r k resize-pane -U 10
 bind -r l resize-pane -R 10
 
-# colours
-set -g pane-border-fg colour102
-set -g pane-active-border-fg colour244
+# Reload config
+bind r source-file ${HOME}/.tmux.conf \; display-message "Config reloaded."
 
-set -g message-fg white
-set -g message-bg black
-set -g message-attr bright
+# ---------------------
+# Copy & Paste
+# ---------------------
+# provide access to the clipboard for pbpaste, pbcopy
+set-option -g default-command "reattach-to-user-namespace -l zsh"
+set-window-option -g automatic-rename on
+
+# use vim keybindings in copy mode
+setw -g mode-keys vi
+
+# setup 'v' to begin selection as in Vim
+bind-key -t vi-copy v begin-selection
+bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"
+
+# update default binding of 'Enter' to also use copy-pipe
+unbind -t vi-copy Enter
+bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"
+
+bind y run 'tmux save-buffer - | reattach-to-user-namespace pbcopy '
+bind C-y run 'tmux save-buffer - | reattach-to-user-namespace pbcopy '
+
+#### COLOUR (Solarized dark)
+
+# default statusbar colors
+set-option -g status-bg black #base02
+set-option -g status-fg yellow #yellow
+set-option -g status-attr default
+
+# default window title colors
+set-window-option -g window-status-fg brightblue #base0
+set-window-option -g window-status-bg default
+
+# active window title colors
+set-window-option -g window-status-current-fg brightred #orange
+set-window-option -g window-status-current-bg default
+
+# pane border
+set-option -g pane-border-fg black #base02
+set-option -g pane-active-border-fg brightgreen #base01
+
+# message text
+set-option -g message-bg black #base02
+set-option -g message-fg brightred #orange
+
+# pane number display
+set-option -g display-panes-active-colour blue #blue
+set-option -g display-panes-colour brightred #orange
+
+# clock
+set-window-option -g clock-mode-colour green #green
+
+# bell
+set-window-option -g window-status-bell-style fg=black,bg=red #base02, red

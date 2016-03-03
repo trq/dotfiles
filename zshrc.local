@@ -1,3 +1,12 @@
+LANG="en_US.UTF-8"
+LC_COLLATE="en_US.UTF-8"
+LC_CTYPE="en_US.UTF-8"
+LC_MESSAGES="en_US.UTF-8"
+LC_MONETARY="en_US.UTF-8"
+LC_NUMERIC="en_US.UTF-8"
+LC_TIME="en_US.UTF-8"
+LC_ALL="en_US.UTF-8"
+
 ulimit -n 65536
 ulimit -u 2048
 
@@ -24,5 +33,14 @@ function git_prompt {
 }
 export PS1='%{$fg_bold[cyan]%}%n%{$reset_color%}@%{$fg_bold[magenta]%}%m: %{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt) '
 
-# export http_proxy=http://10.68.66.91:8002
-# export https_proxy=http://10.68.66.91:8002
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+## Fuzzy utils ##
+
+# Tmux sessions
+fs() {
+  local session
+  session=$(tmux list-sessions -F "#{session_name}" | \
+    fzf --query="$1" --select-1 --exit-0) &&
+  tmux switch-client -t "$session"
+}

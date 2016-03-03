@@ -12,5 +12,6 @@ alias pu='./vendor/bin/phpunit'
 alias ph-up='prlctl start phoenix && ssh phoenix'
 alias ph-down='prlctl stop phoenix'
 alias serve="php -S 127.0.0.1:8080"
+alias wttr="curl -4 wttr.in/Sydney"
 
 alias issues='/home/trq/src/utils/offline-issues/src/cli.js'
