@@ -32,6 +32,11 @@ brew_install_or_upgrade wget
 brew_install_or_upgrade mariadb
 brew_install_or_upgrade composer
 brew_install_or_upgrade php70
+brew_install_or_upgrade php70-imagick
+brew_install_or_upgrade php70-intl
+brew_install_or_upgrade php70-mcrypt
+brew_install_or_upgrade php70-pcntl
+brew_install_or_upgrade php70-xdebug
 brew_install_or_upgrade nginx
 brew_install_or_upgrade awscli
 brew_install_or_upgrade jq
@@ -42,5 +47,4 @@ brew_launchctl_restart nginx
 brew_launchctl_restart mariadb
 
 npm_install_or_update yo
-gem_install_or_update sass
-gem_install_or_update compass
+npm_install_or_update vue-cli
