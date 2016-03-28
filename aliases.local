@@ -15,3 +15,4 @@ alias serve="php -S 127.0.0.1:8080"
 alias wttr="curl -4 wttr.in/Sydney"
 
 alias issues='/home/trq/src/utils/offline-issues/src/cli.js'
+alias sdocker='bash /Applications/Docker/Docker\ Quickstart\ Terminal.app/Contents/Resources/Scripts/start.sh'
