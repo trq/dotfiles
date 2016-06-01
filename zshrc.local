@@ -1,30 +1,35 @@
 # Ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-export PATH="$HOME/.gem/ruby/2.2.0/bin:$PATH"
+# export PATH="$HOME/.rbenv/bin:$PATH"
+# export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+# export PATH="$HOME/.gem/ruby/2.2.0/bin:$PATH"
 
 # Node
-export NPM_PACKAGE="$HOME/.npm-packages"
-export PATH="$NPM_PACKAGES/bin:$PATH"
-export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
+# export NPM_PACKAGE="$HOME/.npm-packages"
+# export PATH="$NPM_PACKAGES/bin:$PATH"
+# export NODE_PATH="$NPM_PACKAGES/lib/node_modules:$NODE_PATH"
 
 # All path stuff should be before these
 export PATH="$HOME/.bin:$PATH"
-export PATH="$HOME/src/news/phoenix/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+#
+# eval "$(rbenv init -)"
 
-eval "$(rbenv init -)"
+source ~/src/utils/antigen/antigen.zsh
 
-source $HOME/src/utils/zsh-git-prompt/zshrc.sh
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
 
-function git_prompt {
-  s=$(git_super_status)
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle pip
+antigen bundle command-not-found
+antigen bundle https://github.com/tmuxinator/tmuxinator completion/tmuxinator.zsh
 
-  if [ -n "$s" ] ; then
-    echo " $s"
-  fi
-}
-export PS1='%{$fg_bold[cyan]%}%n%{$reset_color%}@%{$fg_bold[magenta]%}%m: %{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt) '
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
 
-export http_proxy=http://10.68.66.91:8002
-export https_proxy=http://10.68.66.91:8002
+# Load the theme.
+antigen theme robbyrussell
+
+# Tell antigen that you're done.
+antigen apply
