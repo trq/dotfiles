@@ -10,6 +10,10 @@ LC_ALL="en_US.UTF-8"
 ulimit -n 65536
 ulimit -u 2048
 
+# load our own completion functions
+fpath=(~/.completion $fpath)
+
+export PATH="/Users/trq/Library/Python/2.7/bin/:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
 export PATH="$(brew --prefix)/bin:$PATH"
 export PATH="$(brew --prefix)/sbin:$PATH"
@@ -43,3 +47,30 @@ fs() {
     fzf --query="$1" --select-1 --exit-0) &&
   tmux switch-client -t "$session"
 }
+
+# export DOCKER_TLS_VERIFY="1"
+# export DOCKER_HOST="tcp://192.168.99.100:2376"
+# export DOCKER_CERT_PATH="/Users/trq/.docker/machine/machines/ei"
+# export DOCKER_MACHINE_NAME="ei"
+
+export VAGRANT_DEFAULT_PROVIDER=virtualbox
+
+source ~/src/utils/antigen/antigen.zsh
+
+# Load the oh-my-zsh's library.
+antigen use oh-my-zsh
+
+# Bundles from the default repo (robbyrussell's oh-my-zsh).
+antigen bundle git
+antigen bundle pip
+antigen bundle command-not-found
+antigen bundle https://github.com/tmuxinator/tmuxinator completion/tmuxinator.zsh
+
+# Syntax highlighting bundle.
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# Load the theme.
+antigen theme robbyrussell
+
+# Tell antigen that you're done.
+antigen apply

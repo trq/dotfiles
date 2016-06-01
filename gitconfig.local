@@ -14,6 +14,7 @@
     co = checkout
     com = checkout master
     cod = checkout develop
+    current-branch = !git rev-parse --abbrev-ref HEAD
     fo = fetch origin
     fu = fetch upstream
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(green)%d%Creset %s %Cgreen(%cr) %C(blue)<%an>%Creset' --abbrev-commit --date=relative

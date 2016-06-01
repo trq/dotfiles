@@ -9,10 +9,12 @@ alias sv='sudo vim'
 alias tree='tree -C'
 alias sz='. ~/.zshrc'
 alias pu='./vendor/bin/phpunit'
-alias ph-up='prlctl start phoenix && ssh phoenix'
-alias ph-down='prlctl stop phoenix'
 alias serve="php -S 127.0.0.1:8080"
 alias wttr="curl -4 wttr.in/Sydney"
 
-alias issues='/home/trq/src/utils/offline-issues/src/cli.js'
-alias sdocker='bash /Applications/Docker/Docker\ Quickstart\ Terminal.app/Contents/Resources/Scripts/start.sh'
+alias g='git'
+alias d='docker'
+alias dm='docker-machine'
+alias dc='docker-compose'
+alias de='docker exec -it'
+alias t='tmuxinator'
