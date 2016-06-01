@@ -1,30 +1,6 @@
-# Install zsh
+# Installation
 
 ```
-sudo apt-get install zsh
-chsh -s zsh trq
-```
-
-# Install rcm
-
-```
-wget https://thoughtbot.github.io/rcm/debs/rcm_1.3.0-1_all.deb
-sha=$(sha256sum rcm_1.3.0-1_all.deb | cut -f1 -d' ')
-[ "$sha" = "2e95bbc23da4a0b995ec4757e0920197f4c92357214a65fedaf24274cda6806d" ] && \
-sudo dpkg -i rcm_1.3.0-1_all.deb
-```
-
-# Install Repos
-
-```
-mkdir -p src/thoughtbot src/trq src/utils
-git clone https://github.com/zsh-users/antigen.git src/utils/antigen
-git clone git@github.com:thoughtbot/dotfiles.git src/thooughtbot/dotfiles
-git clone git@github.com:trq/dotfiles.git src/trq/dotfiles
-```
-
-# Run rcup
-
-```
-rcup -d src/trq/dotfiles -d src/trq/dotfiles
+wget https://gist.githubusercontent.com/trq/4e9950dc14d665da4d416b64bdbdbf25/raw/b00de0fc86ce239be1afb9c9f5f1a29cda05eb6a/bootstrap-linux-env.sh
+bash bootstrap-linux-env.sh
 ```
