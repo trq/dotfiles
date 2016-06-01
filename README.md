@@ -1,10 +1,8 @@
 # Install rcm
 
 ```
-wget https://thoughtbot.github.io/rcm/debs/rcm_1.3.0-1_all.deb
-sha=$(sha256sum rcm_1.3.0-1_all.deb | cut -f1 -d' ')
-[ "$sha" = "2e95bbc23da4a0b995ec4757e0920197f4c92357214a65fedaf24274cda6806d" ] && \
-sudo dpkg -i rcm_1.3.0-1_all.deb
+brew tap thoughtbot/formulae
+brew install rcm
 ```
 
 # Install dotfiles
