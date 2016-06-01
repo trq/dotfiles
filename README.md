@@ -1,3 +1,10 @@
+# Install zsh
+
+```
+sudo apt-get install zsh
+chsh -s zsh trq
+```
+
 # Install rcm
 
 ```
@@ -7,10 +14,11 @@ sha=$(sha256sum rcm_1.3.0-1_all.deb | cut -f1 -d' ')
 sudo dpkg -i rcm_1.3.0-1_all.deb
 ```
 
-# Install dotfiles
+# Install Repos
 
 ```
-mkdir -p src/thoughtbot src/trq
+mkdir -p src/thoughtbot src/trq src/utils
+git clone https://github.com/zsh-users/antigen.git src/utils/antigen
 git clone git@github.com:thoughtbot/dotfiles.git src/thooughtbot/dotfiles
 git clone git@github.com:trq/dotfiles.git src/trq/dotfiles
 ```
