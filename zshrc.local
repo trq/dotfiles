@@ -11,7 +11,7 @@ ulimit -n 65536
 ulimit -u 2048
 
 # load our own completion functions
-fpath=(~/.completion $fpath)
+# fpath=(~/.completion $fpath)
 
 export PATH="/Users/trq/Library/Python/2.7/bin/:$PATH"
 export PATH="$HOME/.composer/vendor/bin:$PATH"
@@ -24,17 +24,6 @@ export PATH="$HOME/src/utils/dasht/bin:$PATH"
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
 
 eval "$(rbenv init - --no-rehash zsh)"
-
-source $HOME/src/utils/zsh-git-prompt/zshrc.sh
-
-function git_prompt {
-  s=$(git_super_status)
-
-  if [ -n "$s" ] ; then
-    echo " $s"
-  fi
-}
-export PS1='%{$fg_bold[cyan]%}%n%{$reset_color%}@%{$fg_bold[magenta]%}%m: %{$fg_bold[green]%}%~%{$reset_color%}$(git_prompt) '
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -70,7 +59,7 @@ antigen bundle https://github.com/tmuxinator/tmuxinator completion/tmuxinator.zs
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 # Load the theme.
-antigen theme robbyrussell
+antigen theme fox
 
 # Tell antigen that you're done.
 antigen apply
