@@ -11,6 +11,7 @@
 # All path stuff should be before these
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/glow-bin:$PATH"
 #
 # eval "$(rbenv init -)"
 
@@ -33,3 +34,8 @@ antigen theme fox
 
 # Tell antigen that you're done.
 antigen apply
+
+typeset ZSH_THEME_GIT_PROMPT_PREFIX='%{%}%{%} %{%}'
+typeset ZSH_THEME_GIT_PROMPT_SUFFIX='%{%}%{%} '
+
+cd ~/web
