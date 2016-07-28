@@ -7,8 +7,8 @@ LC_NUMERIC="en_US.UTF-8"
 LC_TIME="en_US.UTF-8"
 LC_ALL="en_US.UTF-8"
 
-ulimit -n 65536
-ulimit -u 2048
+#ulimit -n 65536
+#ulimit -u 2048
 
 # load our own completion functions
 # fpath=(~/.completion $fpath)
@@ -20,10 +20,11 @@ export PATH="$(brew --prefix)/sbin:$PATH"
 export PATH="$HOME/.gem/ruby/2.3.0/bin:$PATH"
 export PATH="$HOME/.bin:$PATH"
 export PATH="$HOME/src/utils/dasht/bin:$PATH"
+export PATH="$(brew --prefix homebrew/php/php70)/bin:$PATH"
 
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
 
-eval "$(rbenv init - --no-rehash zsh)"
+#eval "$(rbenv init - --no-rehash zsh)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -37,12 +38,15 @@ fs() {
   tmux switch-client -t "$session"
 }
 
+export MACHINE_DRIVER=virtualbox
 # export DOCKER_TLS_VERIFY="1"
 # export DOCKER_HOST="tcp://192.168.99.100:2376"
 # export DOCKER_CERT_PATH="/Users/trq/.docker/machine/machines/ei"
 # export DOCKER_MACHINE_NAME="ei"
 
 export VAGRANT_DEFAULT_PROVIDER=virtualbox
+
+export PIP_REQUIRE_VIRTUALENV=true
 
 source ~/src/utils/antigen/antigen.zsh
 
@@ -63,3 +67,6 @@ antigen theme fox
 
 # Tell antigen that you're done.
 antigen apply
+
+typeset ZSH_THEME_GIT_PROMPT_PREFIX='%{%}%{%} %{%}'
+typeset ZSH_THEME_GIT_PROMPT_SUFFIX='%{%}%{%} '
