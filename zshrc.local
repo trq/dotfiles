@@ -37,5 +37,3 @@ antigen apply
 
 typeset ZSH_THEME_GIT_PROMPT_PREFIX='%{%}%{%} %{%}'
 typeset ZSH_THEME_GIT_PROMPT_SUFFIX='%{%}%{%} '
-
-cd ~/web
