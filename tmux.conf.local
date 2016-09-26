@@ -11,7 +11,9 @@ bind-key R source-file ~/.tmux.conf \; display-message "tmux.conf reloaded."
 setw -g mode-keys vi
 
 # mouse behavior
-set -g mouse on
+# set -g mouse on
+# setw -g mode-mouse on
+# set -g mouse-select-pane on
 
 set-option -g default-terminal screen-256color
 
@@ -22,6 +24,8 @@ bind-key L clear-history
 bind-key space next-window
 bind-key bspace previous-window
 bind-key enter next-layout
+
+bind-key / display-panes \; select-pane -t :.
 
 # use vim-like keys for splits and windows
 bind-key h select-pane -L
@@ -130,3 +134,5 @@ bind-key -T root WheelDownPane if-shell -F -t = "#{alternate_on}" "send-keys -M"
 # with tmux 2.1. This is backwards-compatible with earlier versions of tmux,
 # AFAICT.
 set-option -g assume-paste-time 0
+
+#run-shell ~/src/utils/tmux-copycat/copycat.tmux
