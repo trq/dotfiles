@@ -71,3 +71,14 @@ antigen apply
 
 typeset ZSH_THEME_GIT_PROMPT_PREFIX='%{%}%{%} %{%}'
 typeset ZSH_THEME_GIT_PROMPT_SUFFIX='%{%}%{%} '
+
+setopt auto_cd
+cdpath=(~/src ~/src/ei)
+
+# Disable argument autocorrect
+unsetopt correct_all
+# # setopt correct
+
+mkgif () {
+  ffmpeg -i $1 -s 600x400 -pix_fmt rgb24 -r 10 -f gif - | gifsicle --optimize=3 --delay=3 > out.gif
+}

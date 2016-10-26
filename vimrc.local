@@ -1,7 +1,9 @@
+let mapleader = "\\"
 set list&
 set listchars&
 set colorcolumn=
 set nofoldenable
+set textwidth=200
 
 set nowrap
 set linebreak

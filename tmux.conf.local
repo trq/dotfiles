@@ -136,3 +136,13 @@ bind-key -T root WheelDownPane if-shell -F -t = "#{alternate_on}" "send-keys -M"
 set-option -g assume-paste-time 0
 
 #run-shell ~/src/utils/tmux-copycat/copycat.tmux
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+
+# Other examples:
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @resurrect-dir '~/.tmux-resurrect-session'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
