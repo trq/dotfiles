@@ -15,6 +15,8 @@ export PATH="$HOME/glow-bin:$PATH"
 #
 # eval "$(rbenv init -)"
 
+# https://getcomposer.org/doc/articles/troubleshooting.md#xdebug-impact-on-composer
+export COMPOSER_DISABLE_XDEBUG_WARN=1
 export DISABLE_AUTO_TITLE="true"
 
 source ~/src/utils/antigen/antigen.zsh
@@ -39,3 +41,11 @@ antigen apply
 
 typeset ZSH_THEME_GIT_PROMPT_PREFIX='%{%}%{%} %{%}'
 typeset ZSH_THEME_GIT_PROMPT_SUFFIX='%{%}%{%} '
+
+unalias gsd
+unalias pu
+
+setopt auto_cd
+cdpath=(~/web/glow)
+
+cd ~/web

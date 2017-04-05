@@ -16,3 +16,5 @@ alias keys='aws-keys-sts.py'
 alias -g gp='| grep'
 alias -g jq='| jq .'
 alias -g sjq='| sed 's/JSON//g' | jq .'
+
+alias m='migrations'

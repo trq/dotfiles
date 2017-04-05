@@ -1,6 +1,6 @@
 [user]
-    name = Tony R Quilkey
-    email = trq@thorpesystems.com
+    name = Tony Quilkey
+    email = tony@glowfeed.com
 [alias]
     ai = add -i
     aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ => \\2/' | sort

@@ -52,3 +52,5 @@ set -g pane-active-border-fg colour244
 set -g message-fg white
 set -g message-bg black
 set -g message-attr bright
+
+run-shell ~/src/utils/tmux-logging/logging.tmux
