@@ -8,22 +8,30 @@ alias s='sudo'
 alias sv='sudo vim'
 alias tree='tree -C'
 alias sz='. ~/.zshrc'
-alias pu='./vendor/bin/phpunit'
 alias serve="php -S 127.0.0.1:8080"
 alias wttr="curl -4 wttr.in/Sydney"
+alias wttrm="curl -4 wttr.in/Melbourne"
 
 alias g='git'
 alias d='docker'
-alias dm='docker-machine'
 alias dc='docker-compose'
-alias de='docker exec -it'
-alias t='tmuxinator'
-alias ei='t start ei'
-alias flowly='t start flowly'
 
-alias vs='ssh-add && vagrant ssh -- -A'
-alias vu='vagrant up'
-alias vh='vagrant halt'
-alias vr='vagrant reload'
+alias flushdns='sudo killall -HUP mDNSResponder'
 
 alias agent-init='eval `ssh-agent -s`'
+
+alias dc='docker-compose'
+
+alias f='git co -b'
+alias master='git checkout master'
+
+alias r='clear && ./node_modules/karma/bin/karma start config/karma.integration-nodist.conf.js'
+alias rebuild='rm -fr node_modules && yarn install && ./node_modules/gulp/bin/gulp.js build'
+alias rr='clear && ./node_modules/karma/bin/karma start config/karma.chrome-nodist.conf.js'
+
+alias .......=../../../../../..
+
+
+alias av=aws-vault
+alias glowaws='aws-vault login glow'
+alias tg=terragrunt
