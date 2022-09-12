@@ -22,7 +22,7 @@ P="$(brew --prefix)/bin:$P"
 P="$(brew --prefix)/sbin:$P"
 P="$HOME/bin:$P"
 P="./bin:$P"
-P="$HOME/src/ei/glow-shell/bin:$P"
+P="$HOME/src/glow/glow-shell/bin:$P"
 P="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$P"
 
 PATH=$PATH:$P ; export PATH
@@ -70,7 +70,7 @@ typeset ZSH_THEME_GIT_PROMPT_PREFIX='%{%}%{%} %{%}'
 typeset ZSH_THEME_GIT_PROMPT_SUFFIX='%{%}%{%} '
 
 setopt auto_cd
-cdpath=(~/src ~/src/glow ~/src/ei ~/src/ei/glow-frontend/packages ~/src/ei/glow-svc/terraform/infra/glow-au-account/ap-southeast-2)
+cdpath=(~/src ~/src/glow ~/src/glow/glow-frontend/packages ~/src/glow/glow-svc/terraform/infra/glow-au-account/ap-southeast-2)
 
 # Disable argument autocorrect
 unsetopt correct_all
