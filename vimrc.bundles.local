@@ -1,7 +1,0 @@
-Plug 'tpope/vim-unimpaired'
-Plug 'tpope/vim-markdown'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'rking/ag.vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'vimwiki/vimwiki'

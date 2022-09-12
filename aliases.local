@@ -2,36 +2,10 @@ alias ll='ls -l'
 alias ls='ls -F'
 alias all='ls -al'
 alias q='exit'
-alias r='cd;c'
+alias cdc='cd;c'
 alias c='clear'
 alias s='sudo'
 alias sv='sudo vim'
-alias tree='tree -C'
-alias sz='. ~/.zshrc'
-alias serve="php -S 127.0.0.1:8080"
-alias wttr="curl -4 wttr.in/Sydney"
-alias wttrm="curl -4 wttr.in/Melbourne"
-
 alias g='git'
-alias d='docker'
-alias dc='docker-compose'
-
-alias flushdns='sudo killall -HUP mDNSResponder'
-
-alias agent-init='eval `ssh-agent -s`'
-
-alias dc='docker-compose'
-
-alias f='git co -b'
-alias master='git checkout master'
-
-alias r='clear && ./node_modules/karma/bin/karma start config/karma.integration-nodist.conf.js'
-alias rebuild='rm -fr node_modules && yarn install && ./node_modules/gulp/bin/gulp.js build'
-alias rr='clear && ./node_modules/karma/bin/karma start config/karma.chrome-nodist.conf.js'
-
-alias .......=../../../../../..
-
-
 alias av=aws-vault
-alias glowaws='aws-vault login glow'
 alias tg=terragrunt
