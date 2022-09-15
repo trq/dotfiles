@@ -1,3 +1,5 @@
+[init]
+  defaultBranch = master
 [user]
     name = Tony Quilkey
     email = trq@thorpesystems.com
@@ -55,3 +57,18 @@
     untracked = red
 [color "diff"]
     whitespace = red reverse
+[push]
+  default = current
+[core]
+  excludesfile = ~/.gitignore
+  autocrlf = input
+[merge]
+  ff = only
+[commit]
+  template = ~/.gitmessage
+[fetch]
+  prune = true
+[rebase]
+  autosquash = true
+[diff]
+  colorMoved = zebra

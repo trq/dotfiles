@@ -1,0 +1,2 @@
+EXCLUDES="*.md"
+DOTFILES_DIRS="$HOME/src/trq/dotfiles"
